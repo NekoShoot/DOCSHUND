@@ -54,7 +54,7 @@ const UserPage = () => {
         setTranslations(translationsData || []);
       } catch (error) {
         // console.error(error);
-        setError("데이터를 가져오는 중 오류가 발생했습니다.");
+        setError("データを取得中にエラーが発生しました。");
       } finally {
         setLoading(false);
       }
@@ -74,13 +74,13 @@ const UserPage = () => {
 
   return (
     <div className="w-full px-12 py-5 max-w-screen-xl mx-auto">
-      <h1 className="text-2xl font-bold mt-4 mb-5 pl-4">프로필</h1>
+      <h1 className="text-2xl font-bold mt-4 mb-5 pl-4">プロフィール</h1>
       <ProfileCard
         isEditing={false}
         editedProfile={userProfile || defaultProfile}
       />
       <div className="flex justify-between mt-5 mb-5">
-        <h1 className="font-bold text-2xl pl-4">활동 내역</h1>
+        <h1 className="font-bold text-2xl pl-4">活動履歴</h1>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="p-6 bg-white rounded-xl border border-[#E1E1DF] flex items-center">
@@ -88,7 +88,7 @@ const UserPage = () => {
             <FileText className="text-[#bc5b39] w-10 h-10" />
           </div>
           <div>
-            <h2 className="text-lg font-semibold">작성한 번역본</h2>
+            <h2 className="text-lg font-semibold">作成した翻訳</h2>
             <p className="text-2xl font-bold">{translations.length}</p>
           </div>
         </div>
@@ -97,7 +97,7 @@ const UserPage = () => {
             <Edit3 className="text-[#bc5b39] w-10 h-10" />
           </div>
           <div>
-            <h2 className="text-lg font-semibold">작성한 게시글</h2>
+            <h2 className="text-lg font-semibold">作成した投稿</h2>
             <p className="text-2xl font-bold">{articles.length}</p>
           </div>
         </div>
@@ -106,7 +106,7 @@ const UserPage = () => {
             <MessageSquare className="text-[#bc5b39] w-10 h-10" />
           </div>
           <div>
-            <h2 className="text-lg font-semibold">작성한 댓글</h2>
+            <h2 className="text-lg font-semibold">作成したコメント</h2>
             <p className="text-2xl font-bold">{comments.length}</p>
           </div>
         </div>

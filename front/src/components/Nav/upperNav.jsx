@@ -141,7 +141,7 @@ const UpperNav = () => {
                     viewBox="2 2 20 20"
                     className="w-[clamp(20px,2.1vw,32px)] h-auto cursor-pointer"
                     onClick={handleToggleNotificationModal}
-                    alt="알림 아이콘"
+                    alt="通知アイコン"
                   >
                     <path
                       d="M12 2.5c-0.3 0-0.5 0.2-0.5 0.5v1.1c-3 0.4-5.5 3-5.5 6.2v3.8l-2 2v1h16v-1l-2-2v-3.8c0-3.2-2.5-5.8-5.5-6.2V3c0-0.3-0.2-0.5-0.5-0.5zM7.9 18c0.5 1.2 1.7 2 3.1 2s2.6-0.8 3.1-2H7.9z"
@@ -154,7 +154,7 @@ const UpperNav = () => {
                     viewBox="2 2 20 20"
                     className="w-[clamp(20px,2.1vw,32px)] h-auto cursor-pointer"
                     onClick={handleToggleNotificationModal}
-                    alt="알림 아이콘"
+                    alt="通知アイコン"
                   >
                     <path
                       d="M12 2.5c-0.3 0-0.5 0.2-0.5 0.5v1.1c-3 0.4-5.5 3-5.5 6.2v3.8l-2 2v1h16v-1l-2-2v-3.8c0-3.2-2.5-5.8-5.5-6.2V3c0-0.3-0.2-0.5-0.5-0.5zM7.9 18c0.5 1.2 1.7 2 3.1 2s2.6-0.8 3.1-2H7.9z"
@@ -177,14 +177,14 @@ const UpperNav = () => {
             )}
             <RectBtn
               onClick={handleLoginClick}
-              text={isAuthenticated() ? "로그아웃" : "로그인"}
+              text={isAuthenticated() ? "ログアウト" : "ログイン"}
             />
             {isAuthenticated() && profileImgUrl && (
               <img
                 onClick={handleImageClick}
                 className="w-[clamp(40px,4vw,64px)] h-[clamp(40px,4vw,64px)] border border-[#c5afa7] shadow-sm rounded-full cursor-pointer"
                 src={profileImgUrl}
-                alt="프로필 이미지"
+                alt="プロフィール画像"
               />
             )}
           </div>
@@ -202,7 +202,7 @@ const UpperNav = () => {
                   location.pathname === "/" ? activeLink : inactiveLink
                 }`}
               >
-                홈
+                ホーム
               </div>
               <div
                 onClick={() => {
@@ -215,7 +215,7 @@ const UpperNav = () => {
                     : inactiveLink
                 }`}
               >
-                번역문서
+                翻訳文書
               </div>
               <div
                 onClick={() => {
@@ -229,7 +229,7 @@ const UpperNav = () => {
                     : inactiveLink
                 }`}
               >
-                커뮤니티
+                コミュニティ
               </div>
               <div
                 onClick={() => {
@@ -242,7 +242,7 @@ const UpperNav = () => {
                     : inactiveLink
                 }`}
               >
-                헬프데스크
+                ヘルプデスク
               </div>
             </div>
           </div>
@@ -268,7 +268,7 @@ const UpperNav = () => {
                 location.pathname === "/" ? activeLink : inactiveLink
               }`}
             >
-              홈
+              ホーム
             </div>
             <div
               onClick={() => navigate("/translate")}
@@ -278,7 +278,7 @@ const UpperNav = () => {
                   : inactiveLink
               }`}
             >
-              번역문서
+              翻訳文書
             </div>
             <div
               onClick={() => {
@@ -291,7 +291,7 @@ const UpperNav = () => {
                   : inactiveLink
               }`}
             >
-              커뮤니티
+              コミュニティ
             </div>
             <div
               onClick={() => navigate("/helpDesk")}
@@ -301,7 +301,7 @@ const UpperNav = () => {
                   : inactiveLink
               }`}
             >
-              헬프데스크
+              ヘルプデスク
             </div>
           </div>
           {/* 오른쪽 영역 */}
@@ -314,7 +314,7 @@ const UpperNav = () => {
                     viewBox="2 2 20 20"
                     className="w-[clamp(20px,2.1vw,32px)] h-auto cursor-pointer"
                     onClick={handleToggleNotificationModal}
-                    alt="알림 아이콘"
+                    alt="通知アイコン"
                   >
                     <path
                       d="M12 2.5c-0.3 0-0.5 0.2-0.5 0.5v1.1c-3 0.4-5.5 3-5.5 6.2v3.8l-2 2v1h16v-1l-2-2v-3.8c0-3.2-2.5-5.8-5.5-6.2V3c0-0.3-0.2-0.5-0.5-0.5zM7.9 18c0.5 1.2 1.7 2 3.1 2s2.6-0.8 3.1-2H7.9z"
@@ -327,7 +327,7 @@ const UpperNav = () => {
                     viewBox="2 2 20 20"
                     className="w-[clamp(20px,2.1vw,32px)] h-auto cursor-pointer"
                     onClick={handleToggleNotificationModal}
-                    alt="알림 아이콘"
+                    alt="通知アイコン"
                   >
                     <path
                       d="M12 2.5c-0.3 0-0.5 0.2-0.5 0.5v1.1c-3 0.4-5.5 3-5.5 6.2v3.8l-2 2v1h16v-1l-2-2v-3.8c0-3.2-2.5-5.8-5.5-6.2V3c0-0.3-0.2-0.5-0.5-0.5zM7.9 18c0.5 1.2 1.7 2 3.1 2s2.6-0.8 3.1-2H7.9z"
@@ -350,14 +350,14 @@ const UpperNav = () => {
             )}
             <RectBtn
               onClick={handleLoginClick}
-              text={isAuthenticated() ? "로그아웃" : "로그인"}
+              text={isAuthenticated() ? "ログアウト" : "ログイン"}
             />
             {isAuthenticated() && profileImgUrl && (
               <img
                 onClick={handleImageClick}
                 className="w-[clamp(40px,4vw,64px)] h-[clamp(40px,4vw,64px)] border border-[#c5afa7] shadow-sm rounded-full cursor-pointer"
                 src={profileImgUrl}
-                alt="프로필 이미지"
+                alt="プロフィール画像"
               />
             )}
           </div>

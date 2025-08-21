@@ -52,7 +52,7 @@ const ViewerMainPage = () => {
     if (e.target.value > docDataLength.current) {
       e.target.value = docDataLength.current;
     } else if (e.target.value < 1 && e.target.value !== "") {
-      toast.warn("최소 값은 1입니다.", {
+      toast.warn("1以上の数字を入力してください", {
         toastId: "minValue",
       });
     }
@@ -103,7 +103,7 @@ const ViewerMainPage = () => {
           <div className="relative">
             <input
               type="number"
-              placeholder="번호"
+              placeholder="番号"
               max={docDataLength.current + 1}
               onChange={async (e) => {
                 CheckNumber(e);
@@ -194,14 +194,14 @@ const ViewerMainPage = () => {
           {/* 아이콘 영역 */}
           <div className="flex-shrink-0 flex items-center justify-center w-10 h-10">
             {location.includes("best") ? (
-              <img className="w-6 h-6" src={English} alt="원문 보기" />
+              <img className="w-6 h-6" src={English} alt="原文を表示" />
             ) : (
-              <img className="w-6 h-6" src={Korean} alt="전체 번역 보기" />
+              <img className="w-6 h-6" src={Korean} alt="全訳を表示" />
             )}
           </div>
           {/* 텍스트 영역 */}
           <span className="ml-2 whitespace-nowrap opacity-0 transition-all duration-300 group-hover:opacity-100">
-            {location.includes("best") ? "원문 보기" : "전체 번역 보기"}
+            {location.includes("best") ? "原文を表示" : "全訳を表示"}
           </span>
         </button>
       )}

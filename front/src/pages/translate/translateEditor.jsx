@@ -56,11 +56,11 @@ const TranslateEditor = () => {
         const status = await registTranslate(docsId, originId, currentUserText);
         if (status !== 200) {
           setLoading(false);
-          toast.error("제출 실패", {
+          toast.error("提出失敗", {
             toastId: "submitFail",
           });
         } else {
-          toast.success("제출 완료", {
+          toast.success("提出成功", {
             toastId: "submitSuccess",
           });
           const tmpTransList = await fetchBestTranslate(docsId, "");
@@ -116,9 +116,9 @@ const TranslateEditor = () => {
                     />
                   </svg>
                   <span className="text-base font-semibold text-slate-700">
-                    {porder} 번째 문단
+                    {porder} 番目の文段
                   </span>
-                  <span className="text-sm text-slate-600">번역 중</span>
+                  <span className="text-sm text-slate-600">翻訳中</span>
                 </div>
                 <div className="flex space-x-6 ">
                   {!loading && (
@@ -131,7 +131,7 @@ const TranslateEditor = () => {
                           currentUserText.trim() === "" ||
                           currentUserText.trim() === undefined
                         ) {
-                          toast.error("내용을 입력해주세요.", {
+                          toast.error("内容を入力してください。", {
                             toastId: "emptyContent",
                           });
                           setLoading(false);
@@ -145,7 +145,7 @@ const TranslateEditor = () => {
                           currentUserText
                         );
                       }}
-                      text="제출하기"
+                      text="提出する"
                     />
                   )}
 
@@ -155,15 +155,15 @@ const TranslateEditor = () => {
                       handleClose();
                       setLoading(false);
                     }}
-                    text="나가기"
+                    text="戻る"
                   />
                 </div>
               </div>
               <div className="border-t border-slate-200 pt-2 leading-normal text-slate-600 h-[calc(100%-3rem)] w-full flex gap-2">
                 {/* 에디터 모달 안에 들어갈 컨텐츠 */}
                 <div className="h-full w-4/10 flex flex-col space-y-2 overflow-hidden">
-                  <TextContent tag="공식문서 원본" textContent={docsPart} />
-                  <TextContent tag="베스트 번역" textContent={bestTrans} />
+                  <TextContent tag="公式文書原本" textContent={docsPart} />
+                  <TextContent tag="ベスト翻訳" textContent={bestTrans} />
                 </div>
 
                 <div className="h-full w-6/10 right-1/2">

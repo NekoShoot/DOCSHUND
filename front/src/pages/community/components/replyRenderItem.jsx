@@ -47,7 +47,7 @@ const ReplyRenderItem = ({
   };
 
   const handleDeleteReply = _.debounce(async () => {
-    if (!window.confirm("정말 삭제하시겠습니까?")) return;
+    if (!window.confirm("本当に削除しますか？")) return;
 
     const response = await ReplyItemService.deleteReplyItem(
       item.articleId,
@@ -55,7 +55,7 @@ const ReplyRenderItem = ({
     );
 
     if (response.status === 204) {
-      toast.info("댓글이 삭제되었습니다.", {
+      toast.info("コメントが削除されました。", {
         toastId: "deleteReply",
       });
 
@@ -74,7 +74,7 @@ const ReplyRenderItem = ({
       <div className="flex justify-between items-start">
         <img
           src={item.profileImage}
-          alt="프로필"
+          alt="プロフィール"
           className="w-10 h-10 rounded-full mr-4 cursor-pointer"
           onClick={() => {
             navigate(`/userPage/${item.userId}`);
@@ -85,7 +85,7 @@ const ReplyRenderItem = ({
             <p className="font-semibold text-gray-800">{item.nickname}</p>
             <p className="text-sm text-gray-500">
               {convertToKoreanTime(item.createdAt) ||
-                "표시할 수 없는 날짜입니다."}
+                "表示できない日付です。"}
             </p>
           </div>
           {/*  콘텐츠 */}
@@ -102,7 +102,7 @@ const ReplyRenderItem = ({
                     className="text-[#7d7c77] underline text-sm cursor-pointer"
                     onClick={handleDeleteReply}
                   >
-                    삭제
+                    削除
                   </button>
                 )
               : null}
@@ -114,7 +114,7 @@ const ReplyRenderItem = ({
                     className="text-[#7d7c77] underline text-sm cursor-pointer"
                     onClick={() => handleReport(item)}
                   >
-                    신고
+                    通報
                   </button>
                 )
               : null}
@@ -127,7 +127,7 @@ const ReplyRenderItem = ({
                   setReplyId(rootCommentId);
                 }}
               >
-                댓글 달기
+                コメントする
               </button>
             )}
           </div>

@@ -31,7 +31,7 @@ const Information = () => {
   const steps = [
     {
       target: "body",
-      content: "사용법을 간단하게 안내하겠습니다.",
+      content: "使い方を簡単に案内します。",
       placement: "center",
       styles: {
         options: {
@@ -46,7 +46,7 @@ const Information = () => {
     {
       target: "#upperBtns",
       content:
-        "사이드바에서는 문서 목록, 알림, 메모를 조회할 수 있습니다. 뒤로 나가기 버튼을 통해 문서 목록으로 돌아 갈 수 있습니다.",
+        "サイドバーでは文書一覧、通知、メモを確認できます。戻るボタンを使って文書一覧に戻ることができます。",
       placement: "bottom",
       styles: {
         options: {
@@ -60,7 +60,7 @@ const Information = () => {
     {
       target: "#mainContent",
       content:
-        "각 문단을 클릭하면 베스트 번역본의 내용을 볼 수 있고, 우클릭하면 번역을 작성하거나 기록을 볼 수 있습니다.",
+        "各文段をクリックするとベスト翻訳の内容が表示され、右クリックすると翻訳を作成したり、記録を表示したりできます。",
       placement: "bottom",
       styles: {
         options: {
@@ -74,7 +74,7 @@ const Information = () => {
     {
       target: "#searchBox",
       content:
-        "원본 문서의 내용을 검색할 수 있습니다. 검색 결과는 원본 데이터를 렌더링한 형태로 표시됩니다.",
+        "原文書の内容を検索できます。検索結果は原文データをレンダリングした形式で表示されます。",
       placement: "bottom",
       styles: {
         options: {
@@ -87,7 +87,7 @@ const Information = () => {
     },
     {
       target: "#translateAllBtn",
-      content: "번역 전체보기 버튼을 통해 전체 번역 내용을 볼 수 있습니다.",
+      content: "翻訳全体表示ボタンを使って、全翻訳内容を表示できます。",
       placement: "top-start",
       styles: {
         options: {
@@ -100,7 +100,7 @@ const Information = () => {
     },
     {
       target: "#chatBotBtn",
-      content: "챗봇 버튼을 통해 번역봇과 대화할 수 있습니다.",
+      content: "チャットボットボタンを通じて翻訳ボットと会話できます。",
       placement: "top-start",
       styles: {
         options: {
@@ -113,7 +113,7 @@ const Information = () => {
     },
     {
       target: "#chatBtn",
-      content: "채팅 버튼을 통해 다른 사용자들과 대화할 수 있습니다.",
+      content: "チャットボタンを通じて他のユーザーと会話できます。",
       placement: "top-start",
       styles: {
         options: {
@@ -126,7 +126,7 @@ const Information = () => {
     },
     {
       target: "body",
-      content: "시작 버튼을 누르면 사이트의 사용약관에 동의하게 됩니다.",
+      content: "開始ボタンを押すと、サイトの利用規約に同意したことになります。",
       placement: "center",
       styles: {
         options: {
@@ -167,11 +167,11 @@ const Information = () => {
               },
             }}
             locale={{
-              back: "이전",
-              close: "닫기",
-              last: "시작",
-              next: "다음",
-              skip: "건너뛰기",
+              back: "以前",
+              close: "閉じる",
+              last: "開始",
+              next: "次へ",
+              skip: "スキップ",
             }}
           />
         </div>

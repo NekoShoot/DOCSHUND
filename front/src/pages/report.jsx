@@ -57,7 +57,7 @@ const ReportModal = () => {
 
     // 필수 필드 확인
     if (!category || !content.trim()) {
-      toast.warn("신고 카테고리, 내용을 모두 입력해주세요.", {
+      toast.warn("カテゴリーと内容をすべて入力してください。", {
         toastId: "report-warning",
       });
       setIsSubmitting(false);
@@ -76,7 +76,7 @@ const ReportModal = () => {
     const formattedContent = convertWhiteSpace(content);
 
     if (formattedContent.length > MAX_CONTENT_LENGTH) {
-      toast.info(`글 내용은 ${MAX_CONTENT_LENGTH}자 이하로 작성해주세요.`, {
+      toast.info(`内容は${MAX_CONTENT_LENGTH}文字以内で入力してください。`, {
         toastId: "contentLength",
       });
       return;
@@ -109,7 +109,7 @@ const ReportModal = () => {
 
     const response = await ReportService.submitReport(formData);
     if (response) {
-      toast.success("신고가 성공적으로 제출되었습니다.", {
+      toast.success("報告が成功裏に提出されました。", {
         toastId: "report-success",
       });
       // 신고 성공 시 상태 초기화
@@ -129,7 +129,7 @@ const ReportModal = () => {
     const isValid = await validateImageFile(selectedFile);
 
     if (!isValid) {
-      toast.warn("이미지 파일만 업로드 가능합니다.", {
+      toast.warn("画像ファイルのみアップロードできます。", {
         toastId: "file-warning",
       });
       if (fileInputRef.current) {
@@ -139,7 +139,7 @@ const ReportModal = () => {
     }
 
     if (selectedFile.size > MAX_FILE_SIZE) {
-      toast.warn("파일 크기는 최대 10MB까지 업로드 가능합니다.", {
+      toast.warn("ファイルサイズは最大10MBまでアップロードできます。", {
         toastId: "file-warning",
       });
       if (fileInputRef.current) {
@@ -193,7 +193,7 @@ const ReportModal = () => {
               <form onSubmit={handleSubmit}>
                 <div className="mb-6">
                   <label className="block text-lg font-medium text-black mb-2">
-                    신고 카테고리 <span className="text-red-500">*</span>
+                    カテゴリー <span className="text-red-500">*</span>
                   </label>
                   <select
                     value={category}
@@ -201,52 +201,52 @@ const ReportModal = () => {
                     className="mt-1 block w-full py-2 px-3 border bg-white rounded-md shadow-sm focus:outline-none focus:ring-[#bc5b39] focus:border-[#bc5b39] sm:text-sm"
                   >
                     {isSelected && (
-                      <option value="">카테고리를 선택하세요</option>
+                      <option value="">カテゴリーを選択してください</option>
                     )}
                     <option
                       onClick={() => setIsSelected(false)}
                       value="ABUSIVE_LANGUAGE_OR_VIOLENCE"
                     >
-                      욕설 및 폭력성
+                      侮辱的な言葉や暴力
                     </option>
                     <option
                       onClick={() => setIsSelected(false)}
                       value="EXPLICIT_OR_ILLEGAL_CONTENT"
                     >
-                      음란물 및 불법 콘텐츠
+                      明示的または違法なコンテンツ
                     </option>
                     <option
                       onClick={() => setIsSelected(false)}
                       value="PROMOTING_GAMBLING"
                     >
-                      사행성 조장
+                      賭博を助長する
                     </option>
                     <option
                       onClick={() => setIsSelected(false)}
                       value="SPAM_OR_ADVERTISING"
                     >
-                      스팸 및 광고
+                      スパムおよび広告
                     </option>
                     <option
                       onClick={() => setIsSelected(false)}
                       value="FLOODING"
                     >
-                      도배
+                      連投
                     </option>
                     <option
                       onClick={() => setIsSelected(false)}
                       value="PERSONAL_INFORMATION_EXPOSURE"
                     >
-                      개인정보 노출
+                      プライバシー違反
                     </option>
-                    <option value="COPYRIGHT_INFRINGEMENT">저작권 침해</option>
-                    <option value="OTHER">기타</option>
+                    <option value="COPYRIGHT_INFRINGEMENT">権利違反</option>
+                    <option value="OTHER">その他</option>
                   </select>
                 </div>
 
                 <div className="mb-6">
                   <label className="block text-lg font-medium text-black mb-2">
-                    내용 <span className="text-red-500">*</span>
+                    内容 <span className="text-red-500">*</span>
                   </label>
                   <textarea
                     value={content}
@@ -255,7 +255,7 @@ const ReportModal = () => {
                         MAX_CONTENT_LENGTH && setContent(e.target.value)
                     }
                     className="mt-1 block w-full py-2 px-3 border rounded-md shadow-sm focus:outline-none focus:ring-[#bc5b39] focus:border-[#bc5b39] sm:text-sm"
-                    placeholder="내용을 입력하세요"
+                    placeholder="内容を入力してください"
                     style={{ height: "250px", resize: "none" }}
                   ></textarea>
                   <p className="text-xs text-gray-500 mt-1 mr-2 text-right">
@@ -273,12 +273,12 @@ const ReportModal = () => {
                         className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                       />
                       <div className="py-2 px-4 bg-[#bc5b39] text-white rounded-md shadow-sm text-center cursor-pointer hover:bg-[#C96442] text-sm whitespace-nowrap">
-                        사진 선택
+                        写真を選択
                       </div>
                     </div>
                     {!file && (
                       <p className="ml-4 flex-1 text-sm text-gray-500 w-[8vw]">
-                        첨부할 사진을 선택하세요
+                        添付する写真を選択してください
                       </p>
                     )}
                     {file && (
@@ -291,7 +291,7 @@ const ReportModal = () => {
                           onClick={handleFileCancel}
                           className="py-1 px-2 hover:text-red-600 shrink-0 text-sm underline"
                         >
-                          삭제
+                          削除
                         </button>
                       </div>
                     )}
@@ -306,7 +306,7 @@ const ReportModal = () => {
                       isSubmitting ? "opacity-50 cursor-not-allowed" : ""
                     }`}
                   >
-                    신고하기
+                    通報する
                   </button>
                 </div>
               </form>

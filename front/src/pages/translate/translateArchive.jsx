@@ -146,14 +146,14 @@ const TranslateArchive = () => {
                 <img
                   src={GoBack}
                   className="cursor-pointer w-[40px] h-[25px] hover:scale-110 transition-transform duration-200"
-                  alt="나가기"
+                  alt="戻る"
                   onClick={async () => {
                     handleClose();
                     setTimeout(() => closeArchive(), 100);
                   }}
                 />
                 <span className="flex-1 text-center">
-                  {porder}번째 문단 번역 기록
+                  {porder}番目の文段翻訳記録
                 </span>
                 <div className="w-[40px]"></div>
               </div>
@@ -168,7 +168,7 @@ const TranslateArchive = () => {
                     orderByUpdatedAt ? toggledStyle : defaultStyle
                   } transition-all duration-200 hover:underline`}
                 >
-                  최신순
+                  最新順
                 </div>
                 <div
                   onClick={() => {
@@ -180,7 +180,7 @@ const TranslateArchive = () => {
                     orderByLike ? toggledStyle : defaultStyle
                   } transition-all duration-200 hover:underline`}
                 >
-                  좋아요순
+                  いいね順
                 </div>
               </div>
               <div className="relative border-t border-slate-200 py-6 leading-normal text-slate-600 font-light h-9/11 flex flex-col gap-4 overflow-y-scroll">
@@ -188,7 +188,7 @@ const TranslateArchive = () => {
                   {transList.filter((trans) => trans.originId === originId)
                     .length === 0 && (
                     <div className="text-center text-gray-500 mt-12 text-lg font-medium animate-pulse">
-                      첫 번째 번역의 주인공이 되세요!
+                      初翻訳の主人公になりましょう！
                     </div>
                   )}
                 </div>
@@ -208,7 +208,7 @@ const TranslateArchive = () => {
                           <div className="flex flex-col gap-1">
                             <div className="text-lg font-medium">
                               {transUserList[trans.userId]}
-                              님의 번역본
+                              さんの翻訳文
                             </div>
                             <div className="text-sm text-gray-500">
                               {handleUTC(trans.updatedAt).toLocaleString()}
@@ -233,7 +233,7 @@ const TranslateArchive = () => {
                                 }}
                                 className="text-gray-500 cursor-pointer underline"
                               >
-                                신고
+                                申告
                               </button>
                             )}
 
@@ -258,7 +258,7 @@ const TranslateArchive = () => {
                                     : "text-slate-700"
                                 }
                               >
-                                좋아요
+                                いいね
                               </span>
                               <span
                                 className={`font-semibold ${

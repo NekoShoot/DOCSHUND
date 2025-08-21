@@ -75,7 +75,7 @@ const ModifyArticle = () => {
         }
       } catch (error) {
         // console.error("Failed to load article:", error);
-        toast.error("게시글을 불러오는데 실패했습니다.", {
+        toast.error("投稿の読み取りに失敗しました。", {
           toastId: "error",
         });
       }
@@ -112,7 +112,7 @@ const ModifyArticle = () => {
     const isValid = await validateImageFile(selectedFile);
 
     if (!isValid) {
-      toast.warn("이미지 파일만 업로드 가능합니다.", {
+      toast.warn("画像ファイルのみアップロードできます。", {
         toastId: "invalid",
       });
       if (fileInputRef.current) {
@@ -123,7 +123,7 @@ const ModifyArticle = () => {
 
     if (selectedFile) {
       if (selectedFile.size > 10 * 1000 * 1000) {
-        toast.info("사진 크기는 최대 10MB까지 업로드 가능합니다.", {
+        toast.info("画像のサイズは最大10MBまでアップロードできます。", {
           toastId: "size",
         });
         if (fileInputRef.current) {
@@ -139,7 +139,7 @@ const ModifyArticle = () => {
           convertWhiteSpace(currentUserText).length >
         15000
       ) {
-        toast.info("글 내용은 15000자 이하로 작성해주세요.", {
+        toast.info("内容は15000字以下で作成してください。", {
           toastId: "contentLength",
         });
         if (fileInputRef.current) {
@@ -175,7 +175,7 @@ const ModifyArticle = () => {
         setLoading(true);
         // 제목, 대분류, 소분류, 내용, 파일이 모두 입력되었는지 확인
         if (!title.trim() || !mainCategory || !subCategory || !content.trim()) {
-          toast.warn("모든 항목을 입력해주세요.", {
+          toast.warn("すべての項目を入力してください。", {
             toastId: "required",
           });
           setLoading(false);
@@ -184,7 +184,7 @@ const ModifyArticle = () => {
           const formattedContent = convertWhiteSpace(content); // 개행 문자 정규화
 
           if (formattedContent.length > 15000) {
-            toast.info("글 내용은 15000자 이하로 작성해주세요.", {
+            toast.info("内容は15000字以下で作成してください。", {
               toastId: "contentLength",
             });
             setLoading(false);
@@ -206,7 +206,7 @@ const ModifyArticle = () => {
               documentName: subCategory,
               currentUserText,
             });
-            toast.info("글 수정이 완료되었습니다.", {
+            toast.info("投稿の編集が完了しました。", {
               toastId: "success",
             });
             navigate(`/community/article/${articleId}`);
@@ -216,7 +216,7 @@ const ModifyArticle = () => {
         }
       } catch (error) {
         // console.error("Failed to modify article:", error);
-        toast.error("게시글 수정에 실패했습니다.", {
+        toast.error("投稿の編集に失敗しました。", {
           toastId: "error",
         });
         setLoading(false);
@@ -245,13 +245,13 @@ const ModifyArticle = () => {
                 <div className="mb-2">
                   <div className="flex items-center">
                     <label className="block text-lg font-medium text-black min-w-[100px] mb-2">
-                      제목 <span className="text-red-500">*</span>
+                      タイトル <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
                       value={title}
                       className="flex-1 py-2 px-3 border rounded-md shadow-sm focus:outline-none focus:ring-[#bc5b39] focus:border-[#bc5b39] text-sm"
-                      placeholder="제목을 입력하세요"
+                      placeholder="タイトルを入力してください"
                       onChange={(e) =>
                         convertWhiteSpace(e.target.value).length <=
                           MAX_TITLE_LENGTH && setTitle(e.target.value)
@@ -264,7 +264,7 @@ const ModifyArticle = () => {
                 </div>
                 <div className="flex flex-col md:flex-row items-start md:items-center">
                   <label className="block text-lg font-medium text-black min-w-[100px] mb-2 md:mb-0">
-                    분류 <span className="text-red-500">*</span>
+                    分類 <span className="text-red-500">*</span>
                   </label>
                   <div className="w-full flex flex-col md:flex-row flex-1 gap-4">
                     <select
@@ -272,7 +272,7 @@ const ModifyArticle = () => {
                       onChange={handleMainCategoryChange}
                       value={mainCategory}
                     >
-                      <option value="">대분류를 선택하세요</option>
+                      <option value="">大分類を選択してください</option>
                       {Object.keys(documentNames).map((section) => (
                         <option key={section} value={section}>
                           {section}
@@ -284,7 +284,7 @@ const ModifyArticle = () => {
                       onChange={handleSubCategoryChange}
                       value={subCategory}
                     >
-                      <option value="">문서를 선택하세요</option>
+                      <option value="">文書を選択してください</option>
                       {mainCategory &&
                         documentNames[mainCategory]?.map((item) => (
                           <option key={item} value={item}>
@@ -300,7 +300,7 @@ const ModifyArticle = () => {
               <div className="border-b border-[#E1E1DF] pb-4 mb-4">
                 <div className="mb-6 mt-4">
                   <label className="block text-lg font-medium text-black mb-2">
-                    내용 <span className="text-red-500">*</span>
+                    内容 <span className="text-red-500">*</span>
                   </label>
                   <div className="mt-1 block w-full h-100">
                     <EditorContent
@@ -314,11 +314,11 @@ const ModifyArticle = () => {
                 <div className="mb-6">
                   <div className="flex flex-col sm:flex-row items-start sm:items-center mb-2">
                     <label className="block text-lg font-medium text-black">
-                      사진 첨부
+                      写真添付
                     </label>
                     {file && (
                       <p className="text-sm text-gray-800 ml-0 sm:ml-6 mt-2 sm:mt-0">
-                        파일 제목 혹은 사진을 선택해 본문에 첨부할 수 있습니다.
+                        ファイルのタイトルまたは写真を選択して本文に添付できます。
                       </p>
                     )}
                   </div>
@@ -332,19 +332,19 @@ const ModifyArticle = () => {
                         className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                       />
                       <div className="py-2 px-4 bg-[#bc5b39] text-white rounded-md shadow-sm text-center cursor-pointer hover:bg-[#C96442] text-sm">
-                        사진 선택
+                        写真選択
                       </div>
                     </div>
                     {!file && (
                       <p className="ml-0 sm:ml-4 mt-2 text-sm text-gray-500">
-                        첨부할 사진을 선택하세요 (1개만 가능)
+                        添付する写真を選択してください (1つのみ可能)
                       </p>
                     )}
                     {file && (
                       <div className="ml-0 sm:ml-4 mt-2 flex flex-col sm:flex-row items-start sm:items-center gap-4">
                         <img
                           src={imageUrl}
-                          alt="이미지 파일 미리보기"
+                          alt="画像ファイルのプレビュー"
                           className="h-24 w-24 object-cover rounded-md border border-gray-300 cursor-pointer"
                           onClick={() => setFileUrl(imageUrl)}
                         />
@@ -359,7 +359,7 @@ const ModifyArticle = () => {
                           onClick={handleFileCancel}
                           className="py-1 px-2 text-sm underline hover:text-red-600"
                         >
-                          삭제
+                          削除
                         </button>
                       </div>
                     )}
@@ -374,7 +374,7 @@ const ModifyArticle = () => {
                   disabled={isLoading}
                   className="py-2 px-8 bg-[#bc5b39] text-white rounded-md shadow-sm hover:bg-[#C96442] cursor-pointer text-sm"
                 >
-                  수정완료
+                  編集完了
                 </button>
               </div>
             </form>

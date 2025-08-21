@@ -94,12 +94,12 @@ const ArticleItem = () => {
 
       if (resData) {
         setLikeCount(resData.likeCount);
-        toast.success("좋아요를 눌렀습니다.", {
+        toast.success("いいねを押しました", {
           toastId: "like",
         });
       }
     } else {
-      toast.alert("좋아요에 실패했습니다.", {
+      toast.alert("いいねに失敗しました", {
         toastId: "like",
       });
     }
@@ -119,7 +119,7 @@ const ArticleItem = () => {
             setCommentCount(data.commentCount);
             setIsInitialLoad(false);
           } else {
-            toast.error("해당 게시글을 찾을 수 없습니다.", {
+            toast.error("該当する投稿が見つかりませんでした。", {
               toastId: "notFound",
             });
             navigate("/community/list");
@@ -148,12 +148,12 @@ const ArticleItem = () => {
   }, []);
 
   const handleDeleteClick = _.debounce(async () => {
-    if (!window.confirm("정말 삭제하시겠습니까?")) return;
+    if (!window.confirm("本当に削除しますか？")) return;
 
     const response = await ArticleItemService.deleteArticleItem(articleId);
 
     if (response.status === 204) {
-      toast.info("게시글이 삭제되었습니다.", {
+      toast.info("投稿が削除されました。", {
         toastId: "delete",
       });
       navigate("/community");
@@ -185,14 +185,14 @@ const ArticleItem = () => {
             className="text-[#7d7c77] underline hover:text-gray-700 cursor-pointer"
             onClick={() => navigate(`/community/modify/${articleId}`)}
           >
-            수정
+            編集
           </button>
           <span>|</span>
           <button
             className="text-[#7d7c77] underline hover:text-gray-700 cursor-pointer"
             onClick={handleDeleteClick}
           >
-            삭제
+            削除
           </button>
         </div>
       );
@@ -225,7 +225,7 @@ const ArticleItem = () => {
                           className="text-[#7d7c77] underline hover:text-gray-700 cursor-pointer"
                           onClick={() => handleReport(articleItems)}
                         >
-                          신고
+                          通報する
                         </button>
                       </div>
                     )}
@@ -238,7 +238,7 @@ const ArticleItem = () => {
                 >
                   <img
                     src={articleItems.profileImage}
-                    alt={`${articleItems.nickname}의 프로필`}
+                    alt={`${articleItems.nickname}のプロフィール`}
                     className="w-7 h-7 md:w-8 md:h-8 rounded-full object-cover"
                   />
                   <span className="hidden md:block font-medium">
@@ -246,16 +246,16 @@ const ArticleItem = () => {
                   </span>
                   <span>
                     {convertToKoreanTime(articleItems.createdAt) ||
-                      "표시할 수 없는 날짜입니다."}
+                      "表示できない日付です。"}
                   </span>
                 </div>
                 <div className="flex items-center gap-4 mt-2 md:mt-0">
                   <div className="flex items-center gap-1">
-                    <span>조회</span>
+                    <span>閲覧</span>
                     <span>{articleItems.viewCount}</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <span>좋아요</span>
+                    <span>いいね</span>
                     <span>{likeCount}</span>
                   </div>
                 </div>

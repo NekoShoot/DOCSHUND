@@ -35,7 +35,7 @@ const ListRender = ({
         ))
       ) : (
         // 데이터가 없을 때
-        <p className="text-gray-500 text-center mt-6">데이터가 없습니다.</p>
+        <p className="text-gray-500 text-center mt-6">データがありません。</p>
       )}
       {/* 페이지네이션 */}
       {totalPages > 0 && (

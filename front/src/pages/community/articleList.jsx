@@ -35,9 +35,9 @@ const ArticleList = () => {
   const [tmpKeyword, setTmpKeyword] = useState("");
 
   const sortOptions = [
-    { value: "latest", label: "최신순" },
-    { value: "likes", label: "좋아요순" },
-    { value: "views", label: "조회수순" },
+    { value: "latest", label: "最新順" },
+    { value: "likes", label: "いいね順" },
+    { value: "views", label: "閲覧数順" },
   ];
 
   const handleSort = (value) => {
@@ -73,7 +73,7 @@ const ArticleList = () => {
 
   const updateContent = (value) => {
     if (value.length > 30) {
-      window.alert("검색어는 30자 이내로 입력해주세요.");
+      window.alert("検索は３０文字以内で入力してください。");
       return;
     }
     setTmpKeyword(value);
@@ -114,19 +114,19 @@ const ArticleList = () => {
         </p>
         <div className="flex flex-col justify-between">
           <div className="flex items-center">
-            <img className="mr-2" src={like} alt="좋아요수 아이콘" />
+            <img className="mr-2" src={like} alt="いいね数アイコン" />
             <p className="w-8 text-right text-sm md:text-base">
               {item.likeCount}
             </p>
           </div>
           <div className="flex items-center">
-            <img className="mr-2" src={view} alt="조회수 아이콘" />
+            <img className="mr-2" src={view} alt="閲覧数アイコン" />
             <p className="w-8 text-right text-sm md:text-base">
               {item.viewCount}
             </p>
           </div>
           <div className="flex items-center">
-            <img className="mr-2" src={comment} alt="댓글수 아이콘" />
+            <img className="mr-2" src={comment} alt="コメント数アイコン" />
             <p className="w-8 text-right text-sm md:text-base">
               {item.commentCount}
             </p>

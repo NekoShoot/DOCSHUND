@@ -171,7 +171,7 @@ const LeftNav = () => {
             <img
               className="w-[clamp(120px,10vw,148px)] h-auto hover:opacity-80 transition-opacity duration-200"
               src={Logo}
-              alt="닥스훈트 로고"
+              alt="DOCSHUNDロゴ"
             />
           </NavLink>
         </div>
@@ -194,7 +194,7 @@ const LeftNav = () => {
                       <div className="px-2 py-2.5 mb-2 flex flex-row items-center cursor-pointer hover:bg-[#F5F4F0] transition-colors duration-200">
                         <ScrollText className="w-6 h-6 text-[#7E7C77]" />
                         <span className="ml-5 font-medium text-[#7E7C77]">
-                          문서목록
+                          文書リスト
                         </span>
                       </div>
                       <div className="h-48 md:h-[200px] overflow-y-scroll">
@@ -223,11 +223,11 @@ const LeftNav = () => {
                           <div
                             className="px-2 py-2.5 mb-2 flex items-center hover:bg-[#F5F4F0] cursor-pointer transition-colors duration-200"
                             onClick={handleToggleNotificationModal}
-                            alt="알림 아이콘"
+                            alt="通知アイコン"
                           >
                             <Bell className="w-6 h-6 text-[#7E7C77]" />
                             <span className="ml-5 font-medium text-[#7E7C77]">
-                              알림
+                              通知
                             </span>
                           </div>
                           {createPortal(
@@ -253,7 +253,7 @@ const LeftNav = () => {
                           <div className="px-2 py-2.5 mb-2 w-full flex items-center hover:bg-[#F5F4F0] transition-colors duration-200">
                             <StickyNote className="w-6 h-6 text-[#7E7C77]" />
                             <span className="ml-5 font-medium text-[#7E7C77]">
-                              메모장
+                              メモ帳
                             </span>
                             <Plus
                               onClick={() => handleOpenCreateModal(openModal)}
@@ -263,7 +263,7 @@ const LeftNav = () => {
                           <div className="px-2">
                             {Array.isArray(memos) && memos.length === 0 ? (
                               <p className="text-[#7E7C77] text-xs sm:text-sm">
-                                작성된 메모가 없습니다.
+                                作成されたメモはありません。
                               </p>
                             ) : (
                               Array.isArray(memos) &&
@@ -281,7 +281,7 @@ const LeftNav = () => {
                                     }
                                     className="text-[#7E7C77] hover:text-[#4A4A4A] underline cursor-pointer text-xs sm:text-sm transition-colors duration-200"
                                   >
-                                    보기
+                                    見る
                                   </button>
                                 </div>
                               ))
@@ -299,8 +299,8 @@ const LeftNav = () => {
       </Drawer>
       <div className="absolute z-[3000]">
         <MemoModal
-          title={memoData ? "메모 수정" : "새 메모"}
-          buttonText={memoData ? "수정 완료" : "작성 완료"}
+          title={memoData ? "メモ修正" : "新しいメモ"}
+          buttonText={memoData ? "修正完了" : "作成完了"}
           onSubmit={memoData ? handleEditMemo : handleCreateMemo}
           isOpen={isOpen}
           closeModal={closeModal}
@@ -311,7 +311,7 @@ const LeftNav = () => {
       <div className="absolute z-[3000]">
         {isAlertOpen && (
           <ConfirmModal
-            message={{ title: "정말로 메모를 삭제하시겠습니까?" }}
+            message={{ title: "本当にメモを削除しますか？" }}
             onConfirm={confirmDeleteMemo}
             onCancel={toggleAlert}
           />

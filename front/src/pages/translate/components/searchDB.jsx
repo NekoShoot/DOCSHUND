@@ -33,7 +33,7 @@ const SearchDB = ({ tableId }) => {
   // 검색 실행
   const handleSearch = async () => {
     if (db && query.trim().length < 2) {
-      toast.warn("두 글자 이상 입력해주세요.", {
+      toast.warn("2文字以上入力してください。", {
         toastId: "search-min-length",
       });
       return;
@@ -44,8 +44,8 @@ const SearchDB = ({ tableId }) => {
       const result = await searchData(objectStoreName, searchField, query);
       if (result.length === 0) {
         setLoading(false);
-        // console.log("검색 결과가 없습니다.");
-        setSearchResults([{ content: "검색 결과가 없습니다." }]);
+        // console.log("検索結果がありません。");
+        setSearchResults([{ content: "検索結果がありません。" }]);
       } else {
         setSearchResults(result);
         setLoading(false);
@@ -55,7 +55,7 @@ const SearchDB = ({ tableId }) => {
 
   const checkMaxLength = (e) => {
     if (e.target.value.length === 500) {
-      toast.warn("검색어 500자 제한 초과", {
+      toast.warn("検索語500字制限超過", {
         toastId: "search-max-length",
       });
     }
@@ -73,12 +73,12 @@ const SearchDB = ({ tableId }) => {
             size="sm"
             color="success"
           />
-          <span className="pl-3">검색 중...</span>
+          <span className="pl-3">検索中...</span>
         </Button>
       )}
       <input
         type="text"
-        placeholder="검색어 입력 후 Enter"
+        placeholder="検索語を入力してEnter"
         value={query}
         minLength={5}
         maxLength={500}

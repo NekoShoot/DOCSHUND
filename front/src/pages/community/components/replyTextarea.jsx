@@ -29,7 +29,7 @@ const ReplyTextarea = ({ reCommentFlag, commentId }) => {
     debounce(async (content, isReComment, commentId) => {
       setLoading(true);
       if (!content.trim()) {
-        toast.warn("댓글을 입력해주세요.", {
+        toast.warn("コメントを入力してください。", {
           toastId: "emptyReply",
         });
         setLoading(false);
@@ -62,7 +62,7 @@ const ReplyTextarea = ({ reCommentFlag, commentId }) => {
         setIsReplied((prev) => !prev);
         setLoading(false);
       } catch (error) {
-        toast.error("댓글 작성에 실패했습니다.", {
+        toast.error("コメントの投稿に失敗しました。", {
           toastId: "failedReply",
         });
         setLoading(false);
@@ -75,7 +75,7 @@ const ReplyTextarea = ({ reCommentFlag, commentId }) => {
   // 즉시 상태를 업데이트하는 함수
   const updateContent = (value) => {
     if (convertWhiteSpace(value).length > 500) {
-      toast.warn("댓글은 500자 이내로 작성해주세요.", {
+      toast.warn("コメントは500字以内で入力してください。", {
         toastId: "exceedReply",
       });
       return;
@@ -105,7 +105,7 @@ const ReplyTextarea = ({ reCommentFlag, commentId }) => {
         <textarea
           value={replyContent}
           onChange={handleOnChange}
-          placeholder="댓글을 입력해주세요."
+          placeholder="コメントを入力してください。"
           className="w-full h-24 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none"
         ></textarea>
         <div className="flex justify-between items-center">
@@ -119,7 +119,7 @@ const ReplyTextarea = ({ reCommentFlag, commentId }) => {
           <button disabled={isLoading}>
             <RectBtn
               onClick={handleSubmit}
-              text="댓글 작성"
+              text="コメントを投稿"
               className="w-28 h-10 text-sm"
             />
           </button>

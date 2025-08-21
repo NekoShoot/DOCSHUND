@@ -26,7 +26,7 @@ const GodEditorContent = ({ initialTextContent, maxLength = 15000 }) => {
 
   const handleChange = (newText) => {
     if (convertWhiteSpace(newText).length > 15000) {
-      toast.info("글 내용은 15000자 이하로 작성해주세요.", {
+      toast.info("内容は15000字以下で作成してください。", {
         toastId: "contentLength",
       });
       return;
@@ -71,7 +71,7 @@ const GodEditorContent = ({ initialTextContent, maxLength = 15000 }) => {
               maxLength
             ) {
               setIsPossibleInsertImage(false);
-              toast.info("글 내용은 15000자 이하로 작성해주세요.", {
+              toast.info("内容は15000字以下で作成してください。", {
                 toastId: "imageUpload",
               });
               return;
@@ -96,7 +96,7 @@ const GodEditorContent = ({ initialTextContent, maxLength = 15000 }) => {
         maxLength
       ) {
         setIsPossibleInsertImage(false);
-        toast.info("글 내용은 15000자 이하로 작성해주세요.", {
+        toast.info("内容は15000字以下で作成してください。", {
           toastId: "imageUpload",
         });
         setFileUrl("");
@@ -123,8 +123,8 @@ const GodEditorContent = ({ initialTextContent, maxLength = 15000 }) => {
         data-color-mode="light"
         height="96%"
         textareaProps={{
-          placeholder: "최대 15000자까지 입력 가능합니다.",
-          maxLength: maxLength, // 최대 입력 글자 수 설정
+          placeholder: "最大15000字まで入力可能です。",
+          maxLength: maxLength, // 最大入力文字数設定
         }}
         visibleDragbar={false}
         commands={[
@@ -143,7 +143,7 @@ const GodEditorContent = ({ initialTextContent, maxLength = 15000 }) => {
         }}
         className="flex justify-end mx-5 pr-3"
       >
-        {maxLength - convertWhiteSpace(value)?.length} 글자 남음
+        {maxLength - convertWhiteSpace(value)?.length} 字残り
       </div>
     </div>
   );

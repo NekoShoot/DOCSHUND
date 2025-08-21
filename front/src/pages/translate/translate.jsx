@@ -108,10 +108,10 @@ const TransLatePage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            공식문서 번역 라이브러리
+            公式文書翻訳ライブラリ
           </motion.h1>
           <p className="text-sm md:text-lg text-[#7C543F] mt-2 mb-4 max-w-2xl mx-auto">
-            다양한 번역 문서를 한 곳에서 찾아보세요.
+            様々な翻訳文書を一箇所で見つけましょう。
           </p>
         </div>
       </motion.section>
@@ -120,7 +120,7 @@ const TransLatePage = () => {
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="relative bg-[#F7F3EC] p-4 rounded-xl shadow-xl">
           <h2 className="text-left text-xl font-semibold text-[#BC5B39] mb-6">
-            인기 번역 문서
+            人気の翻訳文書
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-6">
             {filteredBestDocsList.map((item, index) => (
@@ -142,7 +142,7 @@ const TransLatePage = () => {
                 <div className="flex flex-col items-center py-6 ml-6">
                   <img
                     src={item.documentLogo}
-                    alt="문서 로고"
+                    alt="文書ロゴ"
                     className="w-20 h-20 sm:w-16 sm:h-16 object-contain rounded-full border border-[#E8E5E1]"
                   />
                   <div className="w-24 sm:w-40 text-center text-[#BC5B39] text-xs md:text-base font-semibold p-3 sm:p-2 break-words">
@@ -217,7 +217,7 @@ const TransLatePage = () => {
                 <div className="rounded-lg flex items-center justify-center mb-3">
                   <img
                     src={docs.documentLogo}
-                    alt="문서 아이콘"
+                    alt="文書アイコン"
                     className="w-16 h-16 sm:w-20 sm:h-20"
                   />
                 </div>
@@ -237,7 +237,7 @@ const TransLatePage = () => {
                   }}
                   className="cursor-pointer mt-4 px-6 py-2 bg-[rgba(188,91,57,1)] text-white rounded-lg hover:bg-[rgba(188,91,57,0.8)] transition-colors duration-200 font-medium"
                 >
-                  {localStorage.getItem("token") ? "번역 하기" : "번역 보기"}
+                  {localStorage.getItem("token") ? "翻訳する" : "翻訳を見る"}
                 </button>
               </div>
             </div>
@@ -249,16 +249,16 @@ const TransLatePage = () => {
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="text-center">
           <h2 className="text-2xl sm:text-3xl font-semibold text-[#BC5B39]">
-            원하는 문서를 찾을 수 없나요?
+            お探しの文書は見つかりませんか？
           </h2>
           <p className="text-xs sm:text-md text-[#7C543F] mt-2">
-            새로운 문서를 신청하면 검토 후 추가해드립니다.
+            新しい文書を申請すると、審査後に追加されます。
           </p>
           <button
             onClick={() => navigate("/helpDesk/inquiryForm")}
             className="cursor-pointer mt-4 px-4 py-2 bg-[#BC5B39] text-white rounded-lg hover:bg-[rgba(188,91,57,0.8)] font-semibold text-xs sm:text-lg shadow-md transition-all duration-300"
           >
-            문서 신청하기
+            文書申請
           </button>
         </div>
       </div>

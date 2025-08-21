@@ -35,21 +35,21 @@ const ReplyHeader = () => {
             <path d="M4 2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-7l-3 4-3-4H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" />
           </svg>
         </span>
-        <span className="inline-flex">{commentCount}개의 댓글이 있습니다.</span>
+        <span className="inline-flex">{commentCount}個のコメントがあります。</span>
       </h2>
       <div className="flex gap-2 text-gray-600 text-sm md:text-base">
         <button
           className="hover:text-[#C65D21] cursor-pointer"
           onClick={handleSortByRegist}
         >
-          등록순
+          登録順
         </button>
         <span>|</span>
         <button
           className="hover:text-[#C65D21] cursor-pointer"
           onClick={handleSortByLatest}
         >
-          최신순
+          最新順
         </button>
       </div>
     </div>

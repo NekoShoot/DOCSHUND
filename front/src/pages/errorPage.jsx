@@ -8,49 +8,49 @@ const ErrorPage = () => {
   const navigate = useNavigate();
   const statusCode = parseInt(searchParams.get("status"), 10) || 500;
   const message =
-    searchParams.get("message") || "알 수 없는 오류가 발생했습니다.";
+    searchParams.get("message") || "エラーが発生しました。";
 
   const getErrorContent = () => {
     switch (statusCode) {
       case 400:
         return {
-          title: "잘못된 요청입니다",
+          title: "無効なリクエストです",
           description: message,
           image: errorImage400,
         };
       case 401:
         return {
-          title: "로그인이 필요합니다",
+          title: "ログインが必要です",
           description: message,
           image: errorImage400,
         };
       case 403:
         return {
-          title: "접근이 금지되었습니다",
+          title: "アクセスが禁止されています",
           description: message,
           image: errorImage400,
         };
       case 404:
         return {
-          title: "페이지를 찾을 수 없습니다",
+          title: "ページが見つかりません",
           description: message,
           image: errorImage400,
         };
       case 410:
         return {
-          title: "계정이 탈퇴되었습니다",
+          title: "アカウントが退会されました",
           description: message,
           image: errorImage400,
         };
       case 500:
         return {
-          title: "서버 오류",
+          title: "サーバーエラー",
           description: message,
           image: errorImage500,
         };
       default:
         return {
-          title: "오류 발생",
+          title: "エラーが発生しました。",
           description: message,
           image: errorImage400,
         };
@@ -69,10 +69,10 @@ const ErrorPage = () => {
           onClick={() => navigate("/")}
         >
           <ArrowLeft className="mr-2" />
-          <span className="lg:text-md sm:text-sm">홈으로 가기</span>
+          <span className="lg:text-md sm:text-sm">ホームに戻る</span>
         </button>
       </div>
-      <img src={image} alt="에러 이미지" className="w-1/3" />
+      <img src={image} alt="エラー画像" className="w-1/3" />
     </div>
   );
 };

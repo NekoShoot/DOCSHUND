@@ -61,7 +61,7 @@ const WriteArticle = () => {
     const isValid = await validateImageFile(selectedFile);
 
     if (!isValid) {
-      toast.warn("이미지 파일만 업로드 가능합니다.", {
+      toast.warn("画像ファイルのみアップロードできます。", {
         toastId: "imageOnly",
       });
       if (fileInputRef.current) {
@@ -73,7 +73,7 @@ const WriteArticle = () => {
     if (selectedFile) {
       if (selectedFile.size > 10 * 1000 * 1000) {
         // 10MB 제한
-        toast.info("사진 크기는 최대 10MB까지 업로드 가능합니다.", {
+        toast.info("サイズは最大10MBまでアップロードできます。", {
           toastId: "fileSize",
         });
         if (fileInputRef.current) {
@@ -90,7 +90,7 @@ const WriteArticle = () => {
           convertWhiteSpace(currentUserText).length >
         15000
       ) {
-        toast.info("글 내용은 15000자 이하로 작성해주세요.", {
+        toast.info("内容は15000字以下で作成してください。", {
           toastId: "contentLength",
         });
         if (fileInputRef.current) {
@@ -134,7 +134,7 @@ const WriteArticle = () => {
       !subCategory.trim() ||
       !content.trim()
     ) {
-      toast.info("모든 항목을 입력해주세요.", {
+      toast.info("すべての項目を入力してください。", {
         toastId: "required",
       });
       setLoading(false);
@@ -143,7 +143,7 @@ const WriteArticle = () => {
       const formattedContent = convertWhiteSpace(content);
 
       if (formattedContent.length > 15000) {
-        toast.info("글 내용은 15000자 이하로 작성해주세요.", {
+        toast.info("内容は15000字以下で作成してください。", {
           toastId: "contentLength",
         });
         setLoading(false);
@@ -159,7 +159,7 @@ const WriteArticle = () => {
       const data = response.data;
 
       if (response.status === 200) {
-        toast.success("글 작성이 완료되었습니다.", {
+        toast.success("投稿が完了しました。", {
           toastId: "writeSuccess",
         });
         navigate(`/community/article/${data.articleId}`);
@@ -192,13 +192,13 @@ const WriteArticle = () => {
                 <div className="mb-2">
                   <div className="flex items-center">
                     <label className="block text-lg font-medium text-black min-w-[100px] mb-2">
-                      제목 <span className="text-red-500">*</span>
+                      タイトル <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
                       value={title}
                       className="flex-1 py-2 px-3 border rounded-md shadow-sm focus:outline-none focus:ring-[#bc5b39] focus:border-[#bc5b39] text-sm"
-                      placeholder="제목을 입력하세요"
+                      placeholder="タイトルを入力してください"
                       onChange={(e) =>
                         convertWhiteSpace(e.target.value).length <=
                           MAX_TITLE_LENGTH && setTitle(e.target.value)
@@ -211,7 +211,7 @@ const WriteArticle = () => {
                 </div>
                 <div className="flex flex-col md:flex-row items-start md:items-center">
                   <label className="block text-lg font-medium text-black min-w-[100px] mb-2 md:mb-0">
-                    분류 <span className="text-red-500">*</span>
+                    分類 <span className="text-red-500">*</span>
                   </label>
                   <div className="w-full flex flex-col md:flex-row flex-1 gap-4">
                     <select
@@ -219,7 +219,7 @@ const WriteArticle = () => {
                       onChange={handleMainCategoryChange}
                       value={mainCategory}
                     >
-                      <option value="">대분류를 선택하세요</option>
+                      <option value="">大分類を選択してください</option>
                       {Object.keys(documentNames).map((section) => (
                         <option key={section} value={section}>
                           {section}
@@ -231,7 +231,7 @@ const WriteArticle = () => {
                       onChange={handleSubCategoryChange}
                       value={subCategory}
                     >
-                      <option value="">문서를 선택하세요</option>
+                      <option value="">文書を選択してください</option>
                       {mainCategory &&
                         documentNames[mainCategory]?.map((item) => (
                           <option key={item} value={item}>
@@ -247,7 +247,7 @@ const WriteArticle = () => {
               <div className="border-b border-[#E1E1DF] pb-4 mb-4">
                 <div className="mb-6 mt-4">
                   <label className="block text-lg font-medium text-black mb-2">
-                    내용 <span className="text-red-500">*</span>
+                    内容 <span className="text-red-500">*</span>
                   </label>
                   <div className="mt-1 block w-full h-100">
                     <EditorContent initialTextContent={""} maxLength={15000} />
@@ -259,11 +259,11 @@ const WriteArticle = () => {
                 <div className="mb-6">
                   <div className="flex flex-col sm:flex-row items-start sm:items-center mb-2">
                     <label className="block text-lg font-medium text-black">
-                      사진 첨부
+                      画像添付
                     </label>
                     {file && (
                       <p className="text-sm text-gray-800 ml-0 sm:ml-6 mt-2 sm:mt-0">
-                        파일 제목 혹은 사진을 선택해 본문에 첨부할 수 있습니다.
+                        ファイルのタイトルまたは画像を選択して本文に添付できます。
                       </p>
                     )}
                   </div>
@@ -277,19 +277,19 @@ const WriteArticle = () => {
                         className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                       />
                       <div className="py-2 px-4 bg-[#bc5b39] text-white rounded-md shadow-sm text-center cursor-pointer hover:bg-[#C96442] text-sm">
-                        사진 선택
+                        画像選択
                       </div>
                     </div>
                     {!file && (
                       <p className="ml-0 sm:ml-4 mt-2 text-sm text-gray-500">
-                        첨부할 사진을 선택하세요 (1개만 가능)
+                        添付する画像を選択してください (1つのみ)
                       </p>
                     )}
                     {file && (
                       <div className="ml-0 sm:ml-4 mt-2 flex flex-col sm:flex-row items-start sm:items-center gap-4">
                         <img
                           src={imageUrl}
-                          alt="이미지 파일 미리보기"
+                          alt="画像ファイルのプレビュー"
                           className="h-24 w-24 object-cover rounded-md border border-gray-300 cursor-pointer"
                           onClick={() => setFileUrl(imageUrl)}
                         />
@@ -304,7 +304,7 @@ const WriteArticle = () => {
                           onClick={handleFileCancel}
                           className="py-1 px-2 text-sm underline hover:text-red-600"
                         >
-                          삭제
+                          削除
                         </button>
                       </div>
                     )}
@@ -319,7 +319,7 @@ const WriteArticle = () => {
                   disabled={isLoading}
                   className=" py-2 px-8 bg-[#bc5b39] text-white rounded-md shadow-sm hover:bg-[#C96442] cursor-pointer text-sm"
                 >
-                  작성완료
+                  投稿完了
                 </button>
               </div>
             </form>

@@ -195,11 +195,11 @@ const TranslateViewer = () => {
         if (!isMounted) return;
 
         if (!loadedData || loadedData.length === 0) {
-          toast.info("서버와 연결되었습니다.");
+          toast.info("サーバーと繋がりました。");
           try {
             const data = await fetchTranslateData(docsId, "");
             if (data.length === 0) {
-              toast.info("문서 원본을 추가 중입니다.");
+              toast.info("文書原本を追加中です。");
               navigate(-1);
               return;
             }
@@ -208,7 +208,7 @@ const TranslateViewer = () => {
               docData.current = data;
               docDataLength.current = data.length;
               await addData(data, objectStoreName);
-              toast.success("원문 데이터가 준비되었습니다.");
+              toast.success("原文データが準備されました。");
               if (isMounted) {
                 setIsDbInitialized(true);
                 activateDbInitialized();
@@ -221,7 +221,7 @@ const TranslateViewer = () => {
             // console.error("Failed to fetch data from server:", error);
           }
         } else {
-          toast.success("원문 데이터가 준비되었습니다.");
+          toast.success("原文データが準備されました。");
           if (isMounted) {
             docData.current = loadedData;
             docDataLength.current = loadedData.length;
@@ -349,7 +349,7 @@ const TranslateViewer = () => {
                       toggleDocpart(part.id, "leftClick");
                     } else {
                       setBestTrans("");
-                      toast.info("아직 등록된 변역이 없습니다.", {
+                      toast.info("まだ登録された翻訳がありません。", {
                         toastId: "no-trans",
                       });
                     }
@@ -390,7 +390,7 @@ const TranslateViewer = () => {
             <img
               className="w-[250px] h-[250px]"
               src={loadingGif}
-              alt="로딩 애니메이션"
+              alt="ローディングアニメーション"
             />
           </div>
         </div>
@@ -408,12 +408,12 @@ const TranslateViewer = () => {
           animation="scale"
           style={{ zIndex: 1900 }}
         >
-          <Item disabled>{contextMenuPorder}번째 문단</Item>
+          <Item disabled>{contextMenuPorder}番目の文段</Item>
           <Separator />
           <Item className="hover:bg-gray-100!" onClick={handleTranslate}>
-            번역하기
+            翻訳する
           </Item>
-          <Item onClick={handleArchive}>번역 기록</Item>
+          <Item onClick={handleArchive}>翻訳履歴</Item>
         </Menu>,
         document.body
       )}

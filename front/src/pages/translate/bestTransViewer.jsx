@@ -222,7 +222,7 @@ const BestTransViewer = () => {
             <img
               className="w-[250px] h-[250px]"
               src={loadingGif}
-              alt="로딩 애니메이션"
+              alt="ローディングアニメーション"
             />
           </div>{" "}
         </div>

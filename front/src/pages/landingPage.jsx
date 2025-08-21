@@ -9,50 +9,50 @@ const LandingPage = () => {
   const navigate = useNavigate();
   const [currentSlogan, setCurrentSlogan] = useState(0);
 
-  const slogans = [
-    "공식문서를\n내것으로 만드는 가장 쉬운 방법",
-    "개발자들이 함께 만드는\n최고의 공식문서 비공식번역",
-    "공식문서\n더 쉽고, 더 빠르게",
-    "공식문서\n최고의 번역 플랫폼",
+const slogans = [
+    "公式ドキュメントを\n自分のものにする最も簡単な方法",
+    "開発者たちが共に作る\n最高の公式ドキュメント非公式翻訳",
+    "公式ドキュメント\nより簡単に、より速く",
+    "公式ドキュメント\n最高の翻訳プラットフォーム",
   ];
 
-  const testimonials = [
+const testimonials = [
     {
-      text: "DOCSHUND 덕분에 복잡한 문서를\n쉽게 이해할 수 있게 되었어요!",
-      name: "김개발",
-      role: "프론트엔드 개발자",
-      company: "네이버",
+      text: "DOCSHUNDのおかげで複雑な文書を\n簡単に理解できるようになりました！",
+      name: "木村開発",
+      role: "フロントエンド開発者",
+      company: "ネイバー",
     },
     {
-      text: "실시간 번역과 피드백 덕분에\n학습이 훨씬 수월해졌습니다.",
-      name: "이코딩",
-      role: "백엔드 개발자",
-      company: "카카오",
+      text: "リアルタイム翻訳とフィードバックのおかげで\n学習がとてもスムーズになりました。",
+      name: "佐藤コーディング",
+      role: "バックエンド開発者",
+      company: "カカオ",
     },
   ];
 
   const stats = [
-    { number: "100+", label: "번역 중인 문서" },
-    { number: "1,000+", label: "참여 개발자" },
-    { number: "5,000+", label: "번역본" },
+    { number: "100+", label: "翻訳中のドキュメント" },
+    { number: "1,000+", label: "参加開発者" },
+    { number: "5,000+", label: "翻訳数" },
   ];
 
   const faqs = [
     {
-      q: "DOCSHUND는 어떤 서비스인가요?",
-      a: "DOCSHUND는 공식문서를 쉽게 읽고 이해할 수 있도록 번역과 커뮤니티 피드백을 제공하는 플랫폼입니다.",
+      q: "DOCSHUNDはどんなサービスですか？",
+      a: "DOCSHUNDは公式ドキュメントを簡単に読んで理解できるように翻訳とコミュニティフィードバックを提供するプラットフォームです。",
     },
     {
-      q: "서비스 이용료는 얼마인가요?",
-      a: "회원가입 후 무료로 이용할 수 있습니다.",
+      q: "サービス利用料はいくらですか？",
+      a: "会員登録後、無料でご利用いただけます。",
     },
     {
-      q: "어떤 문서를 지원하나요?",
-      a: "Spring, Kubernetes, Android, TensorFlow 등 다양한 기술 문서를 지원합니다.",
+      q: "どのようなドキュメントに対応していますか？",
+      a: "Spring、Kubernetes、Android、TensorFlowなど、様々な技術文書に対応しています。",
     },
     {
-      q: "번역 수정에 참여하려면 어떻게 하나요?",
-      a: "문서를 열람 후, 수정할 부분을 선택해 번역 제안을 하실 수 있습니다.",
+      q: "翻訳の修正に参加するにはどうすればいいですか？",
+      a: "文書を閲覧後、修正したい箇所を選択して翻訳を提案することができます。",
     },
   ];
 
@@ -88,7 +88,7 @@ const LandingPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            이미 많은 개발자가 DOCSHUND를 사용 중입니다.
+            すでに多くの開発者がDOCSHUNDを使用しています。
           </motion.div>
           <motion.h1
             className="mb-4 bg-gradient-to-r from-[#bc5b39] to-[#C96442] text-transparent bg-clip-text font-bold"
@@ -104,12 +104,11 @@ const LandingPage = () => {
             {slogans[currentSlogan]}
           </motion.h1>
           <p className="text-base text-[#424242] mb-6 max-w-2xl mx-auto">
-            공식문서 번역과 커뮤니티 피드백으로 빠르고 정확한 개발 지식을
-            제공합니다.
+            公式ドキュメントの翻訳とコミュニティフィードバックで、迅速で正確な開発知識を提供します。
           </p>
           <RectBtn
             onClick={() => navigate("/translate")}
-            text="지금 시작하기"
+            text="今すぐ始める"
           />
         </div>
       </motion.section>
@@ -123,28 +122,28 @@ const LandingPage = () => {
         variants={fadeInUp}
       >
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8 text-[#424242]">
-            개발자가 겪는 문제
+         <h2 className="text-3xl font-bold text-center mb-8 text-[#424242]">
+            開発者が抱える問題
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="p-4 bg-red-50 rounded-lg">
               <h3 className="text-xl font-bold text-red-600 mb-3">
-                ❌ 기존 방식
+                ❌ 従来の方法
               </h3>
               <ul className="space-y-2 text-[#424242] text-sm">
-                <li>복잡한 영어 문서를 번역기에 의존</li>
-                <li>필요 정보 탐색에 시간 소요</li>
-                <li>부정확한 번역으로 혼란</li>
+                <li>複雑な英語文書を翻訳機に依存</li>
+                <li>必要な情報の検索に時間がかかる</li>
+                <li>不正確な翻訳による混乱</li>
               </ul>
             </div>
             <div className="p-4 bg-green-50 rounded-lg">
               <h3 className="text-xl font-bold text-green-600 mb-3">
-                ✅ DOCSHUND의 해결책
+                ✅ DOCSHUNDの解決策
               </h3>
               <ul className="space-y-2 text-[#424242] text-sm">
-                <li>원문과 번역을 한눈에 비교</li>
-                <li>커뮤니티 피드백을 통한 개선</li>
-                <li>빠르고 정확한 정보 제공</li>
+                <li>原文と翻訳を一目で比較</li>
+                <li>コミュニティフィードバックによる改善</li>
+                <li>迅速で正確な情報提供</li>
               </ul>
             </div>
           </div>
@@ -160,27 +159,27 @@ const LandingPage = () => {
         variants={fadeInUp}
       >
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-8 text-[#424242]">사용 방법</h2>
+          <h2 className="text-3xl font-bold mb-8 text-[#424242]">使用方法</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              {
+                {
                 step: "1",
-                title: "문서 선택",
-                description: "관심 있는 기술 문서를 선택하세요.",
+                title: "文書選択",
+                description: "興味のある技術文書を選択してください。",
                 image:
                   "https://i.pinimg.com/736x/73/cc/eb/73ccebda620a66cc7e0d57edaaf92418.jpg",
               },
               {
                 step: "2",
-                title: "번역 참여",
-                description: "직접 번역에 참여하거나 비교해보세요.",
+                title: "翻訳参加",
+                description: "直接翻訳に参加するか比較してみましょう。",
                 image:
                   "https://i.pinimg.com/736x/55/37/40/553740a0c11fd9afb5b83be406fe7b69.jpg",
               },
               {
                 step: "3",
-                title: "커뮤니티 개선",
-                description: "실시간 피드백으로 번역을 함께 개선합니다.",
+                title: "コミュニティ改善",
+                description: "リアルタイムフィードバックで翻訳を共に改善します。",
                 image:
                   "https://i.pinimg.com/736x/b1/ef/95/b1ef956e67434f44cdd2b8bba3438f50.jpg",
               },
@@ -223,24 +222,24 @@ const LandingPage = () => {
       >
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8 text-[#424242]">
-            주요 기능
+            主な機能
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              {
+               {
                 icon: <BookOpen className="w-7 h-7 text-[#bc5b39]" />,
-                title: "번역본 보기",
-                desc: "원문과 다양한 번역본을 비교하며 학습",
+                title: "翻訳閲覧",
+                desc: "原文と様々な翻訳を比較しながら学習",
               },
               {
                 icon: <Edit className="w-7 h-7 text-[#bc5b39]" />,
-                title: "번역 제안 & 투표",
-                desc: "직접 번역을 제안하고 개선에 참여",
+                title: "翻訳提案＆投票",
+                desc: "直接翻訳を提案し改善に参加",
               },
               {
                 icon: <Users className="w-7 h-7 text-[#bc5b39]" />,
-                title: "커뮤니티 토론",
-                desc: "문서별 토론과 피드백을 실시간 제공",
+                title: "コミュニティ討論",
+                desc: "文書別の討論とリアルタイムフィードバック",
               },
             ].map((item, index) => (
               <motion.div
@@ -294,7 +293,9 @@ const LandingPage = () => {
         viewport={{ once: true }}
       >
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-8 text-[#424242]">지원 문서</h2>
+          <h2 className="text-3xl font-bold text-center mb-8 text-[#424242]">
+            対応文書
+          </h2>
           <Marquee gradient={false} speed={40} pauseOnHover={false}>
             {[
               "Spring",
@@ -327,7 +328,7 @@ const LandingPage = () => {
       >
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8 text-[#424242]">
-            사용자 후기
+            ユーザーレビュー
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             {testimonials.map((testimonial, index) => (
@@ -366,7 +367,7 @@ const LandingPage = () => {
       >
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8 text-[#424242]">
-            자주 묻는 질문
+            よくある質問
           </h2>
           <div className="space-y-4">
             {faqs.map((faq, index) => (
@@ -392,7 +393,7 @@ const LandingPage = () => {
             >
               <RectBtn
                 onClick={() => navigate("/helpDesk/faq")}
-                text="FAQ 더보기 +"
+                text="FAQ もっと見る +"
               />
             </motion.div>
           </div>
@@ -408,18 +409,18 @@ const LandingPage = () => {
         variants={fadeInUp}
       >
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">지금 바로 시작하세요</h2>
+           <h2 className="text-3xl font-bold mb-4">今すぐ始めましょう</h2>
           <p className="mb-6 text-base text-[#424242]">
-            필요한 문서를 검색하고 원하시는 문서가 없다면 신청해주세요.
+            必要な文書を検索し、お探しの文書がない場合はリクエストしてください。
           </p>
           <div className="flex justify-center items-center gap-4">
             <RectBtn
               onClick={() => navigate("/translate")}
-              text="번역문서 보기"
+              text="翻訳文書を見る"
             />
             <RectBtn
               onClick={() => navigate("/helpDesk/inquiryForm")}
-              text="문서 제안하기"
+              text="文書を提案する"
             />
           </div>
         </div>
