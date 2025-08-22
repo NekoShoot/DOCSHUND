@@ -3,117 +3,117 @@ const PrivacyPage = () => {
     <div className="flex justify-center w-full">
       <main className="flex-1 px-4 sm:px-8 md:px-12 py-8 max-w-[1280px] mx-auto">
         <div className="flex justify-between mt-2 mb-6">
-          <h1 className="font-bold text-2xl">개인정보처리방침</h1>
+          <h1 className="font-bold text-2xl">プライバシーポリシー</h1>
         </div>
         <div className="bg-white rounded-xl border border-[#E1E1DF]">
           <div className="p-4 sm:p-6 md:p-8">
             <div className="border-t border-b border-[#E1E1DF] pb-4 mb-4">
               <div className="min-h-[200px] whitespace-pre-wrap my-6">
                 <h2 className="text-lg sm:text-xl font-bold mb-2">
-                  개인정보 처리방침
+                  プライバシーポリシー
                 </h2>
                 <p className="mb-4">
-                  &lt;DOCSHUND&gt;은(는) 정보주체의 자유와 권리 보호를 위해
-                  「개인정보 보호법」 및 관계 법령이 정한 바를 준수하여,
-                  적법하게 개인정보를 처리하고 안전하게 관리하고 있습니다. 이에
-                  「개인정보 보호법」 제30조에 따라 정보주체에게 개인정보의
-                  처리와 보호에 관한 절차 및 기준을 안내하고, 이와 관련한 고충을
-                  신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이
-                  개인정보 처리방침을 수립·공개합니다.
+                  &lt;DOCSHUND&gt;は、情報主体の自由と権利を保護するために
+                  「個人情報保護法」および関係法令が定めるところを遵守し、
+                  適法に個人情報を処理し、安全に管理しています。これにより
+                  「個人情報保護法」第30条に基づき、情報主体に対して個人情報の
+                  処理と保護に関する手続きおよび基準を案内し、これに関連する苦情を
+                  迅速かつ円滑に処理できるようにするため、次のように
+                  個人情報処理方針を策定・公表します。
                 </p>
 
                 <h3 className="text-base sm:text-lg font-bold mt-4 mb-2">
-                  제 1조(개인정보의 처리 목적)
+                  第1条(個人情報の処理目的)
                 </h3>
                 <p className="mb-2">
-                  &lt;DOCSHUND&gt;은(는) 다음의 목적을 위하여 개인정보를
-                  처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의
-                  용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는
-                  「개인정보 보호법」 제18조에 따라 별도의 동의를 받는 등 필요한
-                  조치를 이행할 예정입니다.
+                  &lt;DOCSHUND&gt;は、次の目的のために個人情報を処理します。
+                  処理している個人情報は、次の目的以外の用途には利用されず、
+                  利用目的が変更される場合には、
+                  「個人情報保護法」第18条に基づき、別途同意を得るなど必要な
+                 措置を講じる予定です。
                 </p>
                 <ul className="list-disc list-inside mt-2 mb-4">
-                  <li>홈페이지 회원 가입 및 관리</li>
-                  <li>서비스 제공</li>
+                  <li>ホームページ会員登録および管理</li>
+                  <li>サービス提供</li>
                 </ul>
 
                 <h3 className="text-base sm:text-lg font-bold mt-4 mb-2">
-                  제 2조(개인정보 수집 항목)
+                  第2条(個人情報の収集項目)
                 </h3>
                 <p className="mb-2">
-                  &lt;DOCSHUND&gt;은(는) 「개인정보 보호법」에 따라 서비스
-                  제공을 위해 필요 최소한의 범위에서 개인정보를 수집·이용합니다.
-                  해당 정보는 최초 로그인 시의 동의 여부 확인을 통해 정보주체의
-                  동의 하에 수집됩니다.
+                  &lt;DOCSHUND&gt;は、「個人情報保護法」に基づきサービス提供のために
+                  必要最小限の範囲で個人情報を収集・利用します。
+                  その情報は、初回ログイン時の同意の有無確認を通じて情報主体の
+                  同意のもとで収集されます。
                 </p>
                 <ul className="list-disc list-inside mt-2 mb-4">
-                  <li>회원 서비스 운영</li>
+                  <li>会員サービス運営</li>
                 </ul>
 
                 <h3 className="text-base sm:text-lg font-bold mt-4 mb-2">
-                  제 3조(개인정보의 처리 및 보유기간)
+                  第3条(個人情報の処理および保有期間)
                 </h3>
                 <p className="mb-2">
-                  &lt;DOCSHUND&gt;은(는) 법령에 따른 개인정보 보유·이용기간 또는
-                  정보주체로부터 개인정보를 수집 시에 동의 받은 개인정보
-                  보유·이용기간 내에서 개인정보를 처리·보유합니다.
+                  &lt;DOCSHUND&gt;は、「個人情報保護法」に基づきサービス提供のために
+                  必要最小限の範囲で個人情報を収集・利用します。
+                  その情報は、初回ログイン時の同意の有無確認を通じて情報主体の
+                  同意のもとで収集されます。
                 </p>
                 <ul className="list-disc list-inside mt-2 mb-4">
-                  <li>홈페이지 회원 가입 및 관리 : 홈페이지 탈퇴 후 1년까지</li>
+                  <li>ホームページ会員登録および管理 : ホームページ退会後1年まで</li>
                 </ul>
 
                 <h3 className="text-base sm:text-lg font-bold mt-4 mb-2">
-                  제 4조(정보주체의 권리·의무 및 그 행사 방법)
+                  第4条(情報主体の権利・義務およびその行使方法)
                 </h3>
                 <p className="mb-2">
-                  정보주체는 &lt;DOCSHUND&gt;에 대해 다음과 같은 권리를 행사할
-                  수 있으며, 만14세 미만 아동의 법정대리인은 그 아동의
-                  개인정보에 대한 열람, 정정·삭제, 처리정지를 요구할 수
-                  있습니다.
+                  情報主体は &lt;DOCSHUND&gt;に対して次のような権利を行使することができ、
+                  満14歳未満の子どもの法定代理人はその子どもの個人情報に対する
+                  閲覧、訂正・削除、処理停止を要求することができます。                  
                 </p>
                 <ul className="list-disc list-inside mt-2 mb-4">
-                  <li>개인정보 열람 요구</li>
-                  <li>개인정보 정정·삭제 요구</li>
-                  <li>개인정보 처리정지 요구</li>
+                  <li>個人情報の閲覧要求</li>
+                  <li>個人情報の訂正・削除要求</li>
+                  <li>個人情報の処理停止要求</li>
                 </ul>
 
                 <h3 className="text-base sm:text-lg font-bold mt-4 mb-2">
-                  제 5조(개인정보의 파기 절차 및 방법)
+                  第5条(個人情報の廃棄手続きおよび方法)
                 </h3>
                 <p className="mb-2">
-                  &lt;DOCSHUND&gt;은(는) 개인정보 보유기간의 경과, 처리목적 달성
-                  등 개인정보가 불필요하게 되었을 때에는 지체없이 해당
-                  개인정보를 파기합니다.
+                  &lt;DOCSHUND&gt;は、個人情報の保有期間の経過、処理目的の達成
+                  など個人情報が不必要になった場合には、遅滞なく該当
+                  個人情報を廃棄します。
                 </p>
                 <ul className="list-disc list-inside mt-2 mb-4">
-                  <li>파기절차</li>
-                  <li>파기방법</li>
+                  <li>廃棄手続き</li>
+                  <li>廃棄方法</li>
                 </ul>
 
                 <h3 className="text-base sm:text-lg font-bold mt-4 mb-2">
-                  제 6조(정보주체의 권익침해에 대한 구제 방법)
+                  第6条(情報主体の権益侵害に対する救済方法)
                 </h3>
                 <p className="mb-2">
-                  정보주체는 개인정보침해로 인한 구제를 받기 위하여
-                  개인정보분쟁조정위원회, 한국인터넷진흥원 개인정보침해신고센터
-                  등에 분쟁해결이나 상담 등을 신청할 수 있습니다.
+                  情報主体は個人情報侵害による救済を受けるために
+                  個人情報紛争調整委員会、韓国インターネット振興院個人情報侵害申告センター
+                  などに紛争解決や相談などを申請することができます。
                 </p>
                 <ul className="list-disc list-inside mt-2 mb-4">
                   <li>
-                    개인정보 분쟁조정위원회 : (국번없이) 1833-6972
+                    個人情報紛争調整委員会 : (国番なし) 1833-6972
                     (www.kopico.go.kr)
                   </li>
                   <li>
-                    개인정보침해신고센터 : (국번없이) 118 (privacy.kisa.or.kr)
+                    個人情報侵害申告センター : (国番なし) 118 (privacy.kisa.or.kr)
                   </li>
-                  <li>대검찰청 : (국번없이) 1301 (www.spo.go.kr)</li>
-                  <li>경찰청 : (국번없이) 182 (ecrm.cyber.go.kr)</li>
+                  <li>検察庁 : (国番なし) 1301 (www.spo.go.kr)</li>
+                  <li>警察庁 : (国番なし) 182 (ecrm.cyber.go.kr)</li>
                 </ul>
 
                 <h3 className="text-base sm:text-lg font-bold mt-4 mb-2">
-                  제 7조(개인정보 처리방침의 변경에 관한 사항)
+                  第7条(個人情報処理方針の変更に関する事項)
                 </h3>
-                <p>이 개인정보 처리방침은 2025. 01. 22. 부터 적용됩니다.</p>
+                <p>この個人情報処理方針は 2025. 01. 22. から適用されます。</p>
               </div>
             </div>
           </div>

@@ -147,7 +147,7 @@ const ArticleList = () => {
               <div className="relative w-full mr-2 mb-0">
                 <input
                   type="text"
-                  placeholder="검색어를 입력하세요"
+                  placeholder="検索語を入力してください"
                   className="w-full border p-2 pl-5 rounded-full h-8 focus:outline-none focus:ring-[#bc5b39] focus:border-[#bc5b39] text-sm md:text-base"
                   onChange={handleInputChange}
                   onKeyDown={(e) => {

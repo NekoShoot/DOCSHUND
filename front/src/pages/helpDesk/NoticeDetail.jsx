@@ -32,12 +32,12 @@ const NoticeDetail = () => {
     <div className="w-full px-4 md:px-12 py-5 max-w-screen-xl mx-auto">
       {/* 헤더 */}
       <div className="flex flex-row justify-between items-center mt-4 mb-5">
-        <h1 className="font-bold text-2xl">공지사항</h1>
+        <h1 className="font-bold text-2xl">お知らせ</h1>
         <Link
           to="/helpDesk/notices"
           className="s py-2 px-4 bg-[#bc5b39] text-white rounded-md shadow-sm hover:bg-[#C96442]"
         >
-          목록으로
+          一覧に戻る
         </Link>
       </div>
       {/* 내용 영역 */}
@@ -51,7 +51,7 @@ const NoticeDetail = () => {
             <div className="flex justify-between items-center text-sm sm:text-base text-[#7d7c77]">
               <span>
                 {convertToKoreanTime(noticeDetail.createdAt) ||
-                  "표시할 수 없는 날짜입니다."}
+                  "表示できない日付です。"}
               </span>
             </div>
           </div>

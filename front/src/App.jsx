@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import useScrollToTop from "./hooks/useScrollToTop.jsx";
+import useGeoLocation from "react-ipgeolocation";
 
 import UseSSE from "./hooks/useSSE.jsx";
 import useAuthStore from "./store/authStore.jsx";
@@ -25,6 +26,8 @@ import NotificationService from "./services/notificationService.jsx";
 Modal.setAppElement("#root");
 
 function App() {
+  const ipLocation = useGeoLocation();
+
   // 번역 뷰어 페이지일 때만 좌측 내브바 표시
   const location = useLocation();
   const pathname = location.pathname;
@@ -93,6 +96,7 @@ function App() {
   // 유저 ID로 SSE 연결
 
   UseSSE(token ? jwtDecode(token).userId : null);
+
 
   return (
     <div>

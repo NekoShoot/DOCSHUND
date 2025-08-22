@@ -46,7 +46,7 @@ const NoticePage = () => {
         </Link>
       </div>
       <span className="whitespace-nowrap">
-        {convertToKoreanTime(item.createdAt) || "표시할 수 없는 날짜입니다."}
+        {convertToKoreanTime(item.createdAt) || "表示できない日付です。"}
       </span>
     </div>
   );
@@ -54,8 +54,7 @@ const NoticePage = () => {
   return (
     <div className="p-4 sm:p-10 bg-white rounded-bl-xl rounded-br-xl border border-[#E1E1DF] text-[#7D7C77] mb-5">
       <div className="text-xs sm:text-base md:text-xl font-semibold text-[#5a5a5a] rounded-2xl border border-[#eeeeee] p-3 sm:p-5 mb-4 shadow-md">
-        📢 Docshund의 새로운 소식들! 신규 콘텐츠, 이벤트, 업데이트 등 다양한
-        소식을 만나보세요
+        📢 Docshundの新しいお知らせ！新しいコンテンツ、イベント、アップデートなど、さまざまなお知らせをお楽しみください
       </div>
       <ListRender
         data={notices}

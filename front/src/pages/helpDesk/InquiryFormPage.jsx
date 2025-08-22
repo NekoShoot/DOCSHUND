@@ -48,7 +48,7 @@ const InquiryFormPage = () => {
     e.preventDefault();
     setLoading(true);
     if (!category || !title.trim() || !email || !content.trim()) {
-      toast.info("문의 카테고리, 제목, 이메일, 내용을 모두 입력해주세요.", {
+      toast.info("お問い合わせのカテゴリ, タイトル, メールアドレス, 内容をすべて入力してください。", {
         toastId: "required",
       });
       setLoading(false);
@@ -61,7 +61,7 @@ const InquiryFormPage = () => {
       emailParts.length > 1 &&
       emailParts[1].toLowerCase().includes("github")
     ) {
-      toast.info("유효하지 않은 이메일입니다.", {
+      toast.info("無効なメールアドレスです。", {
         toastId: "invalidEmail",
       });
       setLoading(false);
@@ -78,7 +78,7 @@ const InquiryFormPage = () => {
     const formattedContent = convertWhiteSpace(content);
 
     if (formattedContent.length > MAX_CONTENT_LENGTH) {
-      toast.info(`글 내용은 ${MAX_CONTENT_LENGTH}자 이하로 작성해주세요.`, {
+      toast.info(`内容は${MAX_CONTENT_LENGTH}文字以内で入力してください。`, {
         toastId: "contentLength",
       });
       setLoading(false);
@@ -116,7 +116,7 @@ const InquiryFormPage = () => {
     setContent("");
     setFile(null);
     if (response) {
-      toast.success("문의가 성공적으로 제출되었습니다.", {
+      toast.success("お問い合わせが成功裏に提出されました。", {
         toastId: "submitSuccess",
       });
     }
@@ -131,7 +131,7 @@ const InquiryFormPage = () => {
     const isValid = await validateImageFile(selectedFile);
 
     if (!isValid) {
-      toast.warn("이미지 파일만 업로드 가능합니다.", {
+      toast.warn("画像ファイルのみアップロードできます。", {
         toastId: "invalidFileType",
       });
       if (fileInputRef.current) {
@@ -142,7 +142,7 @@ const InquiryFormPage = () => {
 
     if (selectedFile) {
       if (selectedFile.size > MAX_FILE_SIZE) {
-        toast.warn("파일 크기는 최대 10MB까지 업로드 가능합니다.", {
+        toast.warn("ファイルサイズは最大10MBまでアップロード可能です。", {
           toastId: "fileSizeLimit",
         });
         if (fileInputRef.current) {
@@ -174,23 +174,23 @@ const InquiryFormPage = () => {
         {/* 문의 카테고리 */}
         <div className="mb-6">
           <label className="block text-base md:text-lg font-medium text-black mb-2">
-            문의 카테고리 <span className="text-red-500">*</span>
+            お問い合わせのカテゴリ <span className="text-red-500">*</span>
           </label>
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             className="mt-1 block w-full py-2 px-3 border bg-white rounded-md shadow-sm focus:outline-none focus:ring-[#bc5b39] focus:border-[#bc5b39] text-xs md:text-sm"
           >
-            <option value="">카테고리를 선택하세요</option>
-            <option value="DOCUMENT_REQUEST">문서등록요청</option>
-            <option value="MEMBER">회원관련</option>
-            <option value="REPORT">신고관련</option>
+            <option value="">カテゴリを選択してください</option>
+            <option value="DOCUMENT_REQUEST">文書登録リクエスト</option>
+            <option value="MEMBER">会員関連</option>
+            <option value="REPORT">報告関連</option>
           </select>
         </div>
         {/* 제목 */}
         <div className="mb-4">
           <label className="block text-base md:text-lg font-medium text-black mb-2">
-            제목 <span className="text-red-500">*</span>
+            タイトル <span className="text-red-500">*</span>
           </label>
           <input
             type="text"
@@ -200,7 +200,7 @@ const InquiryFormPage = () => {
               setTitle(e.target.value)
             }
             className="mt-1 block w-full py-2 px-3 border rounded-md shadow-sm focus:outline-none focus:ring-[#bc5b39] focus:border-[#bc5b39] text-xs md:text-sm"
-            placeholder="제목을 입력하세요"
+            placeholder="タイトルを入力してください"
           />
           <p className="text-xs text-gray-500 mt-1 mr-2 text-right">
             {title.length} / {MAX_TITLE_LENGTH}
@@ -209,9 +209,9 @@ const InquiryFormPage = () => {
         {/* 이메일 */}
         <div className="mb-6">
           <label className="block text-base md:text-lg font-medium text-black mb-2">
-            이메일 <span className="text-red-500">*</span>{" "}
+            メールアドレス <span className="text-red-500">*</span>{" "}
             <span className="text-xs text-gray-500 mt-1 mr-2">
-              이메일을 잘못 입력한 경우, 메일이 전송되지 않을 수 있습니다.
+              メールアドレスを誤って入力した場合、メールが送信されない可能性があります。
             </span>
           </label>
           <input
@@ -223,13 +223,13 @@ const InquiryFormPage = () => {
               }
             }}
             className="mt-1 block w-full py-2 px-3 border rounded-md shadow-sm focus:outline-none focus:ring-[#bc5b39] focus:border-[#bc5b39] text-xs md:text-sm"
-            placeholder="이메일을 입력하세요"
+            placeholder="メールアドレスを入力してください"
           />
         </div>
-        {/* 내용 */}
+        {/* 内容 */}
         <div className="mb-4">
           <label className="block text-base md:text-lg font-medium text-black mb-2">
-            내용 <span className="text-red-500">*</span>
+            内容 <span className="text-red-500">*</span>
           </label>
           <textarea
             value={content}
@@ -238,7 +238,7 @@ const InquiryFormPage = () => {
               setContent(e.target.value)
             }
             className="mt-1 block w-full py-2 px-3 border rounded-md shadow-sm focus:outline-none focus:ring-[#bc5b39] focus:border-[#bc5b39] text-xs md:text-sm"
-            placeholder="내용을 입력하세요"
+            placeholder="内容を入力してください"
             style={{ height: "200px", resize: "none" }}
           ></textarea>
           <p className="text-xs text-gray-500 mt-1 mr-2 text-right">
@@ -248,7 +248,7 @@ const InquiryFormPage = () => {
         {/* 사진 첨부 */}
         <div className="mb-6">
           <label className="block text-base md:text-lg font-medium text-black mb-2">
-            사진 첨부 (1개만 가능)
+            写真添付 (1つのみ可能)
           </label>
           <div className="flex items-center">
             <div className="relative">
@@ -259,12 +259,12 @@ const InquiryFormPage = () => {
                 className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
               />
               <div className="py-2 px-4 bg-[#bc5b39] text-white rounded-md shadow-sm text-center hover:bg-[#C96442] text-xs md:text-sm cursor-pointer">
-                사진 선택
+                写真を選択
               </div>
             </div>
             {!file && (
               <p className="ml-4 text-xs md:text-sm text-gray-500">
-                첨부할 사진을 선택하세요
+                添付する写真を選択してください
               </p>
             )}
             {file && (
@@ -277,7 +277,7 @@ const InquiryFormPage = () => {
                   onClick={handleFileCancel}
                   className="py-1 px-2 hover:text-red-600 text-xs md:text-sm underline cursor-pointer"
                 >
-                  삭제
+                  削除
                 </button>
               </div>
             )}
@@ -290,14 +290,14 @@ const InquiryFormPage = () => {
             disabled={loading}
             className="py-2 px-4 bg-[#bc5b39] text-white rounded-md shadow-sm hover:bg-[#C96442] cursor-pointer text-xs md:text-sm"
           >
-            보내기
+            送信
           </button>
         </div>
       </form>
 
       {loading && (
         <div className="fixed inset-0 bg-opacity-50 flex flex-col justify-center items-center z-50 backdrop-brightness-80">
-          <img src={LodingImage} alt="로딩중" />
+          <img src={LodingImage} alt="ローディング中" />
         </div>
       )}
     </div>
