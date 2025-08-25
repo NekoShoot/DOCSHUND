@@ -1,58 +1,58 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import LandingPage from "./pages/landingPage.jsx";
+import LandingPage from "./jp/pages/landingPage.jsx";
 
 // 비회원 접근 제어 라우터
 import ProtectedRoute from "./utils/protectedRoute.jsx";
 
 // 마이페이지 관련 페이지
-import MyPage from "./pages/myPage/myPage.jsx";
-import MyProfilePage from "./pages/myPage/pages/MyProfilePage.jsx";
-import ArchivePage from "./pages/myPage/pages/ArchivePage.jsx";
-import LikeArticlePage from "./pages/myPage/pages/archive/LikeArticlePage.jsx";
-import LikeTranslationPage from "./pages/myPage/pages/archive/LikeTranslationPage.jsx";
-import LikeDocsPage from "./pages/myPage/pages/archive/LikeDocsPage.jsx";
-import ActivityPage from "./pages/myPage/pages/ActivityPage.jsx";
-import MyTranslationPage from "./pages/myPage/pages/activity/MyTranslationPage.jsx";
-import MyArticlePage from "./pages/myPage/pages/activity/MyArticlePage.jsx";
-import MyCommentPage from "./pages/myPage/pages/activity/MyCommentPage.jsx";
-import MemoPage from "./pages/myPage/pages/MemoPage.jsx";
-import InquiryPage from "./pages/myPage/pages/InquiryPage.jsx";
+import MyPage from "./jp/pages/myPage/myPage.jsx";
+import MyProfilePage from "./jp/pages/myPage/pages/MyProfilePage.jsx";
+import ArchivePage from "./jp/pages/myPage/pages/ArchivePage.jsx";
+import LikeArticlePage from "./jp/pages/myPage/pages/archive/LikeArticlePage.jsx";
+import LikeTranslationPage from "./jp/pages/myPage/pages/archive/LikeTranslationPage.jsx";
+import LikeDocsPage from "./jp/pages/myPage/pages/archive/LikeDocsPage.jsx";
+import ActivityPage from "./jp/pages/myPage/pages/ActivityPage.jsx";
+import MyTranslationPage from "./jp/pages/myPage/pages/activity/MyTranslationPage.jsx";
+import MyArticlePage from "./jp/pages/myPage/pages/activity/MyArticlePage.jsx";
+import MyCommentPage from "./jp/pages/myPage/pages/activity/MyCommentPage.jsx";
+import MemoPage from "./jp/pages/myPage/pages/MemoPage.jsx";
+import InquiryPage from "./jp/pages/myPage/pages/InquiryPage.jsx";
 
 // 도움말 관련 페이지
-import HelpDeskPage from "./pages/helpDesk/HelpDeskPage.jsx";
-import NoticePage from "./pages/helpDesk/NoticePage.jsx";
-import NoticeDetail from "./pages/helpDesk/NoticeDetail.jsx";
-import FAQPage from "./pages/helpDesk/FAQPage.jsx";
-import InquiryFormPage from "./pages/helpDesk/InquiryFormPage.jsx";
-import TermsPage from "./pages/helpDesk/TermsPage.jsx";
-import PrivacyPage from "./pages/helpDesk/PrivacyPage.jsx";
+import HelpDeskPage from "./jp/pages/helpDesk/HelpDeskPage.jsx";
+import NoticePage from "./jp/pages/helpDesk/NoticePage.jsx";
+import NoticeDetail from "./jp/pages/helpDesk/NoticeDetail.jsx";
+import FAQPage from "./jp/pages/helpDesk/FAQPage.jsx";
+import InquiryFormPage from "./jp/pages/helpDesk/InquiryFormPage.jsx";
+import TermsPage from "./jp/pages/helpDesk/TermsPage.jsx";
+import PrivacyPage from "./jp/pages/helpDesk/PrivacyPage.jsx";
 
 // 번역 관련 페이지
-import ViewerMainPage from "./pages/translate/viewerMainPage.jsx";
-import TranslatePage from "./pages/translate/translate.jsx";
-import TranslateViewer from "./pages/translate/translateViewer.jsx";
-import BestTransViewer from "./pages/translate/bestTransViewer.jsx";
+import ViewerMainPage from "./jp/pages/translate/viewerMainPage.jsx";
+import TranslatePage from "./jp/pages/translate/translate.jsx";
+import TranslateViewer from "./jp/pages/translate/translateViewer.jsx";
+import BestTransViewer from "./jp/pages/translate/bestTransViewer.jsx";
 
 // Community 관련 페이지
-import CommunityPage from "./pages/community/community.jsx";
-import ArticleList from "./pages/community/articleList.jsx";
-import WriteArticle from "./pages/community/writeArticle.jsx";
-import ModifyArticle from "./pages/community/modifyArticle.jsx";
-import ArticleItem from "./pages/community/articleItem.jsx";
+import CommunityPage from "./jp/pages/community/community.jsx";
+import ArticleList from "./jp/pages/community/articleList.jsx";
+import WriteArticle from "./jp/pages/community/writeArticle.jsx";
+import ModifyArticle from "./jp/pages/community/modifyArticle.jsx";
+import ArticleItem from "./jp/pages/community/articleItem.jsx";
 
 //admin 관련 페이지
-import Admin from "./pages/admin/admin.jsx";
-import ManageUser from "./pages/admin/manageUser.jsx";
-import ManageInquiry from "./pages/admin/manageInquiry.jsx";
-import ManageDocs from "./pages/admin/manageDocs.jsx";
-import ManageReport from "./pages/admin/manageReport.jsx";
-import ManageNotification from "./pages/admin/manageNotification.jsx";
+import Admin from "./jp/pages/admin/admin.jsx";
+import ManageUser from "./jp/pages/admin/manageUser.jsx";
+import ManageInquiry from "./jp/pages/admin/manageInquiry.jsx";
+import ManageDocs from "./jp/pages/admin/manageDocs.jsx";
+import ManageReport from "./jp/pages/admin/manageReport.jsx";
+import ManageNotification from "./jp/pages/admin/manageNotification.jsx";
 
 // error 페이지
-import ErrorPage from "./pages/errorPage.jsx";
+import ErrorPage from "./jp/pages/errorPage.jsx";
 
 // 유어마이페이지
-import UserPage from "./pages/userPage.jsx";
+import UserPage from "./jp/pages/userPage.jsx";
 
 function AppRoutes() {
   return (

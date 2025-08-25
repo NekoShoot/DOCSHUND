@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import userProfileService from "../../pages/myPage/services/userProfileService";
+import userProfileService from "../../jp/pages/myPage/services/userProfileService";
 
 const useUserProfileStore = create((set) => ({
   profile: null,

@@ -12,14 +12,14 @@ import useAuthStore from "./store/authStore.jsx";
 import useUserProfileStore from "./store/myPageStore/userProfileStore";
 
 //네비게이션 바
-import Footer from "./components/footer/footer.jsx";
-import UpperNav from "./components/Nav/upperNav.jsx";
-import LeftNav from "./components/Nav/leftNav.jsx";
+import Footer from "./jp/components/footer/footer.jsx";
+import UpperNav from "./jp/components/Nav/upperNav.jsx";
+import LeftNav from "./jp/components/Nav/leftNav.jsx";
 
 //모달
 import Modal from "react-modal";
-import LoginModal from "./components/LoginModal.jsx";
-import ToastModal from "./components/alertModal/toastModal.jsx";
+import LoginModal from "./jp/components/LoginModal.jsx";
+import ToastModal from "./jp/components/alertModal/toastModal.jsx";
 import notificationModalStore from "./store/notificationModalStore.jsx";
 import NotificationService from "./services/notificationService.jsx";
 
