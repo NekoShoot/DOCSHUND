@@ -118,7 +118,6 @@ function App() {
 
   return (    
     <div>
-      {console.log(userLocation?.country)},
       <div
         className={`flex flex-col min-h-[100vh] overflow-hidden ${
           isTranslateViewerPage ? "bg-[#FAF9F5]" : ""

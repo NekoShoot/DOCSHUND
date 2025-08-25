@@ -10,8 +10,8 @@ import ListRender from "../../../../components/pagination/listRender";
 import TranslationModal from "../../components/TranslationModal";
 import modalStore from "../../../../../store/modalStore";
 
-import like from "../../../../assets/icon/heartFilled24.png";
-import likeCancel from "../../../../assets/icon/heartEmpty24.png";
+import like from "../../../../../assets/icon/heartFilled24.png";
+import likeCancel from "../../../../../assets/icon/heartEmpty24.png";
 
 const LikeTranslationPage = () => {
   const { handleLikeToggle } = useOutletContext();

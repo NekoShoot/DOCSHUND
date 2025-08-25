@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import { toast } from "react-toastify";
 import { ChevronRight } from "lucide-react";
-import authService from "../../../services/authService";
+import authService from "../../../../services/authService";
 import useUserProfileStore from "../../../../store/myPageStore/userProfileStore";
 import userProfileService from "../services/userProfileService";
 import ProfileCard from "./ProfileCard";

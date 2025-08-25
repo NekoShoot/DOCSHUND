@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 import useKoreanTime from "../../../../../hooks/useKoreanTime";
 
 import LikeArticleService from "../../services/likeArticleService";
-import LikeArticleStore from "../../../../store/myPageStore/likeArticleStore";
+import LikeArticleStore from "../../../../../store/myPageStore/likeArticleStore";
 import ListRender from "../../../../components/pagination/listRender";
-import like from "../../../../assets/icon/heartFilled24.png";
-import likeCancel from "../../../../assets/icon/heartEmpty24.png";
+import like from "../../../../../assets/icon/heartFilled24.png";
+import likeCancel from "../../../../../assets/icon/heartEmpty24.png";
 
 const LikeArticlePage = () => {
   const { convertToKoreanTime } = useKoreanTime();

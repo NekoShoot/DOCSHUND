@@ -1,4 +1,4 @@
-import { axiosJsonInstance } from "../../../utils/axiosInstance";
+import { axiosJsonInstance } from "../../../../utils/axiosInstance";
 
 // 유저상태 변경
 export const changeUserStatus = async (userId, status) => {

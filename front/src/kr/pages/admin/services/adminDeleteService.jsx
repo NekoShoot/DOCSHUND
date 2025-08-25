@@ -1,4 +1,4 @@
-import { axiosJsonInstance } from "../../../utils/axiosInstance";
+import { axiosJsonInstance } from "../../../../utils/axiosInstance";
 
 // 좋아요한 문서 조회
 export const deleteNotification = async (notificationId) => {
