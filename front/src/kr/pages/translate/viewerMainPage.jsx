@@ -7,22 +7,22 @@ import { contextMenu } from "react-contexify";
 import { toast } from "react-toastify";
 
 // 아이콘
-import Korean from "../../assets/icon/korean.png";
-import English from "../../assets/icon/english.png";
+import Korean from "../../../assets/icon/korean.png";
+import English from "../../../assets/icon/english.png";
 import { ArrowLeftToLine } from "lucide-react";
 import { Menu } from "lucide-react";
 
 // 상태
-import useModalStore from "../../store/translateStore/translateModalStore.jsx";
-import useDocsStore from "../../store/translateStore/docsStore.jsx";
-import useReportStore from "../../store/reportStore.jsx";
-import useDbStore from "../../store/translateStore/dbStore.jsx";
-import useSearchStore from "../../store/translateStore/searchStore.jsx";
+import useModalStore from "../../../store/translateStore/translateModalStore.jsx";
+import useDocsStore from "../../../store/translateStore/docsStore.jsx";
+import useReportStore from "../../../store/reportStore.jsx";
+import useDbStore from "../../../store/translateStore/dbStore.jsx";
+import useSearchStore from "../../../store/translateStore/searchStore.jsx";
 
 // 채팅
 import Chat from "../chat/chat.jsx";
-import ChatStore from "../../store/chatStore.jsx";
-import ChatBotStore from "../../store/chatBotStore.jsx";
+import ChatStore from "../../../store/chatStore.jsx";
+import ChatBotStore from "../../../store/chatBotStore.jsx";
 
 // 서비스
 import { fetchDocsList } from "./services/translateGetService.jsx";

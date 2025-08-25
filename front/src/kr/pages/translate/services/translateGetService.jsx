@@ -1,4 +1,4 @@
-import { axiosJsonInstance } from "../../../utils/axiosInstance";
+import { axiosJsonInstance } from "../../../../utils/axiosInstance";
 import PropTypes from "prop-types";
 
 // 좋아요한 문서 조회

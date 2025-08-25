@@ -12,9 +12,9 @@ import RectBtn from "../../components/button/rectBtn";
 import _ from "lodash";
 
 //상태 관련
-import useModalStore from "../../store/translateStore/translateModalStore";
-import useEditorStore from "../../store/translateStore/editorStore";
-import useArchiveStore from "../../store/translateStore/archiveStore";
+import useModalStore from "../../../store/translateStore/translateModalStore";
+import useEditorStore from "../../../store/translateStore/editorStore";
+import useArchiveStore from "../../../store/translateStore/archiveStore";
 //
 
 const TranslateEditor = () => {

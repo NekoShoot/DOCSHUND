@@ -5,7 +5,7 @@ import userProfileService from "./myPage/services/userProfileService";
 import MyArticleService from "./myPage/services/myArticleService";
 import MyCommentService from "./myPage/services/myCommentService";
 import MyTranslationService from "./myPage/services/myTranslationService";
-import useUserActivityStore from "../store/userActivityStore";
+import useUserActivityStore from "../../store/userActivityStore";
 import { FileText, MessageSquare, Edit3 } from "lucide-react";
 
 const UserPage = () => {

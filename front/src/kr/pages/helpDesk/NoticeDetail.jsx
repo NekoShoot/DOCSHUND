@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import useNoticeStore from "../../store/helpDeskStore/noticeStore";
-import NoticeService from "../../services/helpDeskServices/noticeService";
+import useNoticeStore from "../../../store/helpDeskStore/noticeStore";
+import NoticeService from "../../../services/helpDeskServices/noticeService";
 import MDEditor from "@uiw/react-md-editor";
-import useKoreanTime from "../../hooks/useKoreanTime";
+import useKoreanTime from "../../../hooks/useKoreanTime";
 
 const NoticeDetail = () => {
   const { noticeId } = useParams();

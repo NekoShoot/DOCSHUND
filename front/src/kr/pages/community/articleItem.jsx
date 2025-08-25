@@ -5,8 +5,8 @@ import { ThumbsUp } from "lucide-react";
 import { toast } from "react-toastify";
 import _ from "lodash";
 
-import communityArticleStore from "../../store/communityStore/communityArticleStore";
-import useReportStore from "../../store/reportStore";
+import communityArticleStore from "../../../store/communityStore/communityArticleStore";
+import useReportStore from "../../../store/reportStore";
 import ArticleItemService from "./services/articleItemService";
 
 import ReportModal from "../../pages/report";
@@ -16,7 +16,7 @@ import SkeletonArticleItem from "./components/skeletonArticleItem";
 import ReplyList from "./replyList";
 import RectBtn from "../../components/button/rectBtn";
 import ToastViewer from "../translate/components/toastViewer";
-import useKoreanTime from "../../hooks/useKoreanTime";
+import useKoreanTime from "../../../hooks/useKoreanTime";
 
 const ArticleItem = () => {
   const navigate = useNavigate();

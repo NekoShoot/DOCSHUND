@@ -1,12 +1,10 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-import communityArticleStore from "../../store/communityStore/communityArticleStore";
+import communityArticleStore from "../../../store/communityStore/communityArticleStore";
 import ReplyHeader from "./components/replyHeader";
 import ReplyItemArea from "./components/replyItemArea";
 import ReplyTextarea from "./components/replyTextarea";
-import { div } from "motion/react-client";
-import { set } from "lodash";
 
 /* INFO: 
   1. 대댓글 여부를 확인해 api 호출 시 다르게 처리

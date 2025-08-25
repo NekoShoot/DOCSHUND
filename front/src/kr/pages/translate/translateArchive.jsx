@@ -2,21 +2,20 @@ import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import * as motion from "motion/react-client";
 import { AnimatePresence } from "motion/react";
-import GoBack from "../../assets/icon/goBack.png";
+import GoBack from "../../../assets/icon/goBack.png";
 import ToastViewer from "./components/toastViewer.jsx";
 import ReportModal from "../report.jsx";
 
 // 서비스
 import { fetchBestTranslate } from "./services/translateGetService.jsx";
 import { likeTranslate } from "./services/translatePostService.jsx";
-import userProfileService from "../myPage/services/userProfileService.jsx";
 
 //상태관리
-import useEditorStore from "../../store/translateStore/editorStore.jsx";
-import useArchiveStore from "../../store/translateStore/archiveStore.jsx";
-import useReportStore from "../../store/reportStore.jsx";
-import useModalStore from "../../store/translateStore/translateModalStore.jsx";
-import useChatStore from "../../store/chatStore.jsx";
+import useEditorStore from "../../../store/translateStore/editorStore.jsx";
+import useArchiveStore from "../../../store/translateStore/archiveStore.jsx";
+import useReportStore from "../../../store/reportStore.jsx";
+import useModalStore from "../../../store/translateStore/translateModalStore.jsx";
+import useChatStore from "../../../store/chatStore.jsx";
 import _ from "lodash";
 
 const TranslateArchive = () => {

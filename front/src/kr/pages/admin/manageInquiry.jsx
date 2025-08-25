@@ -4,10 +4,10 @@ import { fetchInquiryList, fetchUserList } from "./services/adminGetService";
 import { respondInquiry } from "./services/adminPostService";
 
 import { Download } from "lucide-react";
-import useUserManagerStore from "../../store/adminStore/userManagerStore";
+import useUserManagerStore from "../../../store/adminStore/userManagerStore";
 import ToastViewer from "../../pages/translate/components/toastViewer";
 import { toast } from "react-toastify";
-import LodingImage from "../../assets/loading.gif";
+import LodingImage from "../../../assets/loading.gif";
 import _ from "lodash";
 
 const ManageInquiry = () => {

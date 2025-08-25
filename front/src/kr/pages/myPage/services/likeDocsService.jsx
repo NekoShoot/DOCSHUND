@@ -1,4 +1,4 @@
-import { axiosJsonInstance } from "../../../utils/axiosInstance";
+import { axiosJsonInstance } from "../../../../utils/axiosInstance";
 import propTypes from "prop-types";
 
 const LikeDocsService = {

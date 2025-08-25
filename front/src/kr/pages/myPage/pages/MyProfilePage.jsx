@@ -3,12 +3,12 @@ import { jwtDecode } from "jwt-decode";
 import { toast } from "react-toastify";
 import { ChevronRight } from "lucide-react";
 import authService from "../../../services/authService";
-import useUserProfileStore from "../../../store/myPageStore/userProfileStore";
+import useUserProfileStore from "../../../../store/myPageStore/userProfileStore";
 import userProfileService from "../services/userProfileService";
 import ProfileCard from "./ProfileCard";
 // import SettingsCard from "./SettingsCard";
 import ConfirmModal from "../../../components/alertModal/confirmModal";
-import useAlertStore from "../../../store/alertStore";
+import useAlertStore from "../../../../store/alertStore";
 
 const MyProfilePage = () => {
   const { profile, error, fetchProfile, updateProfile, deleteAccount } =

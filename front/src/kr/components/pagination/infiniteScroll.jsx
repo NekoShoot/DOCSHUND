@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import loadingGif from "../../assets/loading.gif";
-import ToastViewer from "../../pages/translate/components/toastViewer";
+import loadingGif from "../../../assets/loading.gif";
 
 const InfiniteScroll = ({
   dataList, //필수: 렌더링할 데이터 리스트

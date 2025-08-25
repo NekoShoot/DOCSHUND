@@ -4,14 +4,14 @@ import { AnimatePresence } from "motion/react";
 import * as motion from "motion/react-client";
 import { useLocation, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-import { axiosJsonInstance } from "../../utils/axiosInstance.jsx";
-import ChatStore from "../../store/chatStore.jsx";
+import { axiosJsonInstance } from "../../../utils/axiosInstance.jsx";
+import ChatStore from "../../../store/chatStore.jsx";
 import { Flag, Send, X } from "lucide-react";
 import { toast } from "react-toastify";
 import ReportModal from "../report.jsx";
-import useReportStore from "../../store/reportStore.jsx";
-import useKeyComposing from "../../hooks/useKeyComposing";
-import useKoreanTime from "../../hooks/useKoreanTime";
+import useReportStore from "../../../store/reportStore.jsx";
+import useKeyComposing from "../../../hooks/useKeyComposing";
+import useKoreanTime from "../../../hooks/useKoreanTime";
 
 const Chat = () => {
   const { isChatVisible, toggleChat } = ChatStore();

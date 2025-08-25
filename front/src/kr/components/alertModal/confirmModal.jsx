@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import useAlertStore from "../../store/alertStore";
+import useAlertStore from "../../../store/alertStore";
 
 const ConfirmModal = ({ message, onConfirm, onCancel }) => {
   const { isAlertOpen } = useAlertStore();

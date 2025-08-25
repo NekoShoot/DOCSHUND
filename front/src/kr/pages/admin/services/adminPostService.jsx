@@ -1,7 +1,7 @@
 import {
   axiosJsonInstance,
   axiosMultipartInstance,
-} from "../../../utils/axiosInstance";
+} from "../../../../utils/axiosInstance";
 import { toast } from "react-toastify";
 
 // 신고 철회

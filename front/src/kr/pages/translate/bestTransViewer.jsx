@@ -17,14 +17,14 @@ import {
 import ToastViewer from "./components/toastViewer.jsx";
 
 //이미지 import
-import loadingGif from "../../assets/loading.gif";
+import loadingGif from "../../../assets/loading.gif";
 
 //상태
-import useModalStore from "../../store/translateStore/translateModalStore.jsx";
-import useDocsStore from "../../store/translateStore/docsStore.jsx";
-import useEditorStore from "../../store/translateStore/editorStore.jsx";
-import useDbStore from "../../store/translateStore/dbStore.jsx";
-import useSearchStore from "../../store/translateStore/searchStore.jsx";
+import useModalStore from "../../../store/translateStore/translateModalStore.jsx";
+import useDocsStore from "../../../store/translateStore/docsStore.jsx";
+import useEditorStore from "../../../store/translateStore/editorStore.jsx";
+import useDbStore from "../../../store/translateStore/dbStore.jsx";
+import useSearchStore from "../../../store/translateStore/searchStore.jsx";
 
 const BestTransViewer = () => {
   const navigationType = useNavigationType();

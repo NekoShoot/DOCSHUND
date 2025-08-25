@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { fetchUserList } from "../admin/services/adminGetService";
 import { changeUserStatus } from "../admin/services/adminPatchService";
-import useUserManagerStore from "../../store/adminStore/userManagerStore";
+import useUserManagerStore from "../../../store/adminStore/userManagerStore";
 import { toast } from "react-toastify";
 import { RefreshCw } from "lucide-react";
 import _ from "lodash";

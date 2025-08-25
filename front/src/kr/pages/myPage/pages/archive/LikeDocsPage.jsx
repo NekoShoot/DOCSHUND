@@ -4,10 +4,10 @@ import { jwtDecode } from "jwt-decode";
 
 import likeDocsService from "../../services/likeDocsService";
 import ListRender from "../../../../components/pagination/listRender";
-import likeDocsStore from "../../../../store/myPageStore/likeDocsStore";
+import likeDocsStore from "../../../../../store/myPageStore/likeDocsStore";
 
-import like from "../../../../assets/icon/heartFilled24.png";
-import likeCancel from "../../../../assets/icon/heartEmpty24.png";
+import like from "../../../../../assets/icon/heartFilled24.png";
+import likeCancel from "../../../../../assets/icon/heartEmpty24.png";
 
 const LikeDocsPage = () => {
   const token = localStorage.getItem("token");

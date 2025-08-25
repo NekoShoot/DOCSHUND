@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 
-import TranslationStore from "../../../../store/myPageStore/translationStore";
+import TranslationStore from "../../../../../store/myPageStore/translationStore";
 import MyTranslationService from "../../services/myTranslationService";
 import { fetchTranslateData } from "../../../translate/services/translateGetService";
 import ListRender from "../../../../components/pagination/listRender";
 import TranslationModal from "../../components/TranslationModal";
-import modalStore from "../../../../store/modalStore";
-import useKoreanTime from "../../../../hooks/useKoreanTime";
+import modalStore from "../../../../../store/modalStore";
+import useKoreanTime from "../../../../../hooks/useKoreanTime";
 
 const MyTranslationPage = () => {
   const { setOpenId, openId, closeModal } = modalStore();

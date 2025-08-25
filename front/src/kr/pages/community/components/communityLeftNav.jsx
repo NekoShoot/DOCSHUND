@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { ChevronDown, ChevronUp, Layout, Menu as MenuIcon } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import docsStore from "../../../store/translateStore/docsStore";
-import docsCategoryStore from "../../../store/docsCategoryStore";
-import communityArticleStore from "../../../store/communityStore/communityArticleStore";
+import docsStore from "../../../../store/translateStore/docsStore";
+import docsCategoryStore from "../../../../store/docsCategoryStore";
+import communityArticleStore from "../../../../store/communityStore/communityArticleStore";
 import { fetchDocsList } from "../../translate/services/translateGetService";
 
 // TODO: 디자인 수정(패딩, 마진 등)

@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Tabs from "../../components/Tabs";
-import useTabs from "../../utils/useTabs";
+import useTabs from "../../../utils/useTabs";
 
 const HelpDeskPage = () => {
   const tabs = [

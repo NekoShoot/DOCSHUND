@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import useKoreanTime from "../../../hooks/useKoreanTime";
+import useKoreanTime from "../../../../hooks/useKoreanTime";
 
 const MemoCard = ({ memo, onEditMemo }) => {
   const { convertToKoreanTime } = useKoreanTime();

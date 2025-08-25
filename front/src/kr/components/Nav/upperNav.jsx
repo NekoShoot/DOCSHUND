@@ -7,17 +7,16 @@ import RectBtn from "../button/rectBtn";
 import NotificationModal from "../notificationModal/notificationModal";
 
 // store
-import useUserProfileStore from "../../store/myPageStore/userProfileStore";
-import useModalStore from "../../store/modalStore";
-import notificationModalStore from "../../store/notificationModalStore";
-import communityArticleStore from "../../store/communityStore/communityArticleStore";
+import useUserProfileStore from "../../../store/myPageStore/userProfileStore";
+import useModalStore from "../../../store/modalStore";
+import notificationModalStore from "../../../store/notificationModalStore";
+import communityArticleStore from "../../../store/communityStore/communityArticleStore";
 
 // services
-import authService from "../../services/authService";
+import authService from "../../../services/authService";
 
 // assets
-import logo from "../../assets/logo.png";
-import notification from "../../assets/icon/notification32.png";
+import logo from "../../../assets/logo.png";
 
 const UpperNav = () => {
   const location = useLocation();

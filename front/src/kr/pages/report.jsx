@@ -3,10 +3,10 @@ import { jwtDecode } from "jwt-decode";
 import { AnimatePresence } from "motion/react";
 import * as motion from "motion/react-client";
 import { toast } from "react-toastify";
-import ReportStore from "../store/reportStore";
-import ReportService from "../services/reportService";
+import ReportStore from "../../store/reportStore";
+import ReportService from "../../services/reportService";
 import { X } from "lucide-react";
-import UseFileTypeCheck from "../hooks/useFileTypeCheck";
+import UseFileTypeCheck from "../../hooks/useFileTypeCheck";
 import _ from "lodash";
 
 const ReportModal = () => {

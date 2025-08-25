@@ -4,8 +4,8 @@ import { initDB, searchData } from "../services/indexedDbService"; // indexedDB 
 import ToastViewer from "./toastViewer";
 import { toast } from "react-toastify";
 import { Button, Spinner } from "flowbite-react";
-import useDocsStore from "../../../store/translateStore/docsStore";
-import useSearchStore from "../../../store/translateStore/searchStore";
+import useDocsStore from "../../../../store/translateStore/docsStore";
+import useSearchStore from "../../../../store/translateStore/searchStore";
 import { Virtuoso } from "react-virtuoso";
 
 const SearchDB = ({ tableId }) => {

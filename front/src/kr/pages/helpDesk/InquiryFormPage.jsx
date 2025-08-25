@@ -2,11 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import { jwtDecode } from "jwt-decode";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import useUserProfileStore from "../../store/myPageStore/userProfileStore";
-import useAuthStore from "../../store/authStore";
-import InquiryService from "../../services/helpDeskServices/inquiryService";
-import LodingImage from "../../assets/loading.gif";
-import UseFileTypeCheck from "../../hooks/useFileTypeCheck";
+import useUserProfileStore from "../../../store/myPageStore/userProfileStore";
+import useAuthStore from "../../../store/authStore";
+import InquiryService from "../../../services/helpDeskServices/inquiryService";
+import LodingImage from "../../../assets/loading.gif";
+import UseFileTypeCheck from "../../../hooks/useFileTypeCheck";
 import _ from "lodash";
 
 const InquiryFormPage = () => {

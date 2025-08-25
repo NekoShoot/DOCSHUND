@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
-import useKoreanTime from "../../../../hooks/useKoreanTime";
+import useKoreanTime from "../../../../../hooks/useKoreanTime";
 import ListRender from "../../../../components/pagination/listRender";
-import MyArticleStore from "../../../../store/myPageStore/myArticleStore";
+import MyArticleStore from "../../../../../store/myPageStore/myArticleStore";
 import MyArticleService from "../../services/myArticleService";
-import like from "../../../../assets/icon/heartFilled24.png";
-import view from "../../../../assets/icon/viewCnt.png";
-import comment from "../../../../assets/icon/commentCnt.png";
+import like from "../../../../../assets/icon/heartFilled24.png";
+import view from "../../../../../assets/icon/viewCnt.png";
+import comment from "../../../../../assets/icon/commentCnt.png";
 
 const MyArticlePage = () => {
   const token = localStorage.getItem("token");

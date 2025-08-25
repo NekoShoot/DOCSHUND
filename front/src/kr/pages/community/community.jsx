@@ -1,7 +1,7 @@
 import CommunityLeftNav from "./components/communityLeftNav";
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import useReportStore from "../../store/reportStore";
+import useReportStore from "../../../store/reportStore";
 
 const community = () => {
   const { closeReport } = useReportStore();

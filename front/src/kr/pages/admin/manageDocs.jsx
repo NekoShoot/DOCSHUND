@@ -5,9 +5,8 @@ import {
   registDocumentContent,
 } from "./services/adminPostService";
 import RegistDocs from "./components/registDocs";
-import useModalStore from "../../store/modalStore";
 import { toast } from "react-toastify";
-import LodingImage from "../../assets/loading.gif";
+import LodingImage from "../../../assets/loading.gif";
 
 const ManageDocs = () => {
   const [loading, setLoading] = useState(false);

@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import modalStore from "../../../store/myPageStore/myPageModalStore";
-import inquiryStore from "../../../store/myPageStore/inquiryStore";
+import modalStore from "../../../../store/myPageStore/myPageModalStore";
+import inquiryStore from "../../../../store/myPageStore/inquiryStore";
 import InquiryModal from "../components/InquiryModal";
 import ListRender from "../../../components/pagination/listRender";
 import InquiryService from "../services/inquiryService";
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { ChevronUp, ChevronDown } from "lucide-react";
-import useKoreanTime from "../../../hooks/useKoreanTime";
+import useKoreanTime from "../../../../hooks/useKoreanTime";
 
 const InquiryPage = () => {
   const navigate = useNavigate();

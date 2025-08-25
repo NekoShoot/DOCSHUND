@@ -6,9 +6,9 @@ import { likeDocs } from "./services/translatePostService";
 import { clearDB } from "./services/indexedDbService.jsx";
 import { motion } from "framer-motion";
 
-import useModalStore from "../../store/translateStore/translateModalStore";
-import useDocsStore from "../../store/translateStore/docsStore";
-import chatStore from "../../store/chatStore";
+import useModalStore from "../../../store/translateStore/translateModalStore";
+import useDocsStore from "../../../store/translateStore/docsStore";
+import chatStore from "../../../store/chatStore";
 
 const TransLatePage = () => {
   const [filteredDocsList, setFilteredDocsList] = useState([]);

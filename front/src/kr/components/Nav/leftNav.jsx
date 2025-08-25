@@ -13,22 +13,22 @@ import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import MemoModal from "../../pages/myPage/components/MemoModal.jsx";
 import { fetchDocsList } from "../../pages/translate/services/translateGetService.jsx";
 import memoService from "../../pages/myPage/services/memoService";
-import useMemoStore from "../../store/myPageStore/memoStore";
+import useMemoStore from "../../../store/myPageStore/memoStore";
 import useMemoMode from "../../pages/myPage/hooks/useMemoMode";
 
 import NotificationModal from "../notificationModal/notificationModal";
 
 // 상태 import
-import useModalStore from "../../store/translateStore/translateModalStore.jsx";
-import useDocsStore from "../../store/translateStore/docsStore.jsx";
-import modalStore from "../../store/myPageStore/myPageModalStore.jsx";
-import notificationModalStore from "../../store/notificationModalStore";
+import useModalStore from "../../../store/translateStore/translateModalStore.jsx";
+import useDocsStore from "../../../store/translateStore/docsStore.jsx";
+import modalStore from "../../../store/myPageStore/myPageModalStore.jsx";
+import notificationModalStore from "../../../store/notificationModalStore";
 
 // **삭제 확인 모달 관련 import**
-import useAlertStore from "../../store/alertStore";
+import useAlertStore from "../../../store/alertStore";
 import ConfirmModal from "../../components/alertModal/confirmModal";
 
-import Logo from "../../assets/logo.png";
+import Logo from "../../../assets/logo.png";
 import { Bell, ScrollText, StickyNote, Plus, X } from "lucide-react";
 import { closeAllConnections } from "../../pages/translate/services/indexedDbService.jsx";
 

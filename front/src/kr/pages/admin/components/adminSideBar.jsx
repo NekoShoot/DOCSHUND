@@ -1,7 +1,7 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import RoundCornerBtn from "../../../components/button/roundCornerBtn";
-import Logo from "../../../assets/logo.png";
-import authService from "../../../services/authService";
+import Logo from "../../../../assets/logo.png";
+import authService from "../../../../services/authService";
 
 const menuItems = [
   { text: "회원관리", path: "/admin/manageUser" },

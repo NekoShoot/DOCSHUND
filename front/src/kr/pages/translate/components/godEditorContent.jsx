@@ -3,8 +3,8 @@ import MDEditor, { commands } from "@uiw/react-md-editor";
 import propTypes from "prop-types";
 import _ from "lodash";
 
-import useEditorStore from "../../../store/translateStore/editorStore";
-import communityArticleStore from "../../../store/communityStore/communityArticleStore";
+import useEditorStore from "../../../../store/translateStore/editorStore";
+import communityArticleStore from "../../../../store/communityStore/communityArticleStore";
 import ArticleItemService from "../../community/services/articleItemService";
 import { toast } from "react-toastify";
 

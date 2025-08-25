@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
-import useKoreanTime from "../../../../hooks/useKoreanTime";
+import useKoreanTime from "../../../../../hooks/useKoreanTime";
 
 import MyCommentService from "../../services/myCommentService";
-import myCommentStore from "../../../../store/myPageStore/myCommentStore";
+import myCommentStore from "../../../../../store/myPageStore/myCommentStore";
 import ListRender from "../../../../components/pagination/listRender";
-import { div } from "motion/react-client";
 
 const MyCommentPage = () => {
   const token = localStorage.getItem("token");

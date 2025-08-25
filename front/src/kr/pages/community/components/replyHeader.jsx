@@ -1,5 +1,5 @@
 import propTypes from "prop-types";
-import communityArticleStore from "../../../store/communityStore/communityArticleStore";
+import communityArticleStore from "../../../../store/communityStore/communityArticleStore";
 
 const ReplyHeader = () => {
   const commentCount = communityArticleStore((state) => state.commentCount);

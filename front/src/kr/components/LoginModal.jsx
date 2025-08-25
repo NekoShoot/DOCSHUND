@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import authService from "../services/authService";
-import useAuthStore from "../store/authStore";
-import useModalStore from "../store/modalStore";
+import authService from "../../services/authService";
+import useAuthStore from "../../store/authStore";
+import useModalStore from "../../store/modalStore";
 
 //assets
-import logo from "../assets/logo.png";
-import google from "../assets/google.png";
-import github from "../assets/github.png";
+import logo from "../../assets/logo.png";
+import google from "../../assets/google.png";
+import github from "../../assets/github.png";
 
 const LoginModal = () => {
   const { isModalOpen, closeModal } = useModalStore();

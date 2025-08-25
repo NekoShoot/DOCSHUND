@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import {
   axiosJsonInstance,
   axiosMultipartInstance,
-} from "../../../utils/axiosInstance";
+} from "../../../../utils/axiosInstance";
 
 const ArticleItemService = {
   // 게시글 상세 정보를 가져오는 함수

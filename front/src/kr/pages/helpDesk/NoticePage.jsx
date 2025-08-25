@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import NoticeService from "../../services/helpDeskServices/noticeService";
-import useNoticeStore from "../../store/helpDeskStore/noticeStore";
+import NoticeService from "../../../services/helpDeskServices/noticeService";
+import useNoticeStore from "../../../store/helpDeskStore/noticeStore";
 import ListRender from "../../components/pagination/listRender";
-import useKoreanTime from "../../hooks/useKoreanTime";
+import useKoreanTime from "../../../hooks/useKoreanTime";
 
 const NoticePage = () => {
   const {

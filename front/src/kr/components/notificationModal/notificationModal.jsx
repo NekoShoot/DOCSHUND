@@ -5,9 +5,9 @@ import { jwtDecode } from "jwt-decode";
 import { toast } from "react-toastify";
 import propTypes from "prop-types";
 
-import notificationModalStore from "../../store/notificationModalStore";
-import NotificationService from "../../services/notificationService";
-import useKoreanTime from "../../hooks/useKoreanTime";
+import notificationModalStore from "../../../store/notificationModalStore";
+import NotificationService from "../../../services/notificationService";
+import useKoreanTime from "../../../hooks/useKoreanTime";
 
 const NotificationModal = () => {
   const navigate = useNavigate();

@@ -4,15 +4,15 @@ import { toast } from "react-toastify";
 import _, { set } from "lodash";
 
 // store
-import communityArticleStore from "../../store/communityStore/communityArticleStore";
-import docsCategoryStore from "../../store/docsCategoryStore";
-import useEditorStore from "../../store/translateStore/editorStore";
+import communityArticleStore from "../../../store/communityStore/communityArticleStore";
+import docsCategoryStore from "../../../store/docsCategoryStore";
+import useEditorStore from "../../../store/translateStore/editorStore";
 
 // components
 import CommunityHeader from "./components/communityHeader";
 import EditorContent from "../translate/components/godEditorContent";
 import ArticleItemService from "./services/articleItemService";
-import UseFileTypeCheck from "../../hooks/useFileTypeCheck";
+import UseFileTypeCheck from "../../../hooks/useFileTypeCheck";
 
 const ModifyArticle = () => {
   const { articleId } = useParams();

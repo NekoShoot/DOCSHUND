@@ -8,8 +8,8 @@ import { toast } from "react-toastify";
 import _ from "lodash";
 
 // 상태 관리
-import useChatBotStore from "../../store/chatBotStore.jsx";
-import ChatStore from "../../store/chatStore.jsx";
+import useChatBotStore from "../../../store/chatBotStore.jsx";
+import ChatStore from "../../../store/chatStore.jsx";
 
 // 페르소나 및 지시사항 (프롬프트) 상수
 const personaInstruction = `

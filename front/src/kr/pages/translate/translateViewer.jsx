@@ -35,16 +35,16 @@ import {
 } from "react-contexify";
 
 // 상태 import
-import useModalStore from "../../store/translateStore/translateModalStore.jsx";
-import useEditorStore from "../../store/translateStore/editorStore.jsx";
-import useDocsStore from "../../store/translateStore/docsStore.jsx";
-import useArchiveStore from "../../store/translateStore/archiveStore.jsx";
-import MemoStore from "../../store/../store/myPageStore/memoStore.jsx";
-import useDbStore from "../../store/translateStore/dbStore.jsx";
-import useSearchStore from "../../store/translateStore/searchStore.jsx";
+import useModalStore from "../../../store/translateStore/translateModalStore.jsx";
+import useEditorStore from "../../../store/translateStore/editorStore.jsx";
+import useDocsStore from "../../../store/translateStore/docsStore.jsx";
+import useArchiveStore from "../../../store/translateStore/archiveStore.jsx";
+import MemoStore from "../../../store/../store/myPageStore/memoStore.jsx";
+import useDbStore from "../../../store/translateStore/dbStore.jsx";
+import useSearchStore from "../../../store/translateStore/searchStore.jsx";
 
 // 이미지 import
-import loadingGif from "../../assets/loading.gif";
+import loadingGif from "../../../assets/loading.gif";
 import { Trophy } from "lucide-react";
 import { createPortal } from "react-dom";
 

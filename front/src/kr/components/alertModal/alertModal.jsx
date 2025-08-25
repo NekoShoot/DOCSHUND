@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import * as motion from "motion/react-client";
 import { AnimatePresence } from "motion/react";
-import useAlertStore from "../../store/alertStore";
+import useAlertStore from "../../../store/alertStore";
 const AlertModal = ({ imgSrc, alertTitle, alertText }) => {
   const { isAlertOpen, toggleAlert } = useAlertStore();
   return (

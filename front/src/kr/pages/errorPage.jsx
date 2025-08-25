@@ -1,6 +1,6 @@
 import { useSearchParams, useNavigate } from "react-router-dom";
-import errorImage400 from "../assets/error400.png";
-import errorImage500 from "../assets/error500.png";
+import errorImage400 from "../../assets/error400.png";
+import errorImage500 from "../../assets/error500.png";
 import { ArrowLeft } from "lucide-react";
 
 const ErrorPage = () => {

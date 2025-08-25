@@ -1,19 +1,16 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { format, isSameDay } from "date-fns";
-import { ko } from "date-fns/locale";
-import { toast } from "react-toastify";
 import _ from "lodash";
 
-import useKoreanTime from "../../hooks/useKoreanTime.jsx";
+import useKoreanTime from "../../../hooks/useKoreanTime.jsx";
 import articleListService from "./services/articleListService";
 import ListRender from "../../components/pagination/listRender.jsx";
-import communityArticleStore from "../../store/communityStore/communityArticleStore.jsx";
+import communityArticleStore from "../../../store/communityStore/communityArticleStore.jsx";
 import CommunityHeader from "./components/communityHeader.jsx";
 
-import like from "../../assets/icon/heartFilled24.png";
-import view from "../../assets/icon/viewCnt.png";
-import comment from "../../assets/icon/commentCnt.png";
+import like from "../../../assets/icon/heartFilled24.png";
+import view from "../../../assets/icon/viewCnt.png";
+import comment from "../../../assets/icon/commentCnt.png";
 
 const ArticleList = () => {
   const navigate = useNavigate();

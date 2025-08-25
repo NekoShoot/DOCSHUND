@@ -3,7 +3,7 @@ import { useState, useCallback, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { debounce } from "lodash";
-import communityArticleStore from "../../../store/communityStore/communityArticleStore";
+import communityArticleStore from "../../../../store/communityStore/communityArticleStore";
 import ReplyItemService from "../services/replyItemService";
 import RectBtn from "../../../components/button/rectBtn";
 import ArticleItemService from "../services/articleItemService";

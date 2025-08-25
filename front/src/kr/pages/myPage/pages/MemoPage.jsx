@@ -2,12 +2,12 @@ import { useEffect, useState, useCallback } from "react";
 import { jwtDecode } from "jwt-decode";
 import MemoList from "../components/MemoList";
 import MemoModal from "../components/MemoModal";
-import modalStore from "../../../store/myPageStore/myPageModalStore";
-import useMemoStore from "../../../store/myPageStore/memoStore";
+import modalStore from "../../../../store/myPageStore/myPageModalStore";
+import useMemoStore from "../../../../store/myPageStore/memoStore";
 import memoService from "../services/memoService";
 import ListPagination from "../../../components/pagination/listPagination";
 import ConfirmModal from "../../../components/alertModal/confirmModal";
-import useAlertStore from "../../../store/alertStore";
+import useAlertStore from "../../../../store/alertStore";
 // lodash debounce 제거 (또는 꼭 필요하면 옵션 변경 후 useCallback 사용)
 
 const MemoPage = () => {

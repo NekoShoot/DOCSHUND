@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useOutletContext } from "react-router-dom";
-import useKoreanTime from "../../../../hooks/useKoreanTime";
+import useKoreanTime from "../../../../../hooks/useKoreanTime";
 
-import TranslationStore from "../../../../store/myPageStore/translationStore";
+import TranslationStore from "../../../../../store/myPageStore/translationStore";
 import LikeTranslationService from "../../services/likeTranslationService";
 import { fetchTranslateData } from "../../../translate/services/translateGetService";
 import ListRender from "../../../../components/pagination/listRender";
 import TranslationModal from "../../components/TranslationModal";
-import modalStore from "../../../../store/modalStore";
+import modalStore from "../../../../../store/modalStore";
 
 import like from "../../../../assets/icon/heartFilled24.png";
 import likeCancel from "../../../../assets/icon/heartEmpty24.png";

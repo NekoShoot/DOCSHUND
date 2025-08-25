@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { motion, AnimatePresence } from "framer-motion";
 import MDEditor from "@uiw/react-md-editor";
 import { ArrowLeft } from "lucide-react";
-import useEditorStore from "../../../store/translateStore/editorStore";
+import useEditorStore from "../../../../store/translateStore/editorStore";
 import { toast } from "react-toastify";
 
 const MAX_TITLE_LENGTH = 50;

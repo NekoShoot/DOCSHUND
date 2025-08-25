@@ -5,10 +5,10 @@ import { toast } from "react-toastify";
 import _ from "lodash";
 
 import ReportModal from "../../report";
-import useReportStore from "../../../store/reportStore";
-import communityArticleStore from "../../../store/communityStore/communityArticleStore";
+import useReportStore from "../../../../store/reportStore";
+import communityArticleStore from "../../../../store/communityStore/communityArticleStore";
 import ReplyItemService from "../services/replyItemService";
-import useKoreanTime from "../../../hooks/useKoreanTime";
+import useKoreanTime from "../../../../hooks/useKoreanTime";
 import ArticleItemService from "../services/articleItemService";
 
 const ReplyRenderItem = ({

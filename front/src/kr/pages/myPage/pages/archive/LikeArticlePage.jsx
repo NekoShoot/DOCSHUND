@@ -1,6 +1,6 @@
 import { Link, useOutletContext } from "react-router-dom";
 import { useEffect, useState } from "react";
-import useKoreanTime from "../../../../hooks/useKoreanTime";
+import useKoreanTime from "../../../../../hooks/useKoreanTime";
 
 import LikeArticleService from "../../services/likeArticleService";
 import LikeArticleStore from "../../../../store/myPageStore/likeArticleStore";
