@@ -1,30 +1,41 @@
 import "./App.css";
 import AppRouter from "./router.jsx";
+import KrAppRouter from "./krRouter.jsx";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import useScrollToTop from "./hooks/useScrollToTop.jsx";
+import useGeoLocation from "react-ipgeolocation";
 
 import UseSSE from "./hooks/useSSE.jsx";
 import useAuthStore from "./store/authStore.jsx";
 import useUserProfileStore from "./store/myPageStore/userProfileStore";
+import useUserActivityStore from "./store/userActivityStore.jsx";
 
 //네비게이션 바
-import Footer from "./components/footer/footer.jsx";
-import UpperNav from "./components/Nav/upperNav.jsx";
-import LeftNav from "./components/Nav/leftNav.jsx";
+import Footer from "./jp/components/footer/footer.jsx";
+import UpperNav from "./jp/components/Nav/upperNav.jsx";
+import LeftNav from "./jp/components/Nav/leftNav.jsx";
+
+// kr nav
+import KrFooter from "./kr/components/footer/footer.jsx";
+import KrUpperNav from "./kr/components/Nav/upperNav.jsx";
+import KrLeftNav from "./kr/components/Nav/leftNav.jsx";
+
 
 //모달
 import Modal from "react-modal";
-import LoginModal from "./components/LoginModal.jsx";
-import ToastModal from "./components/alertModal/toastModal.jsx";
+import LoginModal from "./jp/components/LoginModal.jsx";
+import ToastModal from "./jp/components/alertModal/toastModal.jsx";
 import notificationModalStore from "./store/notificationModalStore.jsx";
 import NotificationService from "./services/notificationService.jsx";
 
 Modal.setAppElement("#root");
 
 function App() {
+  const ipLocation = useGeoLocation();
+
   // 번역 뷰어 페이지일 때만 좌측 내브바 표시
   const location = useLocation();
   const pathname = location.pathname;
@@ -34,6 +45,7 @@ function App() {
   const { token, setToken } = useAuthStore();
   const { setNotifications, setIsAllChecked } = notificationModalStore();
   const { fetchProfile } = useUserProfileStore();
+  const { userLocation, setUserLocation } = useUserActivityStore();
 
   useScrollToTop(); // added hook usage
 
@@ -94,22 +106,32 @@ function App() {
 
   UseSSE(token ? jwtDecode(token).userId : null);
 
-  return (
+  useEffect(() => {
+    if (ipLocation.country && 
+      (userLocation?.country !== ipLocation.country ||
+       userLocation?.city !== ipLocation.city ||
+       userLocation?.region !== ipLocation.region)) {
+      setUserLocation(ipLocation);
+    }
+
+  }, [ipLocation, setUserLocation, userLocation]);
+
+  return (    
     <div>
       <div
         className={`flex flex-col min-h-[100vh] overflow-hidden ${
           isTranslateViewerPage ? "bg-[#FAF9F5]" : ""
         }`}
       >
-        {isTranslateViewerPage ? <LeftNav /> : null}
-        {!isTranslateViewerPage && !isAdminPage ? <UpperNav /> : null}
+        {isTranslateViewerPage ? userLocation?.country == "JP" ? <LeftNav /> : <KrLeftNav /> : null}
+        {!isTranslateViewerPage && !isAdminPage ? userLocation?.country == "JP" ? <UpperNav /> : <KrUpperNav /> : null}
         <div className="flex-grow">
-          <AppRouter />
+          {userLocation?.country == "JP" ? <AppRouter /> : <KrAppRouter />}
         </div>
         {isTranslateViewerPage ? (
           <div className="fixed bottom-4 right-3 z-[1900] group"></div>
         ) : null}
-        {isTranslateViewerPage || isAdminPage ? null : <Footer />}
+        {isTranslateViewerPage || isAdminPage ? null : userLocation?.country == "JP" ? <Footer /> : <KrFooter />}
         <LoginModal />
       </div>
       <ToastModal limit={2} />

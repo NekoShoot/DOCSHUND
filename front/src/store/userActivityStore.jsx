@@ -8,6 +8,7 @@ const useUserActivityStore = create((set) => ({
   translations: [],
   loading: false,
   error: null,
+  userLocation: null,
 
   setUserId: (userId) => set({ userId }),
   setUserProfile: (profileData) => set({ userProfile: profileData }),
@@ -16,6 +17,7 @@ const useUserActivityStore = create((set) => ({
   setTranslations: (translations) => set({ translations }),
   setLoading: (isLoading) => set({ loading: isLoading }),
   setError: (errorMessage) => set({ error: errorMessage }),
+  setUserLocation: (location) => set({ userLocation: location }),
 }));
 
 export default useUserActivityStore;
