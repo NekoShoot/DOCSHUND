@@ -12,14 +12,14 @@ const useAuthStore = create((set, get) => ({
 
   loginWithGoogle: () => {
     window.location.href =
-      "https://i12a703.p.ssafy.io/oauth2/authorization/google";
+      "https://docshund.site/oauth2/authorization/google";
   },
 
   // GitHub 로그인 함수
   loginWithGithub: () => {
     // GitHub 로그인 페이지로 리다이렉트
     window.location.href =
-      "https://i12a703.p.ssafy.io/oauth2/authorization/github";
+      "https://docshund.site/oauth2/authorization/github";
   },
 
   // 로그아웃 함수

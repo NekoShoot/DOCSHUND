@@ -65,7 +65,7 @@ const Chat = () => {
   const connect = () => {
     if (stompClient.current && stompClient.current.connected) return;
     const socketFactory = () => {
-      const socket = new WebSocket("wss://i12a703.p.ssafy.io/ws-connect");
+      const socket = new WebSocket("wss://docshund.site/ws-connect");
       socket.onerror = (event) => {
         // console.error("WebSocket Error:", event);
         toast.error("웹소켓 연결 오류가 발생했습니다.", {

@@ -6,7 +6,7 @@ const NotificationService = {
   async fetchNotifications() {
     try {
       const response = await axiosJsonInstance.get(
-        `https://i12a703.p.ssafy.io/api/v1/docshund/alerts` // 유저 ID로 알림 불러오기
+        `https://docshund.site/api/v1/docshund/alerts` // 유저 ID로 알림 불러오기
       );
 
       const data = response.data;
@@ -22,7 +22,7 @@ const NotificationService = {
   async readNotification(alertId) {
     try {
       const response = await axiosJsonInstance.patch(
-        `https://i12a703.p.ssafy.io/api/v1/docshund/alerts/${alertId}` // 알림 ID로 알림 불러오기
+        `https://docshund.site/api/v1/docshund/alerts/${alertId}` // 알림 ID로 알림 불러오기
       );
 
       const status = response.status;
@@ -38,7 +38,7 @@ const NotificationService = {
   async readAllNotifications() {
     try {
       const response = await axiosJsonInstance.patch(
-        `https://i12a703.p.ssafy.io/api/v1/docshund/alerts` // 유저 ID로 알림 전체 읽음 처리
+        `https://docshund.site/api/v1/docshund/alerts` // 유저 ID로 알림 전체 읽음 처리
       );
 
       const status = response.status;
@@ -54,7 +54,7 @@ const NotificationService = {
   async deleteNotification(alertId) {
     try {
       const response = await axiosJsonInstance.delete(
-        `https://i12a703.p.ssafy.io/api/v1/docshund/alerts/${alertId}` // 알림 ID로 알림 삭제
+        `https://docshund.site/api/v1/docshund/alerts/${alertId}` // 알림 ID로 알림 삭제
       );
 
       const status = response.status;
@@ -70,7 +70,7 @@ const NotificationService = {
   async deleteAllNotifications() {
     try {
       const response = await axiosJsonInstance.delete(
-        `https://i12a703.p.ssafy.io/api/v1/docshund/alerts` // 유저 ID로 알림 전체 삭제
+        `https://docshund.site/api/v1/docshund/alerts` // 유저 ID로 알림 전체 삭제
       );
 
       const status = response.status;
