@@ -15,9 +15,9 @@ import java.time.LocalDateTime;
 public class MemoRequestDto {
 	private Integer memoId;
 	private Long userId;
-	@NotNull(message = "제목은 비워둘 수 없습니다.") @Size(max = 50, message = "제목은 50자 이내로 작성해야합니다.")
+	@NotNull(message = "Title cannot be empty.") @Size(max = 50, message = "Title must be within 50 characters.")
 	private String title;
-	@NotNull(message = "내용은 비워둘 수 없습니다.") @Size(max = 15000, message = "내용은 15000자 이내로 작성해야합니다.")
+	@NotNull(message = "Content cannot be empty.") @Size(max = 15000, message = "Content must be within 15000 characters.")
 	private String content;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
