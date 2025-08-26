@@ -12,7 +12,7 @@
   "dependencies": {
     "@stomp/stompjs": "^7.0.0",
     "@tailwindcss/vite": "^4.0.0",
-    "@toast-ui/editor": "^3.2.2",
+    "@toast-ui/editor": "^3.1.0",
     "@uiw/react-md-editor": "^4.0.5",
     "axios": "^1.7.9",
     "date-fns": "^4.1.0",
@@ -30,6 +30,7 @@
     "react-draggable": "^4.4.6",
     "react-fast-marquee": "^1.6.5",
     "react-icons": "^5.4.0",
+    "react-ipgeolocation": "^1.4.0",
     "react-joyride": "^2.9.3",
     "react-markdown": "^9.0.3",
     "react-modal": "^3.16.3",
