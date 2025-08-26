@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ssafy.docshund.domain.alerts.service.AlertsService;
@@ -37,6 +39,7 @@ public class CommentServiceImpl implements CommentService {
 	private final ArticleRepository articleRepository;
 	private final CommentRepository commentRepository;
 	private final UserUtil userUtil;
+	private final MessageSource messageSource;
 	private final AlertsService alertsService;
 
 	@Override
@@ -46,7 +49,7 @@ public class CommentServiceImpl implements CommentService {
 		List<Comment> comments = commentRepository.findAllByArticleId(articleId);
 
 		return comments.stream()
-			.map(CommentInfoDto::from)
+			.map(comment -> CommentInfoDto.from(comment, messageSource))
 			.filter(Optional::isPresent)
 			.map(Optional::get)
 			.toList();
@@ -59,7 +62,7 @@ public class CommentServiceImpl implements CommentService {
 		List<Comment> comments = commentRepository.findAllByUserId(userId);
 
 		return comments.stream()
-			.map(CommentInfoDto::from)
+			.map(comment -> CommentInfoDto.from(comment, messageSource))
 			.filter(Optional::isPresent)
 			.map(Optional::get)
 			.toList();

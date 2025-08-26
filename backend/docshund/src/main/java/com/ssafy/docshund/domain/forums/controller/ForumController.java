@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -43,6 +45,7 @@ public class ForumController {
 	private final ArticleService articleService;
 	private final CommentService commentService;
 	private final S3FileUploadService s3FileUploadService;
+	private final MessageSource messageSource;
 
 	/* Article */
 
@@ -205,21 +208,23 @@ public class ForumController {
 	}
 
 	@PatchMapping("/article/{articleId}/status")
-	public ResponseEntity<String> modifyArticleStatus(
+	public ResponseEntity<?> modifyArticleStatus(
 			@PathVariable Integer articleId,
 			@RequestBody Status status
 	) {
 		articleService.modifyArticleStatus(articleId, status);
-		return ResponseEntity.ok("변경이 완료되었습니다");
+		String message = messageSource.getMessage("forums.status.update.success", null, LocaleContextHolder.getLocale());
+		return ResponseEntity.ok(Map.of("message", message));
 	}
 
 	@PatchMapping("/comment/{commentId}/status")
-	public ResponseEntity<String> modifyCommentStatus(
+	public ResponseEntity<?> modifyCommentStatus(
 			@PathVariable Integer commentId,
 			@RequestBody Status status
 	) {
 		commentService.modifyCommentStatus(commentId, status);
-		return ResponseEntity.ok("변경이 완료되었습니다");
+		String message = messageSource.getMessage("forums.status.update.success", null, LocaleContextHolder.getLocale());
+		return ResponseEntity.ok(Map.of("message", message));
 	}
 
 }
