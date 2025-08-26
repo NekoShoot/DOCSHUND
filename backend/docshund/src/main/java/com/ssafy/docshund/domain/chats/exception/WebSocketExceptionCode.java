@@ -14,8 +14,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum WebSocketExceptionCode implements ExceptionCode {
 
-    INVALID_PRINCIPAL(FORBIDDEN, "C-C-001", "채팅을 사용할 권한이 없습니다."),
-    CHAT_NOT_FOUND(NOT_FOUND, "C-S-001", "채팅을 찾을 수 없습니다.");
+    INVALID_PRINCIPAL(FORBIDDEN, "C-C-001", "chat.error.invalidPrincipal"),
+    CHAT_NOT_FOUND(NOT_FOUND, "C-S-001", "chat.error.notFound");
 
     private final HttpStatus httpStatus;
     private final String code;

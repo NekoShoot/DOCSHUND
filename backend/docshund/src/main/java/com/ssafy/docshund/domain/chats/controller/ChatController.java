@@ -3,7 +3,10 @@ package com.ssafy.docshund.domain.chats.controller;
 import static com.ssafy.docshund.domain.chats.exception.WebSocketExceptionCode.INVALID_PRINCIPAL;
 
 import java.security.Principal;
+import java.util.Map;
 
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -36,6 +39,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ChatController {
 
 	private final ChatService chatService;
+	private final MessageSource messageSource;
 
 	@MessageMapping("/chats/{docsId}")
 	@SendTo("/sub/chats/{docsId}")
@@ -72,9 +76,9 @@ public class ChatController {
 	}
 
 	@PatchMapping("/api/v1/docshund/chats/status/{chatId}")
-	public ResponseEntity<String> modifyChatStatus(@PathVariable Long chatId, @RequestBody Status status) {
+	public ResponseEntity<?> modifyChatStatus(@PathVariable Long chatId, @RequestBody Status status) {
 		chatService.modifyChatStatus(chatId, status);
-
-		return ResponseEntity.ok("변경이 완료되었습니다.");
+		String message = messageSource.getMessage("chat.status.update.success", null, LocaleContextHolder.getLocale());
+		return ResponseEntity.ok(Map.of("message", message));
 	}
 }

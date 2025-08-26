@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import com.querydsl.core.annotations.QueryProjection;
 import com.ssafy.docshund.domain.chats.entity.Chat;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
