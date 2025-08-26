@@ -6,10 +6,9 @@ import static com.ssafy.docshund.domain.users.exception.user.UserExceptionCode.U
 import static com.ssafy.docshund.domain.users.exception.user.UserExceptionCode.USER_NOT_FOUND;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
-import com.ssafy.docshund.domain.users.exception.MemoException;
-import com.ssafy.docshund.domain.users.exception.MemoExceptionCode;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -26,6 +25,8 @@ import com.ssafy.docshund.domain.users.dto.profile.UserStatusRequestDto;
 import com.ssafy.docshund.domain.users.entity.Memo;
 import com.ssafy.docshund.domain.users.entity.User;
 import com.ssafy.docshund.domain.users.entity.UserInfo;
+import com.ssafy.docshund.domain.users.exception.MemoException;
+import com.ssafy.docshund.domain.users.exception.MemoExceptionCode;
 import com.ssafy.docshund.domain.users.exception.auth.AuthException;
 import com.ssafy.docshund.domain.users.exception.user.UserException;
 import com.ssafy.docshund.domain.users.repository.MemoRepository;
@@ -47,6 +48,7 @@ public class UserServiceImpl implements UserService {
 	private final MemoRepository memoRepository;
 	private final UserUtil userUtil;
 	private final S3FileUploadService s3FileUploadService;
+	private final MessageSource messageSource;
 
 	@Override
 	@Transactional(readOnly = true)
@@ -86,7 +88,9 @@ public class UserServiceImpl implements UserService {
 
 	@Transactional(readOnly = true)
 	public String duplicateNickname(String nickname) {
-		return userRepository.existsByNickname(nickname) ? "사용할 수 없는 닉네임입니다." : "사용 가능한 닉네임입니다.";
+		boolean exists = userRepository.existsByNickname(nickname);
+		String messageKey = exists ? "user.nickname.unavailable" : "user.nickname.available";
+		return messageSource.getMessage(messageKey, null, LocaleContextHolder.getLocale());
 	}
 
 	@Transactional
@@ -213,3 +217,4 @@ public class UserServiceImpl implements UserService {
 		memoRepository.delete(memo);
 	}
 }
+    

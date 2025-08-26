@@ -1,5 +1,7 @@
 package com.ssafy.docshund.domain.users.controller;
 
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,11 +19,14 @@ import lombok.extern.slf4j.Slf4j;
 public class UserAuthController {
 
 	private final UserAuthServiceImpl userAuthServiceImpl;
+	private final MessageSource messageSource;
 
 	@GetMapping("/leaving")
 	public ResponseEntity<String> logout() {
 		userAuthServiceImpl.deleteUser();
 
-		return ResponseEntity.ok().body("탈퇴 요청이 완료되었습니다.");
+		String message = messageSource.getMessage("user.auth.leave.success", null, LocaleContextHolder.getLocale());
+		return ResponseEntity.ok().body(message);
 	}
 }
+

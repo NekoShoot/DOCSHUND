@@ -12,19 +12,19 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ProfileRequestDto {
-	@Size(max = 10, message = "10자를 넘을 수 없습니다.")
+	@Size(max = 10, message = "Cannot exceed 10 characters.")
 	@Pattern(
-		regexp = "^(?!멍멍이$)(?!.*[\\p{So}\\uFE0F\\u200D]).*$",
-		message = "사용할 수 없는 닉네임입니다."
+		regexp = "^(?!멍멍이$|ワンワン$)(?!.*[\\p{So}\\uFE0F\\u200D]).*$",
+		message = "This nickname cannot be used."
 	)
-	@NotBlank(message = "사용할 수 없는 닉네임입니다.")
+	@NotBlank(message = "This nickname cannot be used.")
 	private String nickname;
 
-	@Size(max = 200, message = "자기소개 글자는 200자를 넘을 수 없습니다.")
-	@NotNull(message = "자기소개는 필수 값 입니다.") // null 금지
+	@Size(max = 200, message = "Introduction cannot exceed 200 characters.")
+	@NotNull(message = "Introduction is required.") // null 금지
 	private String introduce;
 
-	@NotNull(message = "필수 값 입니다.")
+	@NotNull(message = "This field is required.")
 	private Boolean isDarkmode;
 
 	private String hobby;

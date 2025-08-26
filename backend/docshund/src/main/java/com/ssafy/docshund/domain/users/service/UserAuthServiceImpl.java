@@ -4,11 +4,12 @@ import static com.ssafy.docshund.domain.users.entity.Provider.GITHUB;
 import static com.ssafy.docshund.domain.users.entity.Provider.GOOGLE;
 import static com.ssafy.docshund.domain.users.exception.auth.AuthExceptionCode.AUTH_MEMBER_NOT_FOUND;
 import static com.ssafy.docshund.domain.users.exception.auth.AuthExceptionCode.LOGIN_PROVIDER_MISMATCH;
+import static com.ssafy.docshund.domain.users.exception.user.UserExceptionCode.USER_BANNED;
+import static com.ssafy.docshund.domain.users.exception.user.UserExceptionCode.USER_WITHDRAW;
 
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
-import org.springframework.security.oauth2.core.OAuth2Error;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +23,7 @@ import com.ssafy.docshund.domain.users.entity.Status;
 import com.ssafy.docshund.domain.users.entity.User;
 import com.ssafy.docshund.domain.users.entity.UserInfo;
 import com.ssafy.docshund.domain.users.exception.auth.AuthException;
+import com.ssafy.docshund.domain.users.exception.user.UserException;
 import com.ssafy.docshund.domain.users.repository.UserInfoRepository;
 import com.ssafy.docshund.domain.users.repository.UserRepository;
 import com.ssafy.docshund.global.util.user.UserUtil;
@@ -94,12 +96,11 @@ public class UserAuthServiceImpl extends DefaultOAuth2UserService {
 
 	private void validateUser(User findUser) {
 		if (findUser.getStatus() == Status.BANNED) {
-			log.info("user status BANNED");
-			throw new OAuth2AuthenticationException(new OAuth2Error("USER_BANNED"), "USER_BANNED: 해당 계정은 정지되었습니다.");
+			throw new UserException(USER_BANNED);
 		}
 		if (findUser.getStatus() == Status.WITHDRAWN) {
-			log.info("user status WITHDRAW");
-			throw new OAuth2AuthenticationException(new OAuth2Error("USER_WITHDRAW"), "USER_WITHDRAW: 해당 계정은 탈퇴되었습니다.");
+			throw new UserException(USER_WITHDRAW);
 		}
 	}
 }
+    

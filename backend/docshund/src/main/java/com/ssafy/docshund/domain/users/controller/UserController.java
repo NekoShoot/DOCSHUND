@@ -16,6 +16,8 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
@@ -37,6 +39,7 @@ public class UserController {
 
 	private final UserService userService;
 	private final UserUtil userUtil;
+	private final MessageSource messageSource;
 
 	@GetMapping
 	public ResponseEntity<Page<UserAndInfoDto>> searchUsers(@RequestParam(required = false) String nickname,
@@ -57,7 +60,8 @@ public class UserController {
 	@GetMapping("/profile")
 	public ResponseEntity<String> duplicatedUserNickname(
 		@RequestParam @Size(max = 20, message = "닉네임은 10자 이하입니다") String nickname) {
-		return ResponseEntity.ok(userService.duplicateNickname(nickname));
+		String message = userService.duplicateNickname(nickname);
+		return ResponseEntity.ok(message);
 	}
 
 	@GetMapping("/profile/{userId}")
@@ -82,7 +86,8 @@ public class UserController {
 
 		userService.modifyUserProfile(user, request, file);
 
-		return ResponseEntity.ok("프로필이 수정되었습니다.");
+		String message = messageSource.getMessage("user.profile.update.success", null, LocaleContextHolder.getLocale());
+		return ResponseEntity.ok(message);
 	}
 
 	@PatchMapping("/{userId}/status")
@@ -91,7 +96,8 @@ public class UserController {
 
 		userService.modifyUserStatus(userId, userStatusRequestDto);
 
-		return ResponseEntity.ok("상태가 변경되었습니다.");
+		String message = messageSource.getMessage("user.status.update.success", null, LocaleContextHolder.getLocale());
+		return ResponseEntity.ok(message);
 	}
 
 	// 메모 생성
@@ -102,7 +108,8 @@ public class UserController {
 
 		userService.createMemo(userId, memoRequestDto);
 
-		return ResponseEntity.ok(Map.of("message", "메모가 생성되었습니다."));
+		String message = messageSource.getMessage("user.memo.create.success", null, LocaleContextHolder.getLocale());
+		return ResponseEntity.ok(Map.of("message", message));
 	}
 
 	// 메모 조회 (단일)
@@ -138,7 +145,8 @@ public class UserController {
 		// 메모 수정
 		userService.modifyMemo(userId, memoId, memoRequestDto);
 
-		return ResponseEntity.ok(Map.of("message", "메모가 수정되었습니다."));
+		String message = messageSource.getMessage("user.memo.update.success", null, LocaleContextHolder.getLocale());
+		return ResponseEntity.ok(Map.of("message", message));
 	}
 
 	// 메모 삭제
@@ -150,7 +158,9 @@ public class UserController {
 		// 메모 삭제
 		userService.deleteMemo(userId, memoId);
 
-		return ResponseEntity.ok(Map.of("message", "메모가 삭제되었습니다."));
+		String message = messageSource.getMessage("user.memo.delete.success", null, LocaleContextHolder.getLocale());
+		return ResponseEntity.ok(Map.of("message", message));
 	}
 
 }
+
