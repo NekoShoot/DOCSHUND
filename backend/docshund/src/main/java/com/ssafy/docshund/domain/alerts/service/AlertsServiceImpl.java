@@ -9,6 +9,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.stream.Collectors;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -43,6 +45,7 @@ public class AlertsServiceImpl implements AlertsService {
 	private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 	private final Map<Long, SseEmitter> emitters = new ConcurrentHashMap<>();
 	private final UserUtil userUtil;
+	private final MessageSource messageSource;
 
 	// 알림 단일 조회 시 사용하는 메소드
 	@Transactional(readOnly = true)
@@ -136,33 +139,37 @@ public class AlertsServiceImpl implements AlertsService {
 				.getOriginDocument()
 				.getDocument()
 				.getDocumentName(); // 번역 문서 제목 추가
-			String sentence = alert.getTranslatedDocument().getContent(); // 번역 문장 추가
-			title = alert.getTitle();
-			content = "[ " + docTitle + " ] 문서에서 번역한 문장 '" + getShortContent(sentence) + "'이(가) 좋아요를 받았습니다!";
+			String sentence = getShortContent(alert.getTranslatedDocument().getContent()); // 번역 문장 추가
+			title = messageSource.getMessage("alert.title.translation.liked", null, LocaleContextHolder.getLocale());
+			content = messageSource.getMessage("alert.content.translation.liked", new Object[] {docTitle, sentence},
+				LocaleContextHolder.getLocale());
 			originArticleId = null;
 		} else if (alert.getArticle() != null) {
 			category = Category.ARTICLE;
 			categoryId = alert.getArticle().getArticleId();
-			String articleTitle = alert.getArticle().getTitle(); // 게시글 제목 추가
-			title = alert.getTitle();
-			content = "[ " + getShortContent(articleTitle) + " ] 에 새로운 댓글이 달렸습니다!";
+			String articleTitle = getShortContent(alert.getArticle().getTitle()); // 게시글 제목 추가
+			title = messageSource.getMessage("alert.title.article.commented", null, LocaleContextHolder.getLocale());
+			content = messageSource.getMessage("alert.content.article.commented", new Object[] {articleTitle},
+				LocaleContextHolder.getLocale());
 			originArticleId = null;
 		} else if (alert.getComment() != null) {
 			category = Category.COMMENT;
 			categoryId = alert.getComment().getCommentId();
-			String commentContent = alert.getComment().getContent(); // 댓글 내용 일부 가져오기
-			title = alert.getTitle();
-			content = "댓글 [ " + getShortContent(commentContent) + " ] 에 새로운 대댓글이 달렸습니다!";
+			String commentContent = getShortContent(alert.getComment().getContent()); // 댓글 내용 일부 가져오기
+			title = messageSource.getMessage("alert.title.comment.replied", null, LocaleContextHolder.getLocale());
+			content = messageSource.getMessage("alert.content.comment.replied", new Object[] {commentContent},
+				LocaleContextHolder.getLocale());
 			originArticleId = alert.getComment().getArticle().getArticleId();
 		} else if (alert.getInquiry() != null) {
 			category = Category.INQUIRY;
 			categoryId = alert.getInquiry().getInquiryId();
-			String inquiryTitle = alert.getInquiry().getTitle();    // 문의 제목 추가
-			title = alert.getTitle();
-			content = "당신의 문의 [ " + getShortContent(inquiryTitle) + " ] 에 대한 답변이 등록되었습니다!";
+			String inquiryTitle = getShortContent(alert.getInquiry().getTitle());    // 문의 제목 추가
+			title = messageSource.getMessage("alert.title.inquiry.answered", null, LocaleContextHolder.getLocale());
+			content = messageSource.getMessage("alert.content.inquiry.answered", new Object[] {inquiryTitle},
+				LocaleContextHolder.getLocale());
 			originArticleId = null;
 		} else {
-			throw new IllegalArgumentException("알 수 없는 카테고리입니다.");
+			throw new AlertsException(AlertsExceptionCode.UNKNOWN_CATEGORY);
 		}
 
 		return new AlertOutputDto(
@@ -267,8 +274,9 @@ public class AlertsServiceImpl implements AlertsService {
 		}
 
 		// 새로운 알림 생성
+		String title = messageSource.getMessage("alert.title.translation.liked", null, LocaleContextHolder.getLocale());
 		Alert alert = new Alert(
-			"🤎 내가 번역한 문서에 좋아요가 추가되었어요!",
+			title,
 			author,
 			translatedDocument, null, null, null,
 			null
@@ -306,8 +314,9 @@ public class AlertsServiceImpl implements AlertsService {
 		}
 
 		// 새로운 알림 생성
+		String title = messageSource.getMessage("alert.title.article.commented", null, LocaleContextHolder.getLocale());
 		Alert alert = new Alert(
-			"💬 내 게시글에 새로운 댓글이 달렸어요!",
+			title,
 			author,
 			null, article, null, null,
 			null
@@ -333,8 +342,9 @@ public class AlertsServiceImpl implements AlertsService {
 		}
 
 		// 새로운 알림 생성
+		String title = messageSource.getMessage("alert.title.comment.replied", null, LocaleContextHolder.getLocale());
 		Alert alert = new Alert(
-			"💬🔄 내 댓글에 대댓글이 달렸어요!",
+			title,
 			author,
 			null, null, parentComment, null,
 			null
@@ -353,8 +363,9 @@ public class AlertsServiceImpl implements AlertsService {
 		User author = inquiry.getUser();
 
 		// 새로운 알림 생성
+		String title = messageSource.getMessage("alert.title.inquiry.answered", null, LocaleContextHolder.getLocale());
 		Alert alert = new Alert(
-			"💌 문의에 대한 답변이 등록되었습니다!",
+			title,
 			author,
 			null, null, null, inquiry,
 			null

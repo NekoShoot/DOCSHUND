@@ -3,6 +3,8 @@ package com.ssafy.docshund.domain.alerts.controller;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,8 +28,8 @@ public class AlertsController {
 
 	private final AlertsService alertsService;
 	private final UserUtil userUtil;
+	private final MessageSource messageSource;
 
-	// DB 스케줄링으로 하루에 한 번씩 30일이 지난 알림을 삭제 (전체 알림 DB 색인 후 삭제)
 
 	// 알림 목록 조회
 	@GetMapping("")
@@ -52,7 +54,8 @@ public class AlertsController {
 		@PathVariable Long alertId
 	) {
 		alertsService.deleteAlert(alertId);
-		return ResponseEntity.ok().body(Map.of("message", "알림이 성공적으로 삭제되었습니다."));
+		String message = messageSource.getMessage("alert.delete.success", null, LocaleContextHolder.getLocale());
+		return ResponseEntity.ok().body(Map.of("message", message));
 	}
 
 	// 알림 일괄 삭제
@@ -60,7 +63,8 @@ public class AlertsController {
 	public ResponseEntity<?> deleteAlerts(
 	) {
 		alertsService.deleteAlerts();
-		return ResponseEntity.ok().body(Map.of("message", "알림이 일괄 삭제되었습니다."));
+		String message = messageSource.getMessage("alert.delete.bulk.success", null, LocaleContextHolder.getLocale());
+		return ResponseEntity.ok().body(Map.of("message", message));
 	}
 
 	// 알림 조회 처리
@@ -69,7 +73,8 @@ public class AlertsController {
 		@PathVariable Long alertId
 	) {
 		alertsService.readAlert(alertId);
-		return ResponseEntity.ok().body(Map.of("message", "알림이 읽음 처리되었습니다."));
+		String message = messageSource.getMessage("alert.read.success", null, LocaleContextHolder.getLocale());
+		return ResponseEntity.ok().body(Map.of("message", message));
 	}
 
 	// 알림 일괄 조회 처리
@@ -77,7 +82,8 @@ public class AlertsController {
 	public ResponseEntity<?> readAlerts(
 	) {
 		alertsService.readAlerts();
-		return ResponseEntity.ok().body(Map.of("message", "알림이 일괄 읽음 처리되었습니다."));
+		String message = messageSource.getMessage("alert.read.bulk.success", null, LocaleContextHolder.getLocale());
+		return ResponseEntity.ok().body(Map.of("message", message));
 	}
 
 	// 알림 받기 (SSE 연결)
