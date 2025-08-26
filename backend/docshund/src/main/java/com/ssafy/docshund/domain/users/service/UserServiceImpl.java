@@ -46,7 +46,6 @@ public class UserServiceImpl implements UserService {
 	private final UserInfoRepository userInfoRepository;
 	private final MemoRepository memoRepository;
 	private final UserUtil userUtil;
-	private final S3FileUploadService fileUploadService;
 	private final S3FileUploadService s3FileUploadService;
 
 	@Override
@@ -126,7 +125,9 @@ public class UserServiceImpl implements UserService {
 		if (userUtil.getUser() == null) {
 			throw new MemoException(MemoExceptionCode.USER_NOT_AUTHORIZED);
 		}
-		if (userUtil.getUser() != user) {
+		if (userUtil.getUser().getEmail().equals(user.getEmail())) {
+			log.error("userUtil.getUser(): " + userUtil.getUser().getEmail());
+			log.error("user : " + user.getEmail());
 			throw new MemoException(MemoExceptionCode.NOT_YOUR_MEMO);
 		}
 
@@ -151,7 +152,7 @@ public class UserServiceImpl implements UserService {
 	// 메모 조회 (일괄)
 	@Override
 	public List<MemoResponseDto> getMemos(Long userId) {
-		User user = checkMemoUser(userId);
+		checkMemoUser(userId);
 
 		List<Memo> memos = memoRepository.findByUserUserId(userId);
 
@@ -166,7 +167,7 @@ public class UserServiceImpl implements UserService {
 		if (memoId == null) {
 			throw new MemoException(MemoExceptionCode.ILLEGAL_ARGUMENT);
 		}
-		User user = checkMemoUser(userId);
+		checkMemoUser(userId);
 
 		Memo memo = memoRepository.findByMemoIdAndUserUserId(memoId, userId)
 			.orElseThrow(() -> new MemoException(MemoExceptionCode.MEMO_NOT_FOUND));
@@ -181,7 +182,7 @@ public class UserServiceImpl implements UserService {
 		if (memoId == null) {
 			throw new MemoException(MemoExceptionCode.ILLEGAL_ARGUMENT);
 		}
-		User user = checkMemoUser(userId);
+		checkMemoUser(userId);
 
 		Memo memo = memoRepository.findByMemoIdAndUserUserId(memoId, userId)
 			.orElseThrow(() -> new MemoException(MemoExceptionCode.MEMO_NOT_FOUND));
@@ -204,7 +205,7 @@ public class UserServiceImpl implements UserService {
 			throw new MemoException(MemoExceptionCode.ILLEGAL_ARGUMENT);
 		}
 
-		User user = checkMemoUser(userId);
+		checkMemoUser(userId);
 
 		Memo memo = memoRepository.findByMemoIdAndUserUserId(memoId, userId)
 			.orElseThrow(() -> new MemoException(MemoExceptionCode.MEMO_NOT_FOUND));
