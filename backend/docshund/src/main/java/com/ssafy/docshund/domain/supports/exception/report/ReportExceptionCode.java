@@ -14,9 +14,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum ReportExceptionCode implements ExceptionCode {
 
-	REPORT_NOT_FOUND(NOT_FOUND, "R-S-001", "신고를 찾을 수 없습니다."),
-	ALREADY_REPORTED_REPORT(BAD_REQUEST, "R-S-002", "이미 신고한 상태입니다."),
-	REPORT_IS_MINE(BAD_REQUEST, "R-S-003", "자기 자신을 신고할 수 없습니다.");
+	REPORT_NOT_FOUND(NOT_FOUND, "R-C-001", "supports.report.error.notFound"),
+	ALREADY_REPORTED_REPORT(BAD_REQUEST, "R-C-002", "supports.report.error.alreadyReported"),
+	REPORT_IS_MINE(BAD_REQUEST, "R-C-003", "supports.report.error.selfReport");
 
 	private final HttpStatus httpStatus;
 	private final String code;

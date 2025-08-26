@@ -8,22 +8,22 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum ReportCategory {
-	욕설_및_폭력성("ABUSIVE_LANGUAGE_OR_VIOLENCE"),
-	음란물_및_불법_콘텐츠_게시("EXPLICIT_OR_ILLEGAL_CONTENT"),
-	사행성_조장("PROMOTING_GAMBLING"),
-	스팸_및_광고("SPAM_OR_ADVERTISING"),
-	도배("FLOODING"),
-	개인정보_노출("PERSONAL_INFORMATION_EXPOSURE"),
-	저작권_침해("COPYRIGHT_INFRINGEMENT"),
-	기타("OTHER");
+	ABUSIVE_LANGUAGE_OR_VIOLENCE("report.category.ABUSIVE_LANGUAGE_OR_VIOLENCE"),
+	EXPLICIT_OR_ILLEGAL_CONTENT("report.category.EXPLICIT_OR_ILLEGAL_CONTENT"),
+	PROMOTING_GAMBLING("report.category.PROMOTING_GAMBLING"),
+	SPAM_OR_ADVERTISING("report.category.SPAM_OR_ADVERTISING"),
+	FLOODING("report.category.FLOODING"),
+	PERSONAL_INFORMATION_EXPOSURE("report.category.PERSONAL_INFORMATION_EXPOSURE"),
+	COPYRIGHT_INFRINGEMENT("report.category.COPYRIGHT_INFRINGEMENT"),
+	OTHER("report.category.OTHER");
 
-	private final String description;
+	private final String descriptionKey;
 
-	// description을 기반으로 ReportCategory 찾기
 	public static ReportCategory fromDescription(String description) {
 		return Arrays.stream(ReportCategory.values())
-			.filter(category -> category.getDescription().equals(description))
+			.filter(category -> category.name().equalsIgnoreCase(description)) // 클라이언트에서는 영어 Enum 이름을 보내는 것으로 가정
 			.findFirst()
-			.orElseThrow(() -> new IllegalArgumentException("해당하는 신고 카테고리가 없습니다: " + description));
+			.orElseThrow(() -> new IllegalArgumentException("Invalid report category: " + description));
 	}
 }
+    

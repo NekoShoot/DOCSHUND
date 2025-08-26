@@ -1,5 +1,9 @@
 package com.ssafy.docshund.domain.supports.controller;
 
+import java.util.Map;
+
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
@@ -28,6 +32,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ReportController {
 
 	private final ReportService reportService;
+	private final MessageSource messageSource;
 
 	@GetMapping
 	public ResponseEntity<Page<ReportResponseDto>> searchReportUsers(@RequestParam(required = false) Long userId,
@@ -40,14 +45,15 @@ public class ReportController {
 		@Valid @RequestPart(value = "report", required = false) ReportRequestDto reportRequestDto,
 		@RequestPart(value = "file", required = false) MultipartFile file) {
 		reportService.reportUser(reportRequestDto, file);
-
-		return ResponseEntity.ok("신고가 완료되었습니다.");
+		String message = messageSource.getMessage("supports.report.create.success", null, LocaleContextHolder.getLocale());
+		return ResponseEntity.ok(message);
 	}
 
 	@PostMapping("/{reportId}/withdraw")
-	public ResponseEntity<String> withdrawReport(@PathVariable Integer reportId) {
+	public ResponseEntity<?> withdrawReport(@PathVariable Integer reportId) {
 		reportService.withdrawReport(reportId);
-
-		return ResponseEntity.ok("신고 철회가 완료되었습니다.");
+		String message = messageSource.getMessage("supports.report.withdraw.success", null, LocaleContextHolder.getLocale());
+		return ResponseEntity.ok(message);
 	}
 }
+

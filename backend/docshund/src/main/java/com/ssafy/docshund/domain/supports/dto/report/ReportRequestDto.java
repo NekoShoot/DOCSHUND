@@ -19,8 +19,8 @@ public class ReportRequestDto {
 	private Long chatId;
 	private String category;
 
-	@NotNull
-	@Size(max = 500, message = "500자를 넘을 수 없습니다.")
+	@NotNull(message = "Content is required.")
+	@Size(max = 500, message = "Content cannot exceed 500 characters.")
 	private String content;
 
 	private String originContent;

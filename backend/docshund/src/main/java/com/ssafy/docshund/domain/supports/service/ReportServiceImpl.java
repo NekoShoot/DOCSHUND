@@ -181,7 +181,6 @@ public class ReportServiceImpl implements ReportService {
 	private void handleWithdrawTranslatedDocumentReport(Report report, UserInfo reportedUserInfo) {
 		if (report.getTransId() != null) {
 			int reportCount = reportRepositroy.deleteAllByTransId((report.getTransId()));
-			log.info("삭제된 신고 개수 = " + reportCount);
 			TranslatedDocument translatedDocument = translatedDocumentRepository.findById(report.getTransId())
 				.orElseThrow(() -> new DocsException(TRANSLATION_NOT_FOUND));
 			translatedDocument.resetReportCount();
@@ -192,7 +191,6 @@ public class ReportServiceImpl implements ReportService {
 	private void handleWithdrawArticleReport(Report report, UserInfo reportedUserInfo) {
 		if (report.getArticleId() != null) {
 			int reportCount = reportRepositroy.deleteAllByArticleId((report.getArticleId()));
-			log.info("삭제된 신고 개수 = " + reportCount);
 			Article article = articleRepository.findById(report.getArticleId())
 				.orElseThrow(() -> new ForumException(NOT_FOUND_ARTICLE));
 			article.resetReportCount();
@@ -203,7 +201,6 @@ public class ReportServiceImpl implements ReportService {
 	private void handleWithdrawCommentReport(Report report, UserInfo reportedUserInfo) {
 		if (report.getCommentId() != null) {
 			int reportCount = reportRepositroy.deleteAllByCommentId((report.getCommentId()));
-			log.info("삭제된 신고 개수 = " + reportCount);
 			Comment comment = commentRepository.findById(report.getCommentId())
 				.orElseThrow(() -> new ForumException(NOT_FOUND_COMMENT));
 			comment.resetReportCount();
@@ -214,7 +211,6 @@ public class ReportServiceImpl implements ReportService {
 	private void handleWithdrawChatReport(Report report, UserInfo reportedUserInfo) {
 		if (report.getChatId() != null) {
 			int reportCount = reportRepositroy.deleteAllByChatId((report.getChatId()));
-			log.info("삭제된 신고 개수 = " + reportCount);
 			Chat chat = chatRepository.findById(report.getChatId())
 				.orElseThrow(() -> new ResourceNotFoundException(GlobalErrorCode.RESOURCE_NOT_FOUND));
 			chat.resetReportCount();
