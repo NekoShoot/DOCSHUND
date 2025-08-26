@@ -13,9 +13,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum InquiryExceptionCode implements ExceptionCode {
 
-	INQUIRY_NOT_FOUND(NOT_FOUND, "I-S-001", "문의를 찾을 수 없습니다.");
+	INQUIRY_NOT_FOUND(NOT_FOUND, "S-C-002", "supports.inquiry.error.notFound");
 
 	private final HttpStatus httpStatus;
 	private final String code;
 	private final String message;
 }
+    

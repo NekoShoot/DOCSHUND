@@ -3,6 +3,10 @@ package com.ssafy.docshund.domain.supports.service;
 import static com.ssafy.docshund.domain.supports.exception.inquiry.InquiryExceptionCode.INQUIRY_NOT_FOUND;
 import static com.ssafy.docshund.domain.users.exception.auth.AuthExceptionCode.INVALID_MEMBER_ROLE;
 
+import java.util.Locale;
+
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -15,6 +19,7 @@ import com.ssafy.docshund.domain.supports.dto.inquiry.InquiryRequestDto;
 import com.ssafy.docshund.domain.supports.dto.inquiry.page.InquiryAndAnswerDto;
 import com.ssafy.docshund.domain.supports.entity.Answer;
 import com.ssafy.docshund.domain.supports.entity.Inquiry;
+import com.ssafy.docshund.domain.supports.entity.InquiryCategory;
 import com.ssafy.docshund.domain.supports.exception.inquiry.InquiryException;
 import com.ssafy.docshund.domain.supports.repository.AnswerRepository;
 import com.ssafy.docshund.domain.supports.repository.InquiryRepository;
@@ -38,6 +43,7 @@ public class InquiryServiceImpl implements InquiryService {
 	private final S3FileUploadService fileUploadService;
 	private final UserUtil userUtil;
 	private final AlertsService alertsService;
+	private final MessageSource messageSource;
 
 	@Override
 	@Transactional
@@ -50,9 +56,17 @@ public class InquiryServiceImpl implements InquiryService {
 
 		Inquiry inquiry = Inquiry.createInquiry(user, inquiryRequestDto, imageUrl);
 
-		inquiryRequestDto.emailTextGenerator();
-		mailSendService.sendEmail(inquiryRequestDto.getEmail(), inquiryRequestDto.getTitle(),
-			inquiryRequestDto.getContent(), imageUrl);
+		// 이메일 제목과 본문을 여기서 생성
+		Locale locale = LocaleContextHolder.getLocale();
+		String titleSuffix = messageSource.getMessage("supports.inquiry.email.title.suffix", null, locale);
+		String categoryDescription = InquiryCategory.valueOf(inquiryRequestDto.getCategory()).getLocalizedDescription(messageSource, locale);
+		String contentPrefix = messageSource.getMessage("supports.inquiry.email.content.prefix", new Object[]{categoryDescription}, locale);
+		String contentSuffix = messageSource.getMessage("supports.inquiry.email.content.suffix", null, locale);
+
+		String emailTitle = inquiryRequestDto.getTitle() + titleSuffix;
+		String emailContent = contentPrefix + inquiryRequestDto.getContent() + contentSuffix;
+
+		mailSendService.sendEmail(inquiryRequestDto.getEmail(), emailTitle, emailContent, imageUrl);
 
 		inquiryRepository.save(inquiry);
 	}
@@ -79,7 +93,10 @@ public class InquiryServiceImpl implements InquiryService {
 
 		Answer answer = Answer.createAnswer(answerRequestDto, inquiry);
 
-		mailSendService.sendEmail(inquiry.getEmail(), inquiry.getTitle() + "에 대한 답변이 등록되었습니다.", answer.getContent(),
+		Locale locale = LocaleContextHolder.getLocale();
+		String titleSuffix = messageSource.getMessage("supports.inquiry.email.answer.title.suffix", null, locale);
+
+		mailSendService.sendEmail(inquiry.getEmail(), inquiry.getTitle() + titleSuffix, answer.getContent(),
 			null);
 
 		inquiry.isAnsweredTrue();
@@ -90,3 +107,4 @@ public class InquiryServiceImpl implements InquiryService {
 	}
 
 }
+    

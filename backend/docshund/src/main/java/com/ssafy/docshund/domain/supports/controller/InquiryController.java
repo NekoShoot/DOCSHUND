@@ -2,6 +2,10 @@ package com.ssafy.docshund.domain.supports.controller;
 
 import static com.ssafy.docshund.domain.users.exception.auth.AuthExceptionCode.INVALID_MEMBER_ROLE;
 
+import java.util.Map;
+
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
@@ -36,6 +40,7 @@ public class InquiryController {
 
 	private final InquiryService inquiryServiceImpl;
 	private final UserUtil userUtil;
+	private final MessageSource messageSource;
 
 	@PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ResponseEntity<?> createInquiry(
@@ -43,8 +48,8 @@ public class InquiryController {
 		@RequestPart(value = "file", required = false) MultipartFile file) {
 
 		inquiryServiceImpl.createInquiry(inquiryRequestDto, file);
-
-		return ResponseEntity.ok("문의 작성이 완료되었습니다.");
+		String message = messageSource.getMessage("supports.inquiry.create.success", null, LocaleContextHolder.getLocale());
+		return ResponseEntity.ok(message);
 	}
 
 	@PostMapping("/{inquiryId}/answer")
@@ -57,8 +62,8 @@ public class InquiryController {
 		}
 
 		inquiryServiceImpl.respondToInquiry(inquiryId, answerRequestDto);
-
-		return ResponseEntity.ok("답변 작성이 완료되었습니다.");
+		String message = messageSource.getMessage("supports.inquiry.answer.create.success", null, LocaleContextHolder.getLocale());
+		return ResponseEntity.ok(message);
 	}
 
 	@GetMapping
@@ -67,3 +72,4 @@ public class InquiryController {
 		return ResponseEntity.ok(inquiryServiceImpl.getInquiries(userId, pageable));
 	}
 }
+
