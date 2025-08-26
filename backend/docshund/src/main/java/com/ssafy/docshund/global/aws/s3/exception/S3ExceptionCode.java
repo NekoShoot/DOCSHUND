@@ -13,9 +13,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum S3ExceptionCode implements ExceptionCode {
 
-	IMAGE_TRNAS_BAD_REQUEST(BAD_REQUEST, "S-S-001", "이미지를 변환할 수 없습니다."),
-	IMAGE_UPLOAD_BAD_REQUEST(BAD_REQUEST, "S-S-002", "이미지를 업로드할 수 없습니다."),
-	IS_NOT_IMAGE(BAD_REQUEST, "S-S-003", "이미지 형식이 아닙니다.");
+	IMAGE_TRNAS_BAD_REQUEST(BAD_REQUEST, "S-S-001", "s3.error.transformFail"),
+	IMAGE_UPLOAD_BAD_REQUEST(BAD_REQUEST, "S-S-002", "s3.error.uploadFail"),
+	IS_NOT_IMAGE(BAD_REQUEST, "S-S-003", "s3.error.notImage");
 
 	private final HttpStatus httpStatus;
 	private final String code;

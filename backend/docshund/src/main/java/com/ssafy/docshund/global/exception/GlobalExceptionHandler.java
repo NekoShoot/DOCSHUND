@@ -7,14 +7,16 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.handler.annotation.support.MethodArgumentNotValidException;
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.BindException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.security.access.AccessDeniedException;
 
 import com.ssafy.docshund.global.mail.exception.MailException;
 
@@ -26,8 +28,10 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class GlobalExceptionHandler {
 
+	private final MessageSource messageSource;
+
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public ResponseEntity handleMethodArgumentNotValid(MethodArgumentNotValidException exception) {
+	public ResponseEntity<ExceptionResponse> handleMethodArgumentNotValid(MethodArgumentNotValidException exception) {
 		List<String> errors = exception.getBindingResult()
 			.getFieldErrors()
 			.stream()
@@ -35,7 +39,7 @@ public class GlobalExceptionHandler {
 			.collect(Collectors.toList());
 
 		ExceptionResponse response = new ExceptionResponse(
-			400,
+			BAD_REQUEST.value(),
 			"G-M-001",
 			errors.get(0),
 			LocalDateTime.now());
@@ -43,7 +47,7 @@ public class GlobalExceptionHandler {
 	}
 
 	@ExceptionHandler(BindException.class)
-	public ResponseEntity handleBindException(BindException exception) {
+	public ResponseEntity<ExceptionResponse> handleBindException(BindException exception) {
 		List<String> errors = exception.getBindingResult()
 			.getFieldErrors()
 			.stream()
@@ -51,7 +55,7 @@ public class GlobalExceptionHandler {
 			.collect(Collectors.toList());
 
 		ExceptionResponse response = new ExceptionResponse(
-			400,
+			BAD_REQUEST.value(),
 			"G-M-001",
 			errors.get(0),
 			LocalDateTime.now());
@@ -60,62 +64,55 @@ public class GlobalExceptionHandler {
 	}
 
 	@ExceptionHandler(DataIntegrityViolationException.class)
-	public ResponseEntity alreadyExistsValueInDataBase(
+	public ResponseEntity<ExceptionResponse> alreadyExistsValueInDataBase(
 		DataIntegrityViolationException exception
 	) {
-		log.error("{}", exception.getMessage());
-
-		return new ResponseEntity<>(
-			exception.getMessage(),
-			BAD_REQUEST
-		);
+		log.error("DataIntegrityViolationException: {}", exception.getMessage());
+		String message = messageSource.getMessage("global.error.dataIntegrity", null, LocaleContextHolder.getLocale());
+		ExceptionResponse response = new ExceptionResponse(BAD_REQUEST.value(), "G-DB-001", message, LocalDateTime.now());
+		return ResponseEntity.badRequest().body(response);
 	}
 
 	@ExceptionHandler(ResourceNotFoundException.class)
-	public ResponseEntity resourceNotFoundException(
+	public ResponseEntity<ExceptionResponse> resourceNotFoundException(
 		ResourceNotFoundException exception
 	) {
-		log.error("{}", exception.getMessage());
+		ExceptionCode exceptionCode = exception.getExceptionCode();
+		String message = messageSource.getMessage(exceptionCode.getMessage(), null, LocaleContextHolder.getLocale());
+		log.error("ResourceNotFoundException: {}", message);
 
 		ExceptionResponse response = new ExceptionResponse(
-			400,
-			"G-RN-001",
-			"해당 데이터를 찾을 수 없습니다.",
+			exceptionCode.getHttpStatus().value(),
+			exceptionCode.getCode(),
+			message,
 			LocalDateTime.now());
 
-		return ResponseEntity.badRequest().body(response);
+		return new ResponseEntity<>(response, exceptionCode.getHttpStatus());
 	}
 
 	@ExceptionHandler(AccessDeniedException.class)
-	public ResponseEntity accessDeniedException(
+	public ResponseEntity<ExceptionResponse> accessDeniedException(
 		AccessDeniedException exception
 	) {
-		log.error("{}", exception.getMessage());
-
+		log.error("AccessDeniedException: {}", exception.getMessage());
+		String message = messageSource.getMessage("global.error.accessDenied", null, LocaleContextHolder.getLocale());
 		ExceptionResponse response = new ExceptionResponse(
-			400,
+			HttpStatus.FORBIDDEN.value(),
 			"G-AC-001",
-			"접근할 수 없는 권한입니다.",
+			message,
 			LocalDateTime.now());
 
-		return ResponseEntity.badRequest().body(response);
-	}
-
-	@ExceptionHandler(MailException.class)
-	public ResponseEntity handleMailException(MailException e) {
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
-			new ExceptionResponse(e.getExceptionCode())
-		);
+		return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
 	}
 
 	@ExceptionHandler(Exception.class)
-	public ResponseEntity globalException(Exception e) {
-		log.error("{}", e);
-
+	public ResponseEntity<ExceptionResponse> globalException(Exception e) {
+		log.error("Unhandled Exception: ", e);
+		String message = messageSource.getMessage("global.error.internalServerError", null, LocaleContextHolder.getLocale());
 		ExceptionResponse response = new ExceptionResponse(
-			500,
-			"G-001",
-			"서버에 접속할 수 없습니다.",
+			INTERNAL_SERVER_ERROR.value(),
+			"G-S-001",
+			message,
 			LocalDateTime.now());
 
 		return ResponseEntity.status(INTERNAL_SERVER_ERROR).body(response);
