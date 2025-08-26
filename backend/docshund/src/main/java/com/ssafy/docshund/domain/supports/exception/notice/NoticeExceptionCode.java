@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum NoticeExceptionCode implements ExceptionCode {
 
-	NOTICE_NOT_FOUND(NOT_FOUND, "N-S-001", "공지사항을 찾을 수 없습니다.");
+	NOTICE_NOT_FOUND(NOT_FOUND, "N-S-001", "supports.notice.error.notFound");
 
 	private final HttpStatus httpStatus;
 	private final String code;

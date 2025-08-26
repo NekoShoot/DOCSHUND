@@ -13,11 +13,11 @@ import lombok.Setter;
 @NoArgsConstructor
 public class NoticeRequestDto {
 
-	@NotNull(message = "제목은 필수 입력값입니다.")
-	@Size(max = 50, message = "제목은 최대 50글자까지 가능합니다.")
+	@NotNull(message = "Title is required.")
+	@Size(max = 50, message = "Title cannot exceed 50 characters.")
 	private String title;
 
-	@NotNull(message = "내용은 필수 입력값입니다.")
-	@Size(max = 15000, message = "내용은 최대 15000글자까지 가능합니다.")
+	@NotNull(message = "Content is required.")
+	@Size(max = 15000, message = "Content cannot exceed 15000 characters.")
 	private String content;
 }

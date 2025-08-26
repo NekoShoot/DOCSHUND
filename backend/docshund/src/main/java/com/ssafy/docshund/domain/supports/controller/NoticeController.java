@@ -1,5 +1,9 @@
 package com.ssafy.docshund.domain.supports.controller;
 
+import java.util.Map;
+
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +31,7 @@ import lombok.extern.slf4j.Slf4j;
 public class NoticeController {
 
 	private final NoticeService noticeService;
+	private final MessageSource messageSource;
 
 	@GetMapping
 	public ResponseEntity<Page<NoticeResponseDto>> searchNotice(Pageable pageable) {
@@ -34,9 +39,10 @@ public class NoticeController {
 	}
 
 	@PostMapping
-	public ResponseEntity<String> createNotice(@Valid @RequestBody NoticeRequestDto noticeRequestDto) {
+	public ResponseEntity<?> createNotice(@Valid @RequestBody NoticeRequestDto noticeRequestDto) {
 		noticeService.createNotice(noticeRequestDto);
-		return ResponseEntity.ok("공지사항이 생성되었습니다.");
+		String message = messageSource.getMessage("supports.notice.create.success", null, LocaleContextHolder.getLocale());
+		return ResponseEntity.ok(message);
 	}
 
 	@GetMapping("/{noticeId}")
@@ -45,16 +51,19 @@ public class NoticeController {
 	}
 
 	@PatchMapping("/{noticeId}")
-	public ResponseEntity<String> modifyNotice(@Valid @RequestBody NoticeRequestDto noticeRequestDto,
+	public ResponseEntity<?> modifyNotice(@Valid @RequestBody NoticeRequestDto noticeRequestDto,
 		@PathVariable Integer noticeId) {
 		noticeService.modifyNotice(noticeRequestDto, noticeId);
-		return ResponseEntity.ok("공지사항이 수정되었습니다.");
+		String message = messageSource.getMessage("supports.notice.update.success", null, LocaleContextHolder.getLocale());
+		return ResponseEntity.ok(message);
 	}
 
 	@DeleteMapping("/{noticeId}")
-	public ResponseEntity<String> deleteNotice(@PathVariable Integer noticeId) {
+	public ResponseEntity<?> deleteNotice(@PathVariable Integer noticeId) {
 		noticeService.deleteNotice(noticeId);
-		return ResponseEntity.ok("공지사항이 삭제되었습니다.");
+		String message = messageSource.getMessage("supports.notice.delete.success", null, LocaleContextHolder.getLocale());
+		return ResponseEntity.ok(message);
 	}
 
 }
+
