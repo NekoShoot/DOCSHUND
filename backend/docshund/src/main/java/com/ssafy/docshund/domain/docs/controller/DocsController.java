@@ -8,6 +8,8 @@ import com.ssafy.docshund.domain.docs.entity.Status;
 import com.ssafy.docshund.domain.docs.service.DocsService;
 import com.ssafy.docshund.global.util.user.UserUtil;
 import jakarta.validation.Valid;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +25,7 @@ public class DocsController {
 
 	private final DocsService docsService;
 	private final UserUtil userUtil;
+	private final MessageSource messageSource;
 
 	// 문서 목록 조회
 	@GetMapping("")
@@ -208,9 +211,9 @@ public class DocsController {
 	}
 
 	@PatchMapping("/{transId}/status")
-	public ResponseEntity<String> modifyTransStatus(@PathVariable Long transId, @RequestBody Status status) {
+	public ResponseEntity<?> modifyTransStatus(@PathVariable Long transId, @RequestBody Status status) {
 		docsService.modifyDocsStatus(transId, status);
-
-		return ResponseEntity.ok("변경이 완료되었습니다.");
+		String message = messageSource.getMessage("docs.success.statusUpdated", null, LocaleContextHolder.getLocale());
+		return ResponseEntity.ok(Map.of("message", message));
 	}
 }

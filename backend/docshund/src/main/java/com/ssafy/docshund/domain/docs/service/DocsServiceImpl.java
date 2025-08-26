@@ -576,7 +576,7 @@ public class DocsServiceImpl implements DocsService {
 
 		// 해당 번역 문서가 docsId에 속하는지 확인
 		if (!translatedDocument.getOriginDocument().getDocument().getDocsId().equals(docsId)) {
-			throw new IllegalArgumentException("해당 번역문이 주어진 문서(docsId)에 속하지 않습니다.");
+			throw new DocsException(DocsExceptionCode.MISMATCH_TRANSLATION_AND_DOCS);
 		}
 
 		// 좋아요한 유저 목록 가져오기
@@ -619,7 +619,7 @@ public class DocsServiceImpl implements DocsService {
 
 		// docsId와 transId가 일치하는지 검증
 		if (!translatedDocument.getOriginDocument().getDocument().getDocsId().equals(docsId)) {
-			throw new IllegalArgumentException("해당 번역문이 주어진 문서(docsId)에 속하지 않습니다.");
+			throw new DocsException(DocsExceptionCode.MISMATCH_TRANSLATION_AND_DOCS);
 		}
 
 		// 작성자가 맞는지 확인 (작성자가 아니면 수정 불가)
@@ -656,7 +656,7 @@ public class DocsServiceImpl implements DocsService {
 
 		// docsId와 transId의 문서가 일치하는지 검증
 		if (!translatedDocument.getOriginDocument().getDocument().getDocsId().equals(docsId)) {
-			throw new IllegalArgumentException("해당 번역문이 주어진 문서(docsId)에 속하지 않습니다.");
+			throw new DocsException(DocsExceptionCode.MISMATCH_TRANSLATION_AND_DOCS);
 		}
 
 		// 삭제 권한 확인 (작성자 본인만 삭제 가능)
@@ -686,7 +686,7 @@ public class DocsServiceImpl implements DocsService {
 			.orElseThrow(() -> new DocsException(DocsExceptionCode.TRANSLATION_NOT_FOUND));
 
 		if (!translatedDocument.getOriginDocument().getDocument().getDocsId().equals(docsId)) {
-			throw new IllegalArgumentException("해당 번역문이 주어진 문서(docsId)에 속하지 않습니다.");
+			throw new DocsException(DocsExceptionCode.MISMATCH_TRANSLATION_AND_DOCS);
 		}
 
 		boolean hasVoted = translatedDocumentLikeRepository
@@ -733,5 +733,3 @@ public class DocsServiceImpl implements DocsService {
 		translatedDocument.modifyStatus(status);
 	}
 }
-
-

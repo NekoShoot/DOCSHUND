@@ -13,19 +13,19 @@ import java.util.List;
 
 public record DocumentDto(
 	Integer docsId,
-	@NotBlank(message = "문서 대분류는 비워두거나 공백일 수 없습니다.") @Size(max = 30, message = "문서 대분류는 30자 이내로 작성해야합니다.")
+	@NotBlank(message = "Document category cannot be blank.") @Size(max = 30, message = "Document category must be within 30 characters.")
 	String documentCategory,
-	@NotBlank(message = "문서명은 비워두거나 공백일 수 없습니다.") @Size(max = 30, message = "문서명은 30자 이내로 작성해야합니다.")
+	@NotBlank(message = "Document name cannot be blank.") @Size(max = 30, message = "Document name must be within 30 characters.")
 	String documentName,
 	String documentLogo,
-	@NotNull @Size(max = 20, message = "문서 버전은 20자 이내로 작성해야합니다.")
+	@NotNull @Size(max = 20, message = "Document version must be within 20 characters.")
 	String documentVersion,
 	@Min(0)
 	Integer viewCount,
 	Integer likeCount,  // Join을 통해 받아올 예정
-	@NotNull(message = "position은 비워둘 수 없습니다.") @ValidEnum(enumClass = Position.class, message = "position은 'FRONTEND', 'BACKEND', 'DBSQL' 중 하나여야합니다.")
+	@NotNull(message = "Position cannot be null.") @ValidEnum(enumClass = Position.class, message = "Position must be one of 'FRONTEND', 'BACKEND', 'DBSQL'.")
 	Position position,
-	@NotBlank(message = "라이센스는 비워두거나 공백일 수 없습니다.") @Size(max = 20, message = "라이센스는 20자 이내로 작성해야합니다.")
+	@NotBlank(message = "License cannot be blank.") @Size(max = 20, message = "License must be within 20 characters.")
 	String license,
 	@NotNull
 	String documentLink,

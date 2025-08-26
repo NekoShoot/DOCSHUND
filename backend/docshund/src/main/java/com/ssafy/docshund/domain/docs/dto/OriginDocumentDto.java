@@ -7,13 +7,13 @@ import jakarta.validation.constraints.Size;
 
 public record OriginDocumentDto(
 	Integer originId,
-	@NotNull(message = "문서는 필수로 지정해야합니다.")
+	@NotNull(message = "Document is required.")
 	Integer docsId,
 	@NotNull @Min(1)
 	Integer pOrder,
-	@NotNull @Size(max = 10, message = "태그는 10자 이내로 작성해야합니다.")
+	@NotNull @Size(max = 10, message = "Tag must be within 10 characters.")
 	String tag,
-	@NotNull @Size(max = 20000, message = "문서의 원문은 각 문단 당 100000자 이내로 작성해야합니다.")
+	@NotNull @Size(max = 20000, message = "Original document content must be within 20000 characters per paragraph.")
 	String content) {
 
 	public static OriginDocumentDto fromEntity(OriginDocument originDocument) {
