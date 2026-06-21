@@ -129,7 +129,7 @@ public class UserServiceImpl implements UserService {
 		if (userUtil.getUser() == null) {
 			throw new MemoException(MemoExceptionCode.USER_NOT_AUTHORIZED);
 		}
-		if (userUtil.getUser().getEmail().equals(user.getEmail())) {
+		if (!userUtil.getUser().getEmail().equals(user.getEmail())) {
 			log.error("userUtil.getUser(): " + userUtil.getUser().getEmail());
 			log.error("user : " + user.getEmail());
 			throw new MemoException(MemoExceptionCode.NOT_YOUR_MEMO);
