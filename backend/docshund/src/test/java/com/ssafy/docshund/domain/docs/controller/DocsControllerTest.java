@@ -17,15 +17,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -179,12 +182,14 @@ class DocsControllerTest {
 			new OriginDocumentDto(2, 1, 2, "p", "문단 2 내용")
 		);
 
+		MockMultipartFile file = new MockMultipartFile(
+			"file", "origin.html", "text/html", "문서 원본 내용입니다.".getBytes());
+
 		when(userUtil.getUser()).thenReturn(Mockito.mock(com.ssafy.docshund.domain.users.entity.User.class));
-		when(docsService.createOriginDocuments(1, "문서 원본 내용입니다.")).thenReturn(createdOrigins);
+		when(docsService.createOriginDocuments(eq(1), any(MultipartFile.class))).thenReturn(createdOrigins);
 
 		// when & then
-		mockMvc.perform(post("/api/v1/docshund/docs/1/origin")
-				.param("content", "문서 원본 내용입니다."))
+		mockMvc.perform(multipart("/api/v1/docshund/docs/1/origin").file(file))
 			.andExpect(status().isOk())
 			.andExpect(jsonPath("$.size()").value(2))
 			.andExpect(jsonPath("$[0].originId").value(1))
@@ -192,7 +197,7 @@ class DocsControllerTest {
 			.andExpect(jsonPath("$[1].originId").value(2))
 			.andExpect(jsonPath("$[1].content").value("문단 2 내용"));
 
-		verify(docsService, times(1)).createOriginDocuments(1, "문서 원본 내용입니다.");
+		verify(docsService, times(1)).createOriginDocuments(eq(1), any(MultipartFile.class));
 	}
 
 	// 원본 문서 전체 조회 테스트

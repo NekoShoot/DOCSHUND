@@ -19,6 +19,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -217,14 +218,15 @@ class DocsServiceImplTest {
 	@DisplayName("원본 문서 등록 테스트")
 	void createOriginDocuments() {
 		// given
-		String content = "<p>문서 테스트 내용</p>";
+		MockMultipartFile file = new MockMultipartFile(
+			"file", "origin.html", "text/html", "<p>문서 테스트 내용</p>".getBytes());
 
 		// when
 		Mockito.when(userUtil.getUser()).thenReturn(user1);
 		Mockito.when(userUtil.isAdmin(any())).thenReturn(true);
 		User user = userUtil.getUser();
 
-		List<OriginDocumentDto> result = docsService.createOriginDocuments(doc2.getDocsId(), content);
+		List<OriginDocumentDto> result = docsService.createOriginDocuments(doc2.getDocsId(), file);
 
 		// then
 		assertThat(result).isNotNull();

@@ -139,7 +139,7 @@ class UserServiceImplTest {
 		Assertions.assertThat(findUser.getNickname()).isEqualTo(profile.getNickname());
 		Assertions.assertThat(findUserInfo.getIntroduce()).isEqualTo(profile.getIntroduce());
 		Assertions.assertThat(findUserInfo.isDarkmode()).isFalse();
-		Assertions.assertThat(findUserInfo.getHobby()).isEqualTo(Hobby.Frontend);
+		Assertions.assertThat(findUserInfo.getHobby()).isEqualTo(Hobby.FRONTEND);
 	}
 
 	@Test
@@ -148,10 +148,10 @@ class UserServiceImplTest {
 	void searchUserByHobby() {
 		//given
 		UserSearchCondition backUsers = new UserSearchCondition();
-		backUsers.setCategory(Hobby.Backend);
+		backUsers.setCategory(Hobby.BACKEND);
 
 		UserSearchCondition frontUsers = new UserSearchCondition();
-		frontUsers.setCategory(Hobby.Frontend);
+		frontUsers.setCategory(Hobby.FRONTEND);
 
 		Pageable pageable = PageRequest.of(0, 10);
 

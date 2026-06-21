@@ -49,7 +49,7 @@ class UserControllerTest {
 		// given
 		UserSearchCondition condition = new UserSearchCondition();
 		condition.setEmail("test");
-		condition.setCategory(Hobby.Backend);
+		condition.setCategory(Hobby.BACKEND);
 
 		// when & then
 		mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/docshund/users")
